@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>United States 160th Special Operations Aviation Regiment (Airborne) Pipeline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="icon" type="image/png" href="160th.png">
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        body {
+            animation: fadeInScale 1.5s ease-out;
+        }
+
+        .container {
+            animation: fadeInScale 2s ease-out;
+        }
+
+        h1, h2, p, ul, li {
+            opacity: 0;
+            animation: fadeInScale 2s ease-out forwards;
+        }
+
+        h1 {
+            animation-delay: 0.5s;
+        }
+        h2 {
+            animation-delay: 1s;
+        }
+        p, ul, li {
+            animation-delay: 1.5s;
+        }
+
+        section {
+            opacity: 0;
+            animation: slideInLeft 1.5s ease-out forwards;
+        }
+
+        section:nth-child(even) {
+            animation: slideInRight 1.5s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        section:nth-child(odd) {
+            animation: slideInLeft 1.5s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        .typing-text {
+            width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid black;
+            animation: typing 3s steps(40) 1s forwards;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            background: #f4f4f4;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #333;
+            color: #fff;
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        a:hover {
+            color: #007bff;
+            transform: translateY(-2px);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .featured-item {
+            animation: pulse 2s infinite;
+        }
+
+        img {
+            opacity: 0;
+            animation: fadeInScale 2s ease-out forwards;
+            animation-delay: 2s;
+        }
+
+        header, footer {
+            opacity: 0;
+            animation: fadeInScale 2s ease-out forwards;
+            animation-delay: 2.5s;
+        } 
+        .arrow-link {
+        display: block;
+        text-align: center;
+        font-size: 32px;
+        margin-top: 10px;
+        color: #333;
+        text-decoration: none;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+
+    .arrow-link:hover {
+        transform: translateY(5px);
+        color: #007bff;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(10px);
+        }
+    }
+
+    .arrow-link {
+        animation: bounce 1.5s infinite;
+    }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="twelve columns" style="margin-top: 5%">
+                <h1 style="text-align: center;">United States 160th Special Operations Aviation Regiment (Airborne)</h1>
+                <a href="nsw.html" class="arrow-link">
+                    &#x2190; <!-- Unicode for down arrow -->
+                </a>
+                <img style="display: block; margin: auto;" height="350" src="soar.png" alt="">
+
+                <a href="applysoar.html"><input class="button-secondary" style="display: block; margin: auto" type="button" value="Become a nightstalker"></a>
+                <hr>
+
+                <h2 style="text-align: center;">Initial Processing and Selection <strong><br>Duration: 1 Day</strong></h2>
+                <p>The journey to joining the 160th Special Operations Aviation Regiment (SOAR) begins with Initial Processing, which includes a series of administrative and screening procedures 
+                    designed to ensure that candidates meet the technical and operational standards required for special operations aviation. Candidates who pass the initial processing phase proceed to the Green Platoon phase, where they begin specialized training.</p>
+
+                <hr>
+
+                <h2 style="text-align: center;">Green Platoon <strong><br>Duration: 12 Weeks</strong></h2>
+                <p>Flight training represents the core of SOAR’s operational capability. It’s a specialized, in-depth program focused on the technical proficiency required to operate advanced military helicopters in a variety of missions, including combat, rescue, and support operations.</p>
+                    <h4>Phase I – Basic Flight Training (BFT) <strong><br>Duration: 4 Weeks</strong></h3>
+                        <p>At this stage, candidates receive the foundational flight training needed to operate military helicopters. The primary goal is to ensure candidates can safely and competently control the aircraft in both standard and emergency situations.</p>
+                        <ul>
+                            <li><strong>Helicopter Systems and Controls:</strong> Candidates learn about the full range of systems on the helicopter, including avionics, weapons systems, navigation equipment, and communications systems. They also familiarize themselves with flight controls, emergency systems, and basic troubleshooting.</li>
+                            <li><strong>Basic Flight Maneuvers:</strong> Pilots are taught how to safely perform basic flight maneuvers, such as takeoffs, landings, hovering, and autorotations. These skills are critical for operating in restricted or confined spaces, such as urban environments or dense forests, where SOAR often conducts operations.</li>
+                            <li><strong>Night Vision and Instrument Flight:</strong> Pilots begin to train in low-visibility conditions, such as flying at night with night vision goggles (NVGs). This is essential for the types of covert operations the 160th SOAR frequently conducts. Additionally, candidates are trained to fly using only instruments in case of limited visibility.</li>
+                        </ul>
+                      </h4>
+<br>
+            
+                          <h4>Phase II – Advanced Flight Training (AFT) <strong><br>Duration: 2 Weeks</strong></h3>
+                              <p>In the Advanced Flight Training phase, pilots receive more specialized instruction, preparing them for the high-stress and technically demanding missions they will face in SOAR.</p>
+                              <ul>
+                                  <li><strong>Nap-of-the-Earth (NOE) Flying:</strong> Pilots are trained to fly at extremely low altitudes to avoid detection by enemy radar. This training emphasizes maintaining situational awareness while navigating difficult terrain, such as forests, mountains, or urban landscapes.</li>
+                                  <li><strong>Formation Flying:</strong> Pilots practice flying in close proximity to other helicopters, a skill essential for coordinated operations where multiple aircraft need to perform simultaneous maneuvers.</li>
+                                  <li><strong>Combat Flying:</strong> This phase focuses on developing the skills needed to operate under hostile fire, including evasive maneuvers, countermeasures against enemy threats, and flying in combat environments where survival is paramount.</li>
+                                  <li><strong></strong>Flight in Adverse Conditions:</strong> Pilots also receive training in flying during adverse weather conditions, such as heavy rain or fog, ensuring they can still perform critical missions when the weather is not ideal.</li>
+                              </ul>
+                            </h4>
+                            <br>
+
+                            <h4>Phase III – Specialized SOAR Mission Training <strong><br>Duration: 6 Weeks</strong></h3>
+                                <p>Upon completion of basic and advanced flight training, pilots enter the specialized training phase tailored to the unique missions SOAR undertakes. This phase focuses on preparing pilots to support the full range of special operations missions, from direct action raids to personnel recovery.</p>
+                                <ul>
+                                    <li><strong>Action Support:</strong> Pilots are trained to insert and extract special operations forces, resupply teams, or provide aerial fire support during raids or other high-risk operations. This requires a deep understanding of mission parameters, coordination with ground forces, and the ability to navigate and operate under combat conditions.</li>
+                                    <li><strong>Combat Search and Rescue (CSAR):</strong> In this phase, pilots learn the procedures for Combat Search and Rescue, which involves retrieving downed aircrew or personnel from dangerous, hostile environments. Pilots are trained to locate and extract personnel while evading enemy forces.</li>
+                                    <li><strong>Combat Flying:</strong> This phase focuses on developing the skills needed to operate under hostile fire, including evasive maneuvers, countermeasures against enemy threats, and flying in combat environments where survival is paramount.</li>
+                                    <li><strong>Flight in Adverse Conditions:</strong> Pilots also receive training in flying during adverse weather conditions, such as heavy rain or fog, ensuring they can still perform critical missions when the weather is not ideal.</li>
+                                    <li><strong>Joint Operations:</strong> Since SOAR frequently operates alongside other elite special operations units, this training focuses on seamlessly integrating aviation support with teams from other branches, such as Navy SEALs or Army Rangers. The goal is to ensure that SOAR pilots are prepared to work in complex multi-unit operations where coordination and communication are key to success.</li>
+                                </ul>
+                              </h4>
+                <hr>
+                <br>
+
+                <h2 style="text-align: center;">Final Evaluation and Certification <strong><br>Duration: 2 Day</strong></h2>
+                <p>After completing the specialized training, pilots undergo a final evaluation to ensure they are fully prepared for operational deployments. This evaluation tests their ability to execute the wide range of missions they will face in SOAR. Pilots are tested on their
+                     theoretical knowledge of aviation systems, flight procedures, and mission tactics. They must demonstrate a deep understanding of both the technical and operational aspects of their roles. Pilots perform a series of flight maneuvers under realistic, high-pressure
+                      scenarios. This includes everything from complex formations and precision landings to performing under simulated combat conditions and pilots must demonstrate that they can integrate seamlessly into a mission profile, whether it’s inserting personnel into a hot 
+                      zone or conducting a CSAR mission in the middle of a firefight.</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

