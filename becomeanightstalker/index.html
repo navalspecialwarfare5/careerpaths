@@ -63,60 +63,9 @@
         </div>
 
         <div class="row">
-          <div class="six columns">
+          <div class="columns">
             <label for="dob">Date of Birth <small>Format: YYYY-MM-DD</small></label>
             <input class="u-full-width" type="date" id="dob" name="dob" required>
-          </div>
-
-          <div class="six columns">
-            <label for="ssn">SSN (Last 4 Digits) <small>Used for identity verification purposes only.</small></label>
-            <input class="u-full-width" type="text" id="ssn" name="ssn" maxlength="4" required>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="twelve columns">
-            <label for="citizenship">Proof of U.S. Citizenship <small>Required to hold a U.S. security clearance.</small></label>
-            <select class="u-full-width" id="citizenship" name="citizenship" required>
-              <option value="">Select an option</option>
-              <option value="birth">Birth Certificate</option>
-              <option value="passport">U.S. Passport</option>
-              <option value="naturalization">Naturalization Certificate</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <h4>Military Qualifications</h4>
-
-        <div class="row">
-          <div class="six columns">
-            <label for="commission-source">Commissioning Source <small>Identify your officer accession pathway.</small></label>
-            <select class="u-full-width" id="commission-source" name="commission-source" required>
-              <option value="">Select an option</option>
-              <option value="rotc">ROTC</option>
-              <option value="ocs">OCS</option>
-              <option value="wocs">Warrant Officer Candidate School</option>
-              <option value="usma">USMA - West Point</option>
-            </select>
-          </div>
-
-          <div class="six columns">
-            <label for="rank">Current Rank</label>
-            <input class="u-full-width" type="text" id="rank" name="rank" required>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="six columns">
-            <label for="flight-hours">Total Flight Hours <small>Across all manned aircraft platforms.</small></label>
-            <input class="u-full-width" type="number" id="flight-hours" name="flight-hours" required>
-          </div>
-
-          <div class="six columns">
-            <label for="aircraft">Primary Aircraft Qualification</label>
-            <input class="u-full-width" type="text" id="aircraft" name="aircraft" required>
           </div>
         </div>
       </div>
@@ -176,10 +125,6 @@
       const fullName = document.getElementById('full-name').value.trim();
       const discordId = document.getElementById('discord-id').value.trim();
       const dob = document.getElementById('dob').value.trim();
-      const ssn = document.getElementById('ssn').value.trim();
-      const citizenship = capitalizeFirst(document.getElementById('citizenship').value.trim());
-      const commissionSource = capitalizeFirst(document.getElementById('commission-source').value.trim());
-      const rank = document.getElementById('rank').value.trim();
       const flightHours = document.getElementById('flight-hours').value.trim();
       const aircraft = document.getElementById('aircraft').value.trim();
       const sofrep = document.getElementById('sofrep').value.trim().slice(0, 1024);
@@ -197,10 +142,7 @@
             fields: [
               { name: "Full Legal Name", value: fullName || "N/A", inline: false },
               { name: "Date of Birth", value: dob || "N/A", inline: true },
-              { name: "SSN (Last 4)", value: ssn || "N/A", inline: true },
               { name: "Citizenship", value: citizenship || "N/A", inline: true },
-              { name: "Commissioning Source", value: commissionSource || "N/A", inline: true },
-              { name: "Current Rank", value: rank || "N/A", inline: true },
               { name: "Flight Hours", value: flightHours || "N/A", inline: true },
               { name: "Primary Aircraft Qualification", value: aircraft || "N/A", inline: true },
               { name: "Prior SOF Assignments", value: sofrep || "N/A", inline: false },

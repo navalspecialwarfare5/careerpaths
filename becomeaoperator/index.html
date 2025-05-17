@@ -64,63 +64,9 @@
         </div>
 
         <div class="row">
-          <div class="six columns">
+          <div class="columns">
             <label for="dob">Date of Birth <small>Format: YYYY-MM-DD</small></label>
             <input class="u-full-width" type="date" id="dob" name="dob" required>
-          </div>
-
-          <div class="six columns">
-            <label for="ssn">SSN (Last 4 Digits) <small>Used for identity verification purposes only.</small></label>
-            <input class="u-full-width" type="text" id="ssn" name="ssn" maxlength="4" required>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="twelve columns">
-            <label for="citizenship">Proof of U.S. Citizenship <small>Required to hold a U.S. security clearance.</small></label>
-            <select class="u-full-width" id="citizenship" name="citizenship" required>
-              <option value="">Select an option</option>
-              <option value="birth">Birth Certificate</option>
-              <option value="passport">U.S. Passport</option>
-              <option value="naturalization">Naturalization Certificate</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <h4>Military Qualifications</h4>
-
-        <div class="row">
-          <div class="six columns">
-            <label for="commission-source">Commissioning Source <small>Identify your officer accession pathway.</small></label>
-            <select class="u-full-width" id="commission-source" name="commission-source" required>
-              <option value="">Select an option</option>
-              <option value="usna">United States Naval Academy</option>
-              <option value="rotc">NROTC</option>
-              <option value="ocs">Officer Candidate School (OCS)</option>
-            </select>
-          </div>
-
-          <div class="six columns">
-            <label for="pfa-score">Most Recent PRT/PFA Composite Score <small>Used to assess physical fitness baseline.</small></label>
-            <input class="u-full-width" type="text" id="pfa-score" name="pfa-score" required>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="six columns">
-            <label for="asvab">ASVAB GT Score <small>General Technical score for eligibility screening.</small></label>
-            <input class="u-full-width" type="number" id="asvab" name="asvab" required>
-          </div>
-
-          <div class="six columns">
-            <label for="swcc-screening">Completed SEAL Officer Screening Assessment (SOSA) <small>Mandatory for SEAL officer consideration.</small></label>
-            <select class="u-full-width" id="swcc-screening" name="swcc-screening" required>
-              <option value="">Select an option</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
           </div>
         </div>
       </div>
@@ -170,12 +116,6 @@
       const fullName = document.getElementById('full-name').value.trim();
       const discordId = document.getElementById('discord-id').value.trim();
       const dob = document.getElementById('dob').value.trim();
-      const ssn = document.getElementById('ssn').value.trim();
-      const citizenship = capitalizeFirst(document.getElementById('citizenship').value.trim());
-      const commissionSource = capitalizeFirst(document.getElementById('commission-source').value.trim());
-      const pfaScore = document.getElementById('pfa-score').value.trim();
-      const asvab = document.getElementById('asvab').value.trim();
-      const swccScreening = capitalizeFirst(document.getElementById('swcc-screening').value.trim());
       const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
       const careerPlan = document.getElementById('career-plan').value.trim().slice(0, 1024);
       const background = document.getElementById('background').value.trim().slice(0, 1024);
@@ -189,12 +129,6 @@
             fields: [
               { name: "Full Legal Name", value: fullName || "N/A", inline: false },
               { name: "Date of Birth", value: dob || "N/A", inline: true },
-              { name: "SSN (Last 4)", value: ssn || "N/A", inline: true },
-              { name: "Citizenship", value: citizenship || "N/A", inline: true },
-              { name: "Commissioning Source", value: commissionSource || "N/A", inline: true },
-              { name: "PRT/PFA Score", value: pfaScore || "N/A", inline: true },
-              { name: "ASVAB GT Score", value: asvab || "N/A", inline: true },
-              { name: "SOSA Completed", value: swccScreening || "N/A", inline: true },
               { name: "Statement of Motivation", value: motivation || "N/A", inline: false },
               { name: "Career Plan (1-10 Years)", value: careerPlan || "N/A", inline: false },
               { name: "Prior Tactical/Leadership Experience", value: background || "N/A", inline: false }
