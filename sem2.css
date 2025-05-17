@@ -195,7 +195,7 @@ animation: bounce 1.5s infinite;
     background-position: center;
     opacity: 0;
     animation: slideShow 18s infinite;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .fullscreen-slideshow .slide:nth-child(2) {
