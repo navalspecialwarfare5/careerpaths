@@ -161,17 +161,16 @@
       body: JSON.stringify(payload)
     });
 
-    if (response.ok) {
-      showNotification('Application submitted successfully.');
-      localStorage.setItem(COOLDOWN_KEY, now.toString());
-      document.querySelector('form').reset();
-    } else {
-      showNotification('Failed to submit application.', false);
-    }
-  } catch (err) {
-    showNotification('Unexpected error occurred.', false);
-  }
-});
+ if (response.ok) {
+        showNotification('Application submitted successfully. A recruiter will reach out to you soon.');
+          document.querySelector('form').reset();
+        } else {
+        showNotification('Failed to submit application.', false);
+        }
+      } catch (error) {
+        showNotification('An unexpected error occurred.', false);
+      }
+    });
   
     function capitalizeFirst(text) {
       if (!text) return text;
