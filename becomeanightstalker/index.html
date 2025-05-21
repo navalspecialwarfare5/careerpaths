@@ -103,6 +103,8 @@
   </div>
 
   <script>
+    const COOLDOWN_MINUTES = 15;
+const COOLDOWN_KEY = 'applicationCooldown';
     function showNotification(message, success = true) {
   const notification = document.getElementById('notification');
   notification.textContent = message;
@@ -117,62 +119,71 @@
     }, 500);
   }, 4000);
 }
-    document.querySelector('form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-    
-      const webhookURL = "https://discord.com/api/webhooks/1365956188126183504/6yivlU8GvMVDLZ2ilnunyBRvwnO75MnMGUPtTegHnQsal0S76PZFCmcEBVQ-eJpvNgmb";
-    
-      const fullName = document.getElementById('full-name').value.trim();
-      const discordId = document.getElementById('discord-id').value.trim();
-      const dob = document.getElementById('dob').value.trim();
-      const flightHours = document.getElementById('flight-hours').value.trim();
-      const aircraft = document.getElementById('aircraft').value.trim();
-      const sofrep = document.getElementById('sofrep').value.trim().slice(0, 1024);
-      const leadership = document.getElementById('leadership').value.trim().slice(0, 1024);
-      const assault = document.getElementById('assault').value.trim().slice(0, 1024);
-      const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
-      const careerPlan = document.getElementById('career-plan').value.trim().slice(0, 1024);
-    
-      const payload = {
-        embeds: [
-          {
-            title: "160th SOAR Officer Application",
-            color: 3447003, // dark army green
-            description: `**Applicant:** <@${discordId}>`,
-            fields: [
-              { name: "Full Legal Name", value: fullName || "N/A", inline: false },
-              { name: "Date of Birth", value: dob || "N/A", inline: true },
-              { name: "Citizenship", value: citizenship || "N/A", inline: true },
-              { name: "Flight Hours", value: flightHours || "N/A", inline: true },
-              { name: "Primary Aircraft Qualification", value: aircraft || "N/A", inline: true },
-              { name: "Prior SOF Assignments", value: sofrep || "N/A", inline: false },
-              { name: "Flight Leadership Experience", value: leadership || "N/A", inline: false },
-              { name: "Air Assault/Infil/Exfil Proficiency", value: assault || "N/A", inline: false },
-              { name: "Statement of Motivation", value: motivation || "N/A", inline: false },
-              { name: "Career Plan (1-10 Years)", value: careerPlan || "N/A", inline: false }
-            ],
-            timestamp: new Date().toISOString()
-          }
-        ]
-      };
-    
-      try {
-        const response = await fetch(webhookURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-  
-        if (response.ok) {
-        showNotification('Application submitted successfully. A recruiter will reach out to you soon.');
-          document.querySelector('form').reset();
-        } else {
-        showNotification('Failed to submit application.', false);
-        }
-      } catch (error) {
-        showNotification('An unexpected error occurred.', false);
+  document.querySelector('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const lastSubmit = localStorage.getItem(COOLDOWN_KEY);
+  const now = Date.now();
+
+  if (lastSubmit && now - parseInt(lastSubmit) < COOLDOWN_MINUTES * 60 * 1000) {
+    const remaining = Math.ceil((COOLDOWN_MINUTES * 60 * 1000 - (now - parseInt(lastSubmit))) / 60000);
+    showNotification(`You must wait ${remaining} more minute(s) before submitting again.`, false);
+    return;
+  }
+
+  // Gather form data
+  const webhookURL = "https://discord.com/api/webhooks/...";
+  const fullName = document.getElementById('full-name').value.trim();
+  const discordId = document.getElementById('discord-id').value.trim();
+  const dob = document.getElementById('dob').value.trim();
+  const flightHours = document.getElementById('flight-hours').value.trim();
+  const aircraft = document.getElementById('aircraft').value.trim();
+  const sofrep = document.getElementById('sofrep').value.trim().slice(0, 1024);
+  const leadership = document.getElementById('leadership').value.trim().slice(0, 1024);
+  const assault = document.getElementById('assault').value.trim().slice(0, 1024);
+  const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
+  const careerPlan = document.getElementById('career-plan').value.trim().slice(0, 1024);
+
+  const payload = {
+    embeds: [
+      {
+        title: "160th SOAR Officer Application",
+        color: 3447003,
+        description: `**Applicant:** <@${discordId}>`,
+        fields: [
+          { name: "Full Legal Name", value: fullName || "N/A", inline: false },
+          { name: "Date of Birth", value: dob || "N/A", inline: true },
+          { name: "Flight Hours", value: flightHours || "N/A", inline: true },
+          { name: "Primary Aircraft Qualification", value: aircraft || "N/A", inline: true },
+          { name: "Prior SOF Assignments", value: sofrep || "N/A", inline: false },
+          { name: "Flight Leadership Experience", value: leadership || "N/A", inline: false },
+          { name: "Air Assault/Infil/Exfil Proficiency", value: assault || "N/A", inline: false },
+          { name: "Statement of Motivation", value: motivation || "N/A", inline: false },
+          { name: "Career Plan (1-10 Years)", value: careerPlan || "N/A", inline: false }
+        ],
+        timestamp: new Date().toISOString()
       }
+    ]
+  };
+
+  try {
+    const response = await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
+
+    if (response.ok) {
+      showNotification('Application submitted successfully.');
+      localStorage.setItem(COOLDOWN_KEY, now.toString());
+      document.querySelector('form').reset();
+    } else {
+      showNotification('Failed to submit application.', false);
+    }
+  } catch (err) {
+    showNotification('Unexpected error occurred.', false);
+  }
+});
   
     function capitalizeFirst(text) {
       if (!text) return text;

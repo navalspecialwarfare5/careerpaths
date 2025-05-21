@@ -93,74 +93,88 @@
     </form>
   </div>
   <script>
-    function showNotification(message, success = true) {
-  const notification = document.getElementById('notification');
-  notification.textContent = message;
-  notification.style.background = success ? '#004085' : '#721c24';
-  notification.style.display = 'block';
-  notification.style.opacity = '1';
+  const COOLDOWN_KEY = 'sealApplicationCooldown';
+  const COOLDOWN_MINUTES = 15;
 
-  setTimeout(() => {
-    notification.style.opacity = '0';
+  function showNotification(message, success = true) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.style.background = success ? '#004085' : '#721c24';
+    notification.style.display = 'block';
+    notification.style.opacity = '1';
+
     setTimeout(() => {
-      notification.style.display = 'none';
-    }, 500);
-  }, 4000);
-}
-    document.querySelector('form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-  
-      const webhookURL = "https://discord.com/api/webhooks/1327096542913626144/fHBfvcgXWzy8TeOd7THtc6Y8X-tHqj5k6iQVjReoaW9PyqwaDS-6fZMAYJui701dBgRm";
-  
-      // Get form data
-      const fullName = document.getElementById('full-name').value.trim();
-      const discordId = document.getElementById('discord-id').value.trim();
-      const dob = document.getElementById('dob').value.trim();
-      const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
-      const careerPlan = document.getElementById('career-plan').value.trim().slice(0, 1024);
-      const background = document.getElementById('background').value.trim().slice(0, 1024);
-  
-      const payload = {
-        embeds: [
-          {
-            title: "SEAL Officer Accession Application",
-            color: 16777215,
-            description: `**Applicant:** <@${discordId}>`,
-            fields: [
-              { name: "Full Legal Name", value: fullName || "N/A", inline: false },
-              { name: "Date of Birth", value: dob || "N/A", inline: true },
-              { name: "Statement of Motivation", value: motivation || "N/A", inline: false },
-              { name: "Career Plan (1-10 Years)", value: careerPlan || "N/A", inline: false },
-              { name: "Prior Tactical/Leadership Experience", value: background || "N/A", inline: false }
-            ],
-            timestamp: new Date().toISOString()
-          }
-        ]
-      };
-  
-      try {
-        const response = await fetch(webhookURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-  
-        if (response.ok) {
-        showNotification('Application submitted successfully. A recruiter will reach out to you soon.');
-          document.querySelector('form').reset();
-        } else {
-        showNotification('Failed to submit application.', false);
-        }
-      } catch (error) {
-        showNotification('An unexpected error occurred.', false);
-      }
-    });
-  
-    function capitalizeFirst(text) {
-      if (!text) return text;
-      return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        notification.style.display = 'none';
+      }, 500);
+    }, 4000);
+  }
+
+  document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const lastSubmit = localStorage.getItem(COOLDOWN_KEY);
+    const now = Date.now();
+
+    if (lastSubmit && now - parseInt(lastSubmit) < COOLDOWN_MINUTES * 60 * 1000) {
+      const remaining = Math.ceil((COOLDOWN_MINUTES * 60 * 1000 - (now - parseInt(lastSubmit))) / 60000);
+      showNotification(`Please wait ${remaining} more minute(s) before submitting again.`, false);
+      return;
     }
-  </script>
+
+    const webhookURL = "https://discord.com/api/webhooks/1327096542913626144/fHBfvcgXWzy8TeOd7THtc6Y8X-tHqj5k6iQVjReoaW9PyqwaDS-6fZMAYJui701dBgRm";
+
+    const fullName = document.getElementById('full-name').value.trim();
+    const discordId = document.getElementById('discord-id').value.trim();
+    const dob = document.getElementById('dob').value.trim();
+    const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
+    const careerPlan = document.getElementById('career-plan').value.trim().slice(0, 1024);
+    const background = document.getElementById('background').value.trim().slice(0, 1024);
+
+    const payload = {
+      embeds: [
+        {
+          title: "SEAL Officer Accession Application",
+          color: 16777215,
+          description: `**Applicant:** <@${discordId}>`,
+          fields: [
+            { name: "Full Legal Name", value: fullName || "N/A", inline: false },
+            { name: "Date of Birth", value: dob || "N/A", inline: true },
+            { name: "Statement of Motivation", value: motivation || "N/A", inline: false },
+            { name: "Career Plan (1-10 Years)", value: careerPlan || "N/A", inline: false },
+            { name: "Prior Tactical/Leadership Experience", value: background || "N/A", inline: false }
+          ],
+          timestamp: new Date().toISOString()
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        localStorage.setItem(COOLDOWN_KEY, now.toString());
+        showNotification('Application submitted successfully. A recruiter will reach out to you soon.');
+        document.querySelector('form').reset();
+      } else {
+        showNotification('Failed to submit application.', false);
+      }
+    } catch (error) {
+      showNotification('An unexpected error occurred.', false);
+    }
+  });
+
+  function capitalizeFirst(text) {
+    if (!text) return text;
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
+</script>
+
   
   
     
