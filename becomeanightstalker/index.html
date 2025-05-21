@@ -103,8 +103,6 @@
   </div>
 
   <script>
-    const COOLDOWN_MINUTES = 15;
-const COOLDOWN_KEY = 'applicationCooldown';
     function showNotification(message, success = true) {
   const notification = document.getElementById('notification');
   notification.textContent = message;
@@ -122,17 +120,7 @@ const COOLDOWN_KEY = 'applicationCooldown';
   document.querySelector('form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const lastSubmit = localStorage.getItem(COOLDOWN_KEY);
-  const now = Date.now();
-
-  if (lastSubmit && now - parseInt(lastSubmit) < COOLDOWN_MINUTES * 60 * 1000) {
-    const remaining = Math.ceil((COOLDOWN_MINUTES * 60 * 1000 - (now - parseInt(lastSubmit))) / 60000);
-    showNotification(`You must wait ${remaining} more minute(s) before submitting again.`, false);
-    return;
-  }
-
-  // Gather form data
-  // const WebhookURL = "https://discord.com/api/webhooks/1374799352349851768/kbfEWAFOGBdWE9M4Xm2ucuARi1AJ8VrDhbid00t9kPHDAobJ3_JJu7GG5H7FV7Me-oAO";
+  const WebhookURL = "https://discord.com/api/webhooks/1374799352349851768/kbfEWAFOGBdWE9M4Xm2ucuARi1AJ8VrDhbid00t9kPHDAobJ3_JJu7GG5H7FV7Me-oAO";
   const fullName = document.getElementById('full-name').value.trim();
   const discordId = document.getElementById('discord-id').value.trim();
   const dob = document.getElementById('dob').value.trim();
