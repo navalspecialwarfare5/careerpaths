@@ -1,92 +1,344 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>United States Naval Special Warfare SEAL Training Pipeline</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/skeleton.css">
-        <link rel="stylesheet" href="sem2.css">
-        <link rel="icon" type="image/png" href="trident.png">
-        <meta property="og:title" content="Naval Special Warfare Group 5 - Milsim" />
-        <meta property="og:description" content="Naval Special Warfare Group 5 is a hardcore milsim unit simulating DEVGRU SEAL operations with realistic tactics, direct action, maritime operations and recon missions." />
-        <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png" />
-        <meta property="og:url" content="http://navalspecialwarfaregroup5.com/" />
-        <meta property="og:type" content="website" />
-    </head>
-    <body style="background-color: rgb(58, 58, 58); color: white;">
-<div class="fullscreen-slideshow">
-    <div class="overlay"></div> <!-- Add this -->
-    <div class="slide" style="background-image: url('c17.webp');"></div>
-        <div class="slide" style="background-image: url('aor1.png');"></div>
-    <div class="slide" style="background-image: url('Briefing_silver.webp');"></div>
-    <div class="slide" style="background-image: url('group.png');"></div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naval Special Warfare Development Group 5</title>
+    <meta property="og:title" content="Naval Special Warfare Group Development 5 - Milsim" />
+    <meta property="og:description" content="Naval Special Warfare Development Group 5 is a hardcore milsim unit simulating DEVGRU SEAL operations with realistic tactics, direct action, maritime operations and recon missions." />
+    <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png" />
+    <meta property="og:url" content="http://navalspecialwarfaregroup5.com/" />
+    <link rel="icon" type="image/png" href="trident.png">
+    <meta property="og:type" content="website" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    body {
+        font-family: 'Oswald', sans-serif;
+        background-color: #f4f4f4;
+        color: #0a0a0a;
+        padding-top: 4rem;
+    }
 
-         <div class="container">
-            <div class="row">
-                <div class="twelve columns" style="margin-top: 5%">
-                    <h1 style="text-align: center;">United States Naval Special Warfare SEAL Training Pipeline</h1>
-                    <a href="soar/index.html" class="arrow-link">
-                        &#x2192;
-                    </a>
-                    <img style="display: block; margin: auto;" src="trident.png" alt="">
-                    <a href="becomeaoperator/index.html"><input class="button-secondary" style="display: block; margin: auto; background-color: white; color: black; border-radius: 40px; " type="button" value="Become an operator"></a>
-                    <hr>
+    h1 {
+        font-size: 2.25rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-                    <h2 style="text-align: center;">Initial Selection and Assessment Phase – Basic Underwater Demolition/SEAL (BUD/S) Training <strong><br>Duration: 8 Weeks</strong></h2><br>
-                    <h4>Phase I – Indoctrination and Foundational NSW Proficiency <strong><br>Duration: 2 Weeks</strong></h3>
-                    <p>This phase of BUD/S training introduces candidates to the operational employment of closed-circuit oxygen rebreather systems, including the LAR V Draeger and MK 25 Underwater Breathing 
-                        Apparatus (UBA), utilized in clandestine subsurface infiltration operations. Instruction encompasses underwater navigation, hydrodynamic profile management, and tactical swimmer approaches to 
-                        high-value maritime targets. Additionally, demolition proficiency is developed through training in hydrographic reconnaissance and the application of underwater explosive ordnance for maritime 
-                        sabotage operations.</p><br>
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
 
-                    <h4>Phase II – Combat Diver Qualification and Subsurface Warfare Training <strong><br>Duration: 2 Weeks</strong></h3>
-                    <p>The second phase of BUD/S training serves as the foundational period wherein candidates undergo rigorous instruction in small-boat operations, maritime insertion techniques utilizing 
-                    inflatable combat rubber raiding craft (CRRC), and the execution of precision over-the-horizon (OTH) amphibious landing operations. Further instruction is provided in mission planning 
-                    methodologies, encompassing the formulation of operational objectives, risk mitigation considerations, and the orchestration of tactical maneuver elements in an asymmetric warfare environment. 
-                    Candidates are introduced to doctrinal special reconnaissance (SR) methodologies, including route selection, surveillance detection countermeasures, and intelligence gathering techniques in 
-                    austere operational environments.</p>
+    .section {
+        margin-bottom: 6rem;
+    }
 
-                    <h4>Phase III – Land Warfare Operations and Advanced Tactical Training <strong><br>Duration: 4 Weeks</strong></h3>
-                    <p>The culminating phase of BUD/S training transitions candidates into extensive land warfare instruction, emphasizing asymmetrical combat operations in various geographic environments. 
-                    This includes doctrinal instruction in small unit tactics (SUT), fire team maneuver warfare, envelopment strategies, and immediate action (IA) battle drills. Candidates receive extensive 
-                    live-fire weapons training covering individual and crew-served weapon systems, focusing on precision engagement principles and advanced marksmanship.</p>
+    .section-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-                    <hr>
+    .career-block {
+        background: #fff;
+        border-radius: 0.5rem;
+        padding: 1.75rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
 
-                    <h2 style="text-align: center;">Advanced Qualification Phase – SEAL Qualification Training (SQT) <strong><br>Duration: 10 Weeks</strong></h2>
-                    <p>Upon successful completion of Basic Underwater Demolition/SEAL (BUD/S) training, candidates transition into SEAL Qualification Training (SQT), a rigorous advanced training program designed to
-                    refine operational competencies in specialized warfare disciplines. This phase encompasses a comprehensive curriculum in close-quarters battles (CQB) doctrine, room clearing procedures, and 
-                    counterterrorism direct action (DA) operations within high-t    hreat environments. Advanced explosive ordnance neutralization and sabotage operations are introduced, including structural demolition 
-                    and specialized munitions application for covert destruction of enemy assets.</p>
+    .career-block:hover {
+        background: #f0f0f0;
+        transform: translateY(-2px);
+    }
 
-                        
-                    <hr>
+    .career-block h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+    }
 
-                    <h2 style="text-align: center;">Specialized Warfare Training and Advanced Individual Qualification <strong><br>Duration: Variable</strong></h2>
-                    <p>Following the completion of the SEAL Qualification Training (SQT) pipeline, operators are assigned to their respective SEAL Teams and undergo continuous specialized training in mission-specific warfare disciplines. These advanced training programs include, but are not limited to:</p>
-                    <ul>
-                        <li style="text-align: center;"><strong>1) Naval Special Warfare Sniper Course (NSWSC)<br></strong> This course focuses on the fundamentals and advanced techniques of precision long-range engagement. Students are trained in target interdiction methodologies, learning to identify and engage targets at extended ranges with accuracy and efficiency. Emphasis is placed on advanced optics employment, including the use of state-of-the-art sniper scopes and ballistic calculation tools, as well as the development of skills for target detection, concealment, and shooting under various environmental conditions and operational stress.</li>
-                        <li style="text-align: center;"><strong>2) Naval Special Warfare Advanced Breacher Course (NSWABC)<br></strong>The course covers a wide range of tactical explosive entry methodologies, emphasizing the safe and effective use of explosives in dynamic operational environments. Students gain hands-on experience in ballistic and thermal breaching, as well as structural charge placement. The course also provides extensive training in the planning, preparation, and execution of breaching techniques to breach doors, walls, and other fortified structures while minimizing risk to operators and maximizing operational success.</li>
-                        <li style="text-align: center;"><strong>3) Free-Fall Parachutist Qualification (FFPQ)<br></strong>This advanced course trains individuals in high-altitude low-opening (HALO) and high-altitude high-opening (HAHO) airborne insertion techniques. These methodologies are used for strategic infiltration into denied or hostile environments where traditional ground or air routes are not feasible. Students gain proficiency in advanced free-fall techniques, such as navigation, parachute control, and tactical insertion, ensuring that operators can deploy into any location with precision and stealth.</li>
-                        <li style="text-align: center;"><strong>4) Visit, Board, Search, and Seizure (VBSS) Operations<br></strong>VBSS operations are essential for maritime interdiction, focusing on the tactics and procedures required for boarding and securing hostile vessels. This course trains operators in ship boarding procedures, using a combination of covert entry and rapid assault techniques. Close-quarters battle (CQB) training is emphasized, preparing operators for confined space engagements in the challenging environment of a ship. The course also includes advanced tactical skills for gathering intelligence, neutralizing threats, and securing critical assets during maritime operations.</li>
-                        <li style="text-align: center;"><strong>5) Foreign Internal Defense (FID) and Unconventional Warfare (UW) <br></strong>This course teaches the methods for supporting and training allied indigenous forces in asymmetric warfare strategies, including the development of guerrilla tactics and unconventional warfare operations. Students learn how to conduct clandestine operations to support foreign governments and resistance movements, focusing on techniques that increase the combat effectiveness of indigenous forces. The course also includes a comprehensive understanding of the political, cultural, and logistical challenges of working in unconventional environments.</li>
-                        <li style="text-align: center;"><strong>6) Advanced Close-Quarters Battle (CQB) and Counterterrorism Operations (CP/COIN)<br></strong>This intensive course is designed to enhance proficiency in high-stakes hostage rescue and counterterrorism operations. Students are trained in precision urban warfare engagement strategies, including entry tactics, room clearing, and minimizing collateral damage in complex environments. The course emphasizes low-visibility direct action (DA) operations, focusing on stealth and precision to neutralize threats while rescuing hostages or capturing high-value targets. Operators are also trained to operate in rapidly evolving, dynamic environments, ensuring they are prepared for any CQB challenge.</li>
-                    </ul>
+    .career-block p {
+        font-size: 0.95rem;
+        color: #333;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
 
-                    <hr>
+    .carousel {
+        border-radius: 1rem;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #dcdcdc;
+        animation: fadeIn 1.5s ease-in-out forwards;
+    }
 
-                    <h2 style="text-align: center;">Inter-Deployment Training Cycle (IDTC) and Operational Readiness<strong><br>Duration: 8-12 Weeks</strong></h2>
-                    <p>Upon assignment to an operational SEAL Team, Special Warfare Operators engage in the Inter-Deployment Training Cycle (IDTC), a rotational training framework designed to enhance operational readiness prior to overseas deployments. This period encompasses joint training exercises with allied special operations forces, integration with intelligence support elements, and real-world scenario-based mission rehearsals.
-                    Emphasis is placed on operational planning methodologies, encompassing the full-spectrum mission planning cycle, intelligence preparation of the battlefield (IPB), target package development, and 
-                    execution of multi-domain warfare strategies. Advanced communication protocols are reinforced, including encrypted satellite communications (SATCOM), signals intelligence (SIGINT) exploitation, 
-                    and cyber warfare integration for modernized special operations environments. Additional instruction is provided in covert operational methodologies, tradecraft concealment, and counter-surveillance 
-                    measures for low-visibility intelligence operations.</p>
+    .carousel-inner {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-item {
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .align-stretch {
+        align-items: stretch !important;
+    }
+
+    details {
+        overflow: hidden;
+        transition: all 0.4s ease;
+        background: #fafafa;
+        padding: 1rem;
+        border-left: 3px solid #343a40;
+        margin-top: 1rem;
+        border-radius: 0.25rem;
+    }
+
+    summary {
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details[open] {
+        animation: slideDown 0.5s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Career Path Portal</h1>
+
+        <!-- DEVGRU BLOCK -->
+        <div class="section">
+            <div class="row align-items-stretch">
+                <div class="col-md-6 d-flex flex-column">
+                    <div class="section-title">DEVGRU — Naval Special Warfare</div>
+
+                    <div class="career-block">
+                        <h4>O26A — Special Warfare Operator</h4>
+                        <p>
+                            Special Warfare Operators (O26A) are elite maritime special operations personnel within the United States Navy SEALs. These operators execute high-risk, politically sensitive missions across all environments — including sea, air, and land. They are experts in small-unit tactics, target interdiction, and advanced reconnaissance, operating in both clandestine and joint force roles.
+                        </p>
+                        <details>
+                            <summary>Responsibilities</summary>
+                            <p>
+                                Conduct direct action raids, strategic reconnaissance, hostage recovery, sabotage, and foreign internal defense. Operate in arctic, jungle, desert, urban, littoral, and mountain environments — often under radio silence and without conventional support.
+                            </p>
+                        </details>
+                        <details>
+                            <summary>Advanced Skills</summary>
+                            <p>
+                                Trained in HALO/HAHO parachuting, combat diving, demolitions, trauma medicine (SOCM), tactical communication systems, urban breaching, foreign internal defense advising, and battlefield exploitation. Operators may also specialize in sniper, breacher, or SDV operations.
+                            </p>
+                        </details>
+                    </div>
+
+                    <div class="career-block">
+                        <h4>O29A — D&E Operator</h4>
+                        <p>
+                            D&E Operators (O29A) are senior SEALs embedded at NSWDG to evaluate, refine, and integrate new tactics, techniques, and procedures (TTPs) for Naval Special Warfare. They lead development of next-generation gear, weapons, communications systems, and battlefield methodology, ensuring operational dominance for follow-on SEAL squadrons.
+                        </p>
+                        <details>
+                            <summary>Roles</summary>
+                            <p>
+                                Test emerging weapons systems, mobility platforms, ISR tools, and C2 software under real-world conditions. Coordinate with JSOC elements, acquisition commands, and program managers. Provide advanced instruction and feedback to operational squadrons.
+                            </p>
+                        </details>
+                        <a href="apply.html" class="btn btn-dark mt-5 rounded-pill px-4 py-2 text-uppercase" style="letter-spacing: 1px;">
+                            Express Interest
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div id="devgruCarousel" class="carousel slide w-100" data-bs-ride="carousel"
+                        data-bs-interval="2000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="dev1.png" class="d-block w-100" alt="DEVGRU Slide 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dev2.png" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dev3.png" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dev4.png" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dev5.png" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="dev6.png" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                             <div class="carousel-item">
+                                <img src="dev7.png" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-    </html>
+
+
+        <!-- 160th SOAR Block -->
+        <div class="section">
+            <div class="row align-items-stretch">
+                <div class="col-md-6 d-flex flex-column">
+                    <div class="section-title">160th SOAR — Special Operations Aviation</div>
+
+                    <div class="career-block">
+                        <h4>153A — Rotary Wing Aviator</h4>
+                        <p>
+                            Warrant Officers (153A) in the 160th SOAR are highly skilled rotary-wing pilots trained to conduct nighttime, low-altitude, all-weather insertions and extractions in support of U.S. and allied SOF. Flying MH-60M Blackhawks, MH-47G Chinooks, and MH-6M Little Birds, they provide precision lift, fires, and resupply under extreme operational constraints.
+                        </p>
+                        <details>
+                            <summary>Mission Responsibilities</summary>
+                            <p>
+                                Execute NVG terrain-following flight, fast rope and hoist insertions, casualty evacuation (CASEVAC), forward arming and refueling point (FARP) operations, and rotary-wing fire support in denied and hostile airspace. 
+                            </p>
+                        </details>
+                    </div>
+
+                    <div class="career-block">
+                        <h4>15A — Aviation Officer</h4>
+                        <p>
+                            Aviation Officers (15A) serve as air mission commanders, integrating air assets into complex joint operations. They lead air-ground coordination with SOF task forces and manage risk, timing, and tactical airspace in support of dynamic operations.
+                        </p>
+                        <details>
+                            <summary>Operational Duties</summary>
+                            <p>
+                                LPlan and oversee mission execution, control airspace deconfliction, coordinate JTAC and ISR integration, lead tactical rehearsals, and manage the task organization of SOAR airframes during JSOC and SOCOM missions. 
+                            </p>
+                        </details>
+                         <a href="apply.html" class="btn btn-dark mt-5 rounded-pill px-4 py-2 text-uppercase" style="letter-spacing: 1px;">
+                            Express Interest
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div id="devgruCarousel" class="carousel slide w-100" data-bs-ride="carousel"
+                        data-bs-interval="2000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="soar1.webp" class="d-block w-100" alt="DEVGRU Slide 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="soar2.webp" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="soar3.webp" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="soar4.webp" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 24th STS Block -->
+        <div class="section">
+            <div class="row align-items-stretch">
+                <div class="col-md-6 d-flex flex-column">
+                    <div class="section-title">24th STS — Air Force Special Tactics</div>
+
+                    <div class="career-block">
+                        <h4>1C2X1 — Combat Controller (CCT)</h4>
+                        <p>
+                            CCTs (1C2X1) are Air Force Special Tactics operators certified as FAA air traffic controllers and JTACs. They integrate airpower into ground operations in the most austere, denied, and contested environments — coordinating fixed-wing, rotary, and unmanned aircraft to deliver precision fires and mobility.
+                        </p>
+                        <details>
+                            <summary>Specializations</summary>
+                            <p>
+                                Certified in terminal guidance operations, drop zone and landing zone establishment, forward air control (FAC), UAS integration, and combat airfield seizure. Often embedded with DEVGRU and other Tier 1 units. 
+                            </p>
+                        </details>
+                    </div>
+
+                    <div class="career-block">
+                        <h4>1T2X1 — Pararescue (PJ)</h4>
+                        <p>
+                           Pararescuemen (1T2X1), known as “PJs,” specialize in personnel recovery and battlefield trauma care. They are trained to locate, treat, and extract injured personnel in non-permissive environments. Deployed with Tier 1 and SOCOM elements, they are vital to CSAR and sensitive recovery operations.
+                        </p>
+                        <details>
+                            <summary>Core Functions</summary>
+                            <p>
+                                Execute combat search and rescue (CSAR), CASEVAC, maritime recovery, and isolated personnel retrieval. Qualified in military freefall (MFF), static-line, dive operations, alpine movement, and SOCM-level medical care. 
+                            </p>
+                        </details>
+                        <a href="apply.html" class="btn btn-dark mt-5 rounded-pill px-4 py-2 text-uppercase" style="letter-spacing: 1px;">
+                            Express Interest
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div id="devgruCarousel" class="carousel slide w-100" data-bs-ride="carousel"
+                        data-bs-interval="2000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="sts1.jpg" class="d-block w-100" alt="DEVGRU Slide 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="sts2.jpg" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="sts4.jpg" class="d-block w-100" alt="DEVGRU Slide 2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
