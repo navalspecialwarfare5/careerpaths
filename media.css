@@ -1,0 +1,94 @@
+/* Typography & Section Layout */
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: #f4f4f4;
+    color: #0a0a0a;
+    padding-top: 4rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 6rem;
+}
+
+.section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Media Containers */
+.career-block {
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: 100%;
+}
+
+/* Responsive Image Grid */
+.career-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Force ratio for images to match video layout */
+.ratio img {
+    object-fit: cover;
+}
+
+/* Button Style Consistency */
+.btn {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Dark Mode Support */
+body.dark-mode {
+    background-color: #121212;
+    color: #eaeaea;
+}
+
+.dark-mode .section-title,
+.dark-mode h1 {
+    color: #eaeaea;
+}
+
+.dark-mode .career-block {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .career-block img {
+    opacity: 0.95;
+}
+
+.dark-mode .btn-dark {
+    background-color: #292929;
+    border-color: #444;
+}
+
+.dark-mode .btn-outline-light {
+    border-color: #888;
+    color: #eaeaea;
+}
