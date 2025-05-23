@@ -90,7 +90,8 @@ label {
 }
 
 .btn-submit:hover {
-  background-color: #222;
+  color: white;
+  background-color: #6d6969;
   transform: scale(1.03);
 }
 

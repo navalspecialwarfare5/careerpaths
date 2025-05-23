@@ -28,7 +28,7 @@
     <div class="alert alert-dark border shadow-sm my-5">
       <h5 class="text-uppercase mb-3 fw-bold">Is This Unit Right for You?</h5>
       <ul class="mb-2">
-        <li>I want high-standard, realism-based gameplay — not casual fun.</li>
+        <li>I want high-standard, realism-based   gameplay — not casual fun.</li>
         <li>I can attend at least one training or op per week.</li>
         <li>I understand rank and role discipline — I follow orders and SOPs.</li>
         <li>I have a mic and communicate clearly on comms.</li>
@@ -45,13 +45,28 @@
         <label for="discord">Discord Username</label>
         <input type="text" id="discord" class="form-control" placeholder="e.g., Callsign#0001" required>
 
-        <label for="role">Which unit are you applying to?</label>
-        <select id="role" class="form-select" required>
-          <option value="">Select your path...</option>
-          <option value="DEVGRU">DEVGRU – SEAL / D&E</option>
-          <option value="160th">160th SOAR – Aviator / Officer</option>
-          <option value="24th">24th STS – CCT / PJ</option>
-        </select>
+        <label class="form-label d-block mb-2">Which unit are you applying to?</label>
+<div class="row g-3 mb-4" id="unitSelection">
+  <div class="col-md-4">
+    <input type="radio" class="btn-check" name="role" id="roleDEVGRU" value="DEVGRU" required>
+    <label class="btn btn-outline-dark w-100 p-3" for="roleDEVGRU">
+      <strong>DEVGRU</strong><br><small>SEAL / D&E</small>
+    </label>
+  </div>
+  <div class="col-md-4">
+    <input type="radio" class="btn-check" name="role" id="role160th" value="160th">
+    <label class="btn btn-outline-dark w-100 p-3" for="role160th">
+      <strong>160th SOAR</strong><br><small>Aviator / Officer</small>
+    </label>
+  </div>
+  <div class="col-md-4">
+    <input type="radio" class="btn-check" name="role" id="role24th" value="24th">
+    <label class="btn btn-outline-dark w-100 p-3" for="role24th">
+      <strong>24th STS</strong><br><small>CCT / PJ</small>
+    </label>
+  </div>
+</div>
+
 
         <label for="motivation">Statement of Motivation</label>
         <textarea id="motivation" class="form-control" rows="5" placeholder="Explain in detail your motivation to join, including what draws you to this unit and how it aligns with your goals." required></textarea>
@@ -72,6 +87,7 @@
       </form>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const cooldownKey = 'sqdn5_application_cooldown';
@@ -106,7 +122,7 @@
 
       const fullName = document.getElementById('fullName').value.trim();
       const discord = document.getElementById('discord').value.trim();
-      const role = document.getElementById('role').value;
+      const role = document.querySelector('input[name="role"]:checked')?.value || '';
       const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
       const experience = document.getElementById('experience').value.trim().slice(0, 1024);
       const commitment = document.getElementById('commitment').value.trim().slice(0, 1024);
