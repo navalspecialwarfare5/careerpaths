@@ -212,3 +212,30 @@ details[open] {
         transform: translateY(0);
     }
 }
+
+.training-day {
+  background-color: #212529;
+  color: white;
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+  min-width: 160px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.training-day h6 {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+.training-day small {
+  display: block;
+  color: #adb5bd;
+  font-size: 0.8rem;
+}
+.training-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}

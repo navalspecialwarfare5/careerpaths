@@ -390,50 +390,97 @@
             </div>
           </div>
         </div>
+
+        <!-- NEW FAQ ENTRY 6 -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingSix">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+      What platforms or mods does the unit use?
+    </button>
+  </h2>
+  <div id="faq6" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+    <div class="accordion-body">
+      We operate exclusively on Arma 3 with a curated modpack delivered through our private repository. Mods include ACE, ACRE2, RHS, custom DEVGRU gear, JSOC assets, and mission scripting tools. You’ll receive clear setup instructions upon selection.
+    </div>
+  </div>
+</div>
+
+<!-- NEW FAQ ENTRY 7 -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingSeven">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+      What is the expected level of realism?
+    </button>
+  </h2>
+  <div id="faq7" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+    <div class="accordion-body">
+      NSWG-5 operates at a Tier 1 realism standard. We replicate real-world mission planning, SOPs, chain-of-command structure, and tactical conduct. Players are expected to maintain discipline, follow ROE, and contribute to immersion. No casual or arcade play is permitted.
+    </div>
+  </div>
+</div>
+
+<!-- NEW FAQ ENTRY 8 -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingEight">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+      What communications tools are used?
+    </button>
+  </h2>
+  <div id="faq8" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+    <div class="accordion-body">
+      We use <strong>ACRE2</strong> for in-game radio realism and <strong>Discord</strong> for out-of-game comms. All members are expected to learn proper radio etiquette, call signs, brevity codes, and SOPs prior to mission deployment.
+    </div>
+  </div>
+</div>
+
+<!-- NEW FAQ ENTRY 9 -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingNine">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9" aria-expanded="false" aria-controls="faq9">
+      Are there leadership opportunities?
+    </button>
+  </h2>
+  <div id="faq9" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
+    <div class="accordion-body">
+      Yes. Leadership billets (team leads, JTACs, planners, instructors) are available based on performance, experience, and initiative. New members are evaluated during training and can request advancement after their first operation cycle.
+    </div>
+  </div>
+</div>
+
+<!-- NEW FAQ ENTRY 10 -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingTen">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10" aria-expanded="false" aria-controls="faq10">
+      Can I participate if I'm not in the EU/US time zones?
+    </button>
+  </h2>
+  <div id="faq10" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faqAccordion">
+    <div class="accordion-body">
+      Yes. While our primary operations are based on EU evening hours, we accommodate international members during training and side operations. Communication and schedule transparency are key to staying integrated.
+    </div>
+  </div>
+</div>
+
   
       </div>
     </div>
   </div>
 
-  <section class="container py-5">
-    <h2 class="text-center text-uppercase mb-4">Training Cycle Schedule</h2>
-  
-    <p class="text-center text-muted mb-4">
-      Standard training cycle runs every <strong>Friday through Sunday</strong>.<br>
-      Locations may vary. Briefings are held Friday prior to start.
-    </p>
-  
-    <div class="row text-center border rounded bg-dark text-white">
-  
-      <div class="col border-end py-3">Mon<br><span class="text-muted small">No training</span></div>
-      <div class="col border-end py-3">Tue<br><span class="text-muted small">No training</span></div>
-      <div class="col border-end py-3">Wed<br><span class="text-muted small">No training</span></div>
-      <div class="col border-end py-3">Thu<br><span class="text-muted small">No training</span></div>
-  
-      <div class="col border-end py-3 bg-danger text-white">
-        Fri<br>
-        <span class="small text-uppercase">Cancelled</span><br>
-        <span class="text-muted small">No briefing</span>
-      </div>
-  
-      <div class="col border-end py-3 bg-secondary text-white">
-        Sat<br>
-        <span class="small">Training Cycle</span><br>
-        <span class="text-muted small">Field Work / Drills</span>
-      </div>
-  
-      <div class="col py-3 bg-secondary text-white">
-        Sun<br>
-        <span class="small">Training Cycle</span><br>
-        <span class="text-muted small">Evaluations / AAR</span>
-      </div>
-  
-      
-    </div>
-    <p class="text-muted text-center small mt-2">
+<section class="container py-5">
+  <h2 class="text-center text-uppercase mb-4">Current Schedule</h2>
+   <p class="text-muted text-center small mt-2">
       Last updated: <strong>May 2025</strong> by NSWG-5 Operations
     </p>  
-  </section>
+  <div class="d-flex justify-content-center align-items-center mb-4 gap-3">
+    <button id="prevWeek" class="btn btn-outline-dark rounded-circle" onclick="changeWeek(-1)">&lt;</button>
+    <h5 id="week-range-title" class="mb-0 text-uppercase fw-bold"></h5>
+    <button id="nextWeek" class="btn btn-outline-dark rounded-circle" onclick="changeWeek(1)">&gt;</button>
+  </div>
+  <div id="training-week" class="row g-3 justify-content-center"></div>
+</section>
+
+
+
 
 <div class="section-title">Our Recruiters</div>
 <div class="card bg-dark text-white mt-4 shadow-sm">
@@ -503,6 +550,80 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+  const trainingContainer = document.getElementById('training-week');
+  const rangeTitle = document.getElementById('week-range-title');
+  const prevBtn = document.getElementById('prevWeek');
+  const nextBtn = document.getElementById('nextWeek');
+  let currentWeekIndex = 0;
+  const maxWeeks = 10;
+
+  const getStartOfWeek = (offset) => {
+    const now = new Date();
+    const day = now.getDay();
+    const monday = new Date(now);
+    monday.setDate(now.getDate() - ((day + 6) % 7) + (offset * 7));
+    return monday;
+  };
+
+  const renderWeek = () => {
+    trainingContainer.innerHTML = '';
+    const weekStart = getStartOfWeek(currentWeekIndex);
+    const days = ['Friday', 'Saturday', 'Sunday'];
+    const weekDates = days.map((_, i) => {
+      const date = new Date(weekStart);
+      date.setDate(date.getDate() + 4 + i); // Friday start + 4
+      return date;
+    });
+
+    const format = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+
+    const displayRange = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short'
+    });
+
+    rangeTitle.textContent = `WEEK ${String(currentWeekIndex + 1).padStart(2, '0')} — ${displayRange.format(weekDates[0])} to ${displayRange.format(weekDates[2])}`;
+
+    const row = document.createElement('div');
+    row.className = 'training-row';
+
+    days.forEach((day, i) => {
+      const mission = day === 'Friday' ? 'Briefing & Training' : (day === 'Saturday' ? 'Training' : 'Training & Debrief');
+      const block = document.createElement('div');
+      block.className = 'training-day';
+      block.innerHTML = `
+        <h6>${day}</h6>
+        <strong>${format.format(weekDates[i])}</strong>
+        <hr class="my-2">
+        <div>${mission}</div>
+      `;
+      row.appendChild(block);
+    });
+
+    trainingContainer.appendChild(row);
+
+    // Arrow state
+    prevBtn.disabled = currentWeekIndex === 0;
+    nextBtn.disabled = currentWeekIndex === maxWeeks - 1;
+  };
+
+  const changeWeek = (dir) => {
+    const newIndex = currentWeekIndex + dir;
+    if (newIndex >= 0 && newIndex < maxWeeks) {
+      currentWeekIndex = newIndex;
+      renderWeek();
+    }
+  };
+
+  renderWeek();
+</script>
+
+
 
 </body>
 
