@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NSWDG-5 | Document Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Oswald', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      text-transform: uppercase;
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      color: #666;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .actions button {
+      background: #0a0a0a;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin: 0 0.5rem;
+    }
+
+    .actions button:hover {
+      background-color: #222;
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .doc-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .doc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .doc-type {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #555;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-meta {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .logout {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: 2px solid #222;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .logout:hover {
+      background: #222;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button class="logout" onclick="logout()">Log Out</button>
+
+  <header>
+    <h1>NSWDG-5 Internal Dossier</h1>
+    <p>Document Access Interface</p>
+  </header>
+
+  <div class="actions">
+    <button onclick="window.location.href='create.html'">+ Create New Document</button>
+  </div>
+
+  <div class="doc-grid" id="docList">
+    <!-- Documents will be injected here -->
+  </div>
+
+  <script>
+    // Require user login
+    const user = localStorage.getItem("nswdg_user");
+    if (!user) {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("nswdg_user");
+      window.location.href = "login.html";
+    }
+
+    function loadDocuments() {
+      const list = document.getElementById("docList");
+      list.innerHTML = "";
+
+      let docs = JSON.parse(localStorage.getItem("nswdg_docs") || "[]");
+
+      if (docs.length === 0) {
+        list.innerHTML = "<p style='text-align:center; color:#777;'>No documents submitted yet.</p>";
+        return;
+      }
+
+      docs.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+      docs.forEach(doc => {
+        const card = document.createElement("div");
+        card.className = "doc-card";
+        card.onclick = () => window.location.href = `view.html?id=${doc.id}`;
+        card.innerHTML = `
+          <div class="doc-type">${doc.type}</div>
+          <div class="doc-title">${doc.title}</div>
+          <div class="doc-meta">Created: ${new Date(doc.created_at).toLocaleString()}</div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    loadDocuments();
+  </script>
+</body>
+</html>
