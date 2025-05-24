@@ -258,3 +258,13 @@ details[open] {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 9999;
 }
+
+.modal-header {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.modal-body {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}

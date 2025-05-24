@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<a href="/dashboard/" class="login-button" aria-label="Login to member dashboard">
+<a href="#" class="login-button" id="triggerPortalModal" aria-label="Login to member dashboard">
   <i class="fas fa-user-lock me-2"></i>NAVAL SPECIAL WARFARE DOCUMENT ACCESS PORTAL
 </a>
 
@@ -750,7 +750,55 @@
   };
 
   renderWeek();
+
+  document.getElementById('triggerPortalModal').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const securityModal = new bootstrap.Modal(document.getElementById('securityModal'));
+  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+
+  securityModal.show();
+
+  setTimeout(() => {
+    securityModal.hide();
+    setTimeout(() => loginModal.show(), 500); // slight delay to ensure transition
+  }, 5000); // 5 seconds delay
+});
+
 </script>
+
+<!-- Security Notice Modal -->
+<div class="modal fade" id="securityModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title">Security Notice</h5>
+      </div>
+      <div class="modal-body">
+        <p>This portal contains restricted mission-critical documents. Unauthorized access is prohibited.</p>
+       <p class="text-danger"><strong>All access attempts are timestamped for record-keeping.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Proceed Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title">Authorized Access</h5>
+      </div>
+      <div class="modal-body">
+        <p>You may now proceed to the NSWDG-5 Document Access Portal.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="/dashboard/" class="btn btn-dark">Proceed</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>
