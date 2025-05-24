@@ -239,3 +239,22 @@ details[open] {
   gap: 1rem;
   flex-wrap: nowrap;
 }
+
+.login-button {
+  position: fixed;
+  top: 60px;
+  right: 50px;
+  background-color: #000;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.65rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
