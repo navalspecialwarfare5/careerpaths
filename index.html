@@ -563,18 +563,75 @@
   </div>
 
 <section class="container py-5">
-  <h2 class="text-center text-uppercase mb-4" style="letter-spacing: 3px; font-size: 1.75rem;">NSWDG-5 SCHEDULE BOARD</h2>
-   <p class="text-muted text-center small mt-2">
-      Last updated: <strong>May 2025</strong> by NSWDG-5 Logistics Center
-    </p>  
-  <div class="d-flex justify-content-center align-items-center mb-4 gap-3">
-    <button id="prevWeek" class="btn btn-outline-dark rounded-circle" onclick="changeWeek(-1)">&lt;</button>
-    <h5 id="week-range-title" class="mb-0 text-uppercase fw-bold" style="letter-spacing: 2px; font-size: 1.2rem;"></h5>
-    <button id="nextWeek" class="btn btn-outline-dark rounded-circle" onclick="changeWeek(1)">&gt;</button>
+  <h2 class="text-center text-uppercase fw-bold mb-4" style="letter-spacing: 2px;">NSWDG-5 Operational Overview</h2>
+  <p class="text-muted text-center small mb-5">Chronology & Schedule maintained by NSWDG-5 Logistics Cell — Updated: <strong>May 2025</strong></p>
+
+  <!-- Horizontal Timeline -->
+  <div class="timeline-horizontal mb-5">
+    <div class="timeline-track">
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="timeline-content">
+    <h6>June 2024</h6>
+    <p>SOP development finalized. Gear standardization, callsign structure, and operational doctrine established across all elements.</p>
   </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="timeline-content">
+    <h6>December 2024</h6>
+    <p>Initial cadre selection and organizational structure finalized. Command roles, team breakdowns, internal comms protocol, and unit identity established. Core personnel began alignment under a shared vision of realism and operational discipline.</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="timeline-content">
+    <h6>Dec – April 2025</h6>
+    <p>First training cycle initiated. Core SOPs validated, including mission conduct, callsign hierarchy, and communications standards. Members underwent pipeline assessments across CQB, mobility, medical, and coordination. Unit established baseline readiness for real-time tasking.</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="timeline-content">
+    <h6>April 21, 2025</h6>
+    <p>First deployment officially commenced. Unit conducted staging procedures, integrated with air assets, and initiated live operational tasking under dynamic conditions. Forward presence and team structure proved viable under load.</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="timeline-content">
+    <h6>April – May 2025</h6>
+    <p>Live operational tasking conducted in full. Execution across all mission phases including planning, infiltration, precision action, site exploitation, and exfiltration. Team cohesion, real-time communication, and adherence to SOPs evaluated in active environment.</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="timeline-content">
+    <h6>May 14 – Present</h6>
+    <p>Post-deployment reset phase in progress. Ongoing evaluations, internal AARs, new member integration, and rehearsal cycles underway. Mission development and gear refinement driven by field experience and ongoing feedback from planning elements.</p>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <!-- Weekly Schedule -->
+  <div class="text-center mb-4">
+    <h3 class="text-uppercase fw-bold mb-2" style="letter-spacing: 1.5px;">Current Training Week</h3>
+    <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+      <button id="prevWeek" class="btn btn-outline-dark rounded-circle" onclick="changeWeek(-1)">&lt;</button>
+      <h5 id="week-range-title" class="mb-0 text-uppercase fw-bold" style="letter-spacing: 2px; font-size: 1.1rem;"></h5>
+      <button id="nextWeek" class="btn btn-outline-dark rounded-circle" onclick="changeWeek(1)">&gt;</button>
+    </div>
+  </div>
+
   <div id="training-week" class="row g-3 justify-content-center"></div>
 </section>
-
 
 
 

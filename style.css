@@ -327,3 +327,66 @@ details[open] {
     padding: 10px 15px;
     cursor: pointer;
   }
+
+  .timeline-horizontal {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+.timeline-track {
+  display: flex;
+  gap: 3rem;
+  padding: 1.5rem 0;
+  border-top: 2px solid #212529;
+  min-width: 100%;
+}
+.timeline-item {
+  position: relative;
+  scroll-snap-align: start;
+  min-width: 240px;
+  max-width: 260px;
+  text-align: center;
+}
+.timeline-marker {
+  width: 14px;
+  height: 14px;
+  background-color: #212529;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  box-shadow: 0 0 0 2px #212529;
+}
+.timeline-content {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+.timeline-content h6 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.timeline-content p {
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+.timeline-horizontal::-webkit-scrollbar {
+  height: 8px;
+}
+.timeline-horizontal::-webkit-scrollbar-thumb {
+  background: #212529;
+  border-radius: 4px;
+}
+.timeline-horizontal::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
