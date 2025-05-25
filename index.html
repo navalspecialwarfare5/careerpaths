@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<style>
+  .section {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.section-title {
+  margin-bottom: 2.5rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.career-block {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +44,79 @@
 
     <div class="container">
         <h1>Career Path Portal</h1>
+        
+
+
+        <section class="mt-5 mb-5">
+  <div class="row g-4">
+    
+<!-- Hero 1: Unit Composition -->
+<div class="col-md-6">
+  <div class="p-4 bg-dark text-white rounded shadow-sm h-100">
+    <h4 class="fw-bold text-uppercase mb-2">Defined Roles, Real Impact</h4>
+    <p class="small mb-0">
+      Every member has a purpose. Whether you're running point on the ground or supporting from the air, our structure mirrors DEVGRU, 160th SOAR, and 24th STS — clear roles, sharp execution, and team-wide coordination.
+    </p>
+  </div>
+</div>
+
+<!-- Hero 2: Realism & SOP Enforcement -->
+<div class="col-md-6">
+  <div class="p-4 bg-light border rounded shadow-sm h-100">
+    <h4 class="fw-bold text-uppercase mb-2">Immersive, Realistic Gameplay</h4>
+    <p class="small mb-0">
+      We operate with discipline and structure because it leads to better teamwork and more immersive missions. You'll follow SOPs, use real comms, and train like you're part of a JSOC task force — because that's the experience we deliver.
+    </p>
+  </div>
+</div>
+
+<!-- Hero 3: Selection Pipeline -->
+<div class="col-md-6">
+  <div class="p-4 bg-light border rounded shadow-sm h-100">
+    <h4 class="fw-bold text-uppercase mb-2">Green Team: Earn Your Spot</h4>
+    <p class="small mb-0">
+      Our selection process places you in real operations from the start. It’s not a classroom — it’s an evaluation. Show that you can contribute, communicate, and stay composed under pressure, and you’ll move forward.
+    </p>
+  </div>
+</div>
+
+<!-- Hero 4: Why This Unit Exists -->
+<div class="col-md-6">
+  <div class="p-4 bg-dark text-white rounded shadow-sm h-100">
+    <h4 class="fw-bold text-uppercase mb-2">Built for Serious Players</h4>
+    <p class="small mb-0">
+      This group was formed by players who wanted more — deeper realism, smarter missions, and better coordination. If you're looking for a unit that treats every operation with purpose, you're in the right place.
+    </p>
+  </div>
+</div>
+
+  </div>
+</section>
+<hr class="my-5" style="border-top: 2px solid #00000010;">
+
+<div class="bg-dark text-white py-4 mb-5 mt-5 text-center">
+  <h2 class="text-uppercase fw-bold m-0" style="letter-spacing: 2px; font-size: 1.25rem;">
+    STRUCTURE & ASSIGNMENT PATHWAYS
+  </h2>
+</div>
+
+<div class="row text-center mb-5">
+  <div class="col-md-4">
+    <h5 class="text-uppercase fw-bold">Tier One Focus</h5>
+    <p class="small">Operate as DEVGRU, 160th SOAR, and 24th STS — not just a generic unit.</p>
+  </div>
+  <div class="col-md-4">
+    <h5 class="text-uppercase fw-bold">Built for Immersion</h5>
+    <p class="small">We simulate intelligence-driven missions, not scripted Arma scenarios.</p>
+  </div>
+  <div class="col-md-4">
+    <h5 class="text-uppercase fw-bold">No BS, No Ego</h5>
+    <p class="small">Just serious players building something that feels real, mission by mission.</p>
+  </div>
+</div>
+
+
+
         
         
           
@@ -999,14 +1093,36 @@ document.getElementById('timezone-toggle').addEventListener('click', function ()
 <audio id="welcomeAudio" preload="auto">
   <source src="notify.wav" type="audio/wav">
 </audio>
-<div id="welcomeBanner" class="slide-in-banner shadow-sm bg-transparant">
-  <strong>[ WELCOME TO NSWDG-5 ]</strong>
-  <p class="mb-1">This portal is intended for candidates and assigned personnel.</p>
-  <a href="https://discord.gg/navalspecialwarfaregroup5" class="btn btn-sm btn-dark text-uppercase fw-bold px-3">Join our discord</a>
+<div id="welcomeBanner" class="slide-in-banner bg-dark text-white px-4 py-3 border border-secondary rounded shadow-sm" style="max-width: 360px;">
+  <div class="d-flex align-items-center mb-2">
+    <span class="badge bg-secondary text-uppercase me-2">System</span>
+    <strong class="text-uppercase small">Welcome to NSWDG-5</strong>
+  </div>
+
+  <p class="mb-2 small text-white-50">
+    This portal is for candidates and assigned personnel only. Maintain operational integrity at all times.
+  </p>
+
+  <a href="https://discord.gg/navalspecialwarfaregroup5" class="btn btn-sm btn-outline-light text-uppercase fw-bold w-100 mb-2">Join Discord</a>
+
+  <div id="priorityAlert" class="bg-danger text-white rounded px-3 py-2 small shadow-sm">
+    <div class="d-flex align-items-center mb-1">
+      <span class="badge bg-light text-dark text-uppercase me-2">Priority</span>
+      <span class="fw-bold text-uppercase">Critical Needs</span>
+    </div>
+    <p class="mb-1">
+      PMOO (Paramilitary Operations Officer(s)), J2 Analyst / Intel Officer(s), Mission Planner(s) (J3 Cell) & 160th Special Operations Aviation Regiment leadership billets are <u>urgently required</u>.
+    </p>
+    <a href="/apply/" class="text-white text-decoration-underline">Express Isnterest →</a>
+  </div>
 </div>
 
 
+
+
+
 </body>
+
 <script>
 let idleTimer;
 let isModalShown = false;
@@ -1073,3 +1189,72 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 </html>
+
+<style>
+#welcomeBanner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 360px;
+  max-height: 310px;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+
+  /* Add this: slide-in from bottom */
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease,
+    transform 0.5s ease;
+}
+
+#welcomeBanner.active {
+  opacity: 1;
+  visibility: visible;
+
+  /* Final position */
+  transform: translateY(0);
+}
+
+</style>
+
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("welcomeBanner");
+  const audio = document.getElementById("welcomeAudio");
+
+  // Trigger on user interaction
+  const triggerBanner = () => {
+    banner.classList.add("active");
+
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch((err) => console.warn("Autoplay blocked:", err));
+    }
+
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+      banner.classList.remove("active");
+    }, 5000);
+
+    // Only trigger once
+    document.removeEventListener("click", triggerBanner);
+    document.removeEventListener("keydown", triggerBanner);
+    document.removeEventListener("scroll", triggerBanner);
+  };
+
+  // Wait for user interaction
+  document.addEventListener("click", triggerBanner);
+  document.addEventListener("keydown", triggerBanner);
+  document.addEventListener("scroll", triggerBanner);
+});
+
+</script>
