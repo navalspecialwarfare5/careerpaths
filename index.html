@@ -1068,43 +1068,6 @@
             </div>
         </div>
 
-      <div class="modal-header bg-dark text-white">
-        <h5 class="modal-title text-uppercase" style="letter-spacing: 1px;">Activity Timeout</h5>
-      </div>
-      <div class="modal-body">
-        <p class="mb-2">No input detected for 60 seconds.</p>
-        <p class="small text-muted">Operators are expected to act with intent. If you're reviewing this site for assignment purposes, continue below.</p>
-      </div>
-      <div class="modal-footer d-flex justify-content-between">
-        <a href="/apply/" class="btn btn-outline-dark btn-sm text-uppercase fw-bold">Proceed to Candidate Portal</a>
-        <button type="button" class="btn btn-secondary btn-sm text-uppercase" data-bs-dismiss="modal">Dismiss</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-let idleTimer;
-let isModalShown = false;
-
-function resetIdleTimer() {
-  clearTimeout(idleTimer);
-  if (!isModalShown) {
-    idleTimer = setTimeout(() => {
-      const modal = new bootstrap.Modal(document.getElementById('idleModal'));
-      modal.show();
-      isModalShown = true;
-    }, 60000); // 1 minute
-  }
-}
-
-['mousemove', 'keydown', 'touchstart', 'scroll'].forEach(evt =>
-  document.addEventListener(evt, resetIdleTimer)
-);
-
-resetIdleTimer();
-</script>
-
         <!-- Idle Activity Modal -->
         <div class="modal fade" id="idleModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
