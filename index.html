@@ -1032,95 +1032,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <script>
-        const trainingContainer = document.getElementById('training-week');
-        const rangeTitle = document.getElementById('week-range-title');
-        const prevBtn = document.getElementById('prevWeek');
-        const nextBtn = document.getElementById('nextWeek');
-        let currentWeekIndex = 0;
-        const maxWeeks = 10;
-
-
-
-        const getStartOfWeek = (offset) => {
-            const now = new Date();
-            const day = now.getDay();
-            const monday = new Date(now);
-            monday.setDate(now.getDate() - ((day + 6) % 7) + (offset * 7));
-            return monday;
-        };
-
-        const renderWeek = () => {
-            trainingContainer.innerHTML = '';
-            const weekStart = getStartOfWeek(currentWeekIndex);
-            const days = ['Friday', 'Saturday', 'Sunday'];
-            const weekDates = days.map((_, i) => {
-                const date = new Date(weekStart);
-                date.setDate(date.getDate() + 4 + i); // Friday start + 4
-                return date;
-            });
-
-            const format = new Intl.DateTimeFormat('en-GB', {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric'
-            });
-
-            const displayRange = new Intl.DateTimeFormat('en-GB', {
-                day: '2-digit',
-                month: 'short'
-            });
-
-            rangeTitle.textContent =
-                `WEEK ${String(currentWeekIndex + 1).padStart(2, '0')} — ${displayRange.format(weekDates[0])} to ${displayRange.format(weekDates[2])}`;
-
-            const row = document.createElement('div');
-            row.className = 'training-row';
-
-            days.forEach((day, i) => {
-                const mission = day === 'Friday' ? 'Briefing & Training' : (day === 'Saturday' ?
-                    'Training' : 'Training & Debrief');
-                const block = document.createElement('div');
-                block.className = 'training-day';
-                block.innerHTML = `
-        <h6>${day}</h6>
-        <strong>${format.format(weekDates[i])}</strong>
-        <hr class="my-2">
-        <div>${mission}</div>
-      `;
-                row.appendChild(block);
-            });
-
-            trainingContainer.appendChild(row);
-
-            // Arrow state
-            prevBtn.disabled = currentWeekIndex === 0;
-            nextBtn.disabled = currentWeekIndex === maxWeeks - 1;
-        };
-
-        const changeWeek = (dir) => {
-            const newIndex = currentWeekIndex + dir;
-            if (newIndex >= 0 && newIndex < maxWeeks) {
-                currentWeekIndex = newIndex;
-                renderWeek();
-            }
-        };
-
-        renderWeek();
-
-        document.getElementById('triggerPortalModal').addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const securityModal = new bootstrap.Modal(document.getElementById('securityModal'));
-            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-
-            securityModal.show();
-
-            setTimeout(() => {
-                securityModal.hide();
-                setTimeout(() => loginModal.show(), 500); // slight delay to ensure transition
-            }, 5000); // 5 seconds delay
-        });
         </script>
 
         <!-- Security Notice Modal -->
@@ -1157,26 +1068,42 @@
             </div>
         </div>
 
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title text-uppercase" style="letter-spacing: 1px;">Activity Timeout</h5>
+      </div>
+      <div class="modal-body">
+        <p class="mb-2">No input detected for 60 seconds.</p>
+        <p class="small text-muted">Operators are expected to act with intent. If you're reviewing this site for assignment purposes, continue below.</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <a href="/apply/" class="btn btn-outline-dark btn-sm text-uppercase fw-bold">Proceed to Candidate Portal</a>
+        <button type="button" class="btn btn-secondary btn-sm text-uppercase" data-bs-dismiss="modal">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div id="timezone-widget" class="collapsed">
-            <div id="timezone-toggle" class="pulse-badge">🕒</div>
-            <div class="timezone-content">
-                <h6 class="mb-2 fw-bold text-uppercase">Operation Time in Your Area</h6>
-                <div style="position: relative;">
-                    <label class="form-label small">Closest City or Country</label>
-                    <input type="text" id="tzInput" class="form-control mb-2" placeholder="e.g. Toronto, Japan" oninput="filterSuggestions()" autocomplete="off">
-                    <ul id="tzSuggestions" class="list-group small tz-suggestion-box"></ul>
-                </div>
-                <button class="btn btn-dark btn-sm w-100 mt-2" onclick="showTimes()">Convert</button>
-                <div id="tzResults" class="mt-3 small text-muted"></div>
-                <a href="/apply/" id="confirmButton" class="btn btn-success btn-sm w-100 mt-3 text-uppercase fw-bold">
-                    ✅ This works for me!
-                </a>
+<script>
+let idleTimer;
+let isModalShown = false;
 
-            </div>
-        </div>
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+  if (!isModalShown) {
+    idleTimer = setTimeout(() => {
+      const modal = new bootstrap.Modal(document.getElementById('idleModal'));
+      modal.show();
+      isModalShown = true;
+    }, 60000); // 1 minute
+  }
+}
 
-        <script src="homepage.js"></script>
+['mousemove', 'keydown', 'touchstart', 'scroll'].forEach(evt =>
+  document.addEventListener(evt, resetIdleTimer)
+);
+
+resetIdleTimer();
+</script>
 
         <!-- Idle Activity Modal -->
         <div class="modal fade" id="idleModal" tabindex="-1" aria-hidden="true">
@@ -1229,24 +1156,175 @@
         </div>
 
 
+<div id="timezone-widget" class="collapsed">
+  <div id="timezone-toggle" class="pulse-badge">🕒</div>
+  <div class="timezone-content">
+    <h6 class="mb-2 fw-bold text-uppercase">Operation Time in Your Area</h6>
+    <div style="position: relative;">
+      <label class="form-label small">Closest City or Country</label>
+      <input type="text" id="tzInput" class="form-control mb-2" placeholder="e.g. Toronto, Japan" oninput="filterSuggestions()" autocomplete="off">
+      <ul id="tzSuggestions" class="list-group small tz-suggestion-box"></ul>
+    </div>
+    <button class="btn btn-dark btn-sm w-100 mt-2" onclick="showTimes()">Convert</button>
+<div id="tzResults" class="mt-3 small text-muted"></div>
+<a href="/apply/" id="confirmButton" class="btn btn-success btn-sm w-100 mt-3 text-uppercase fw-bold">
+  ✅ This works for me!
+</a>
 
+  </div>
+</div>
 
 
 
 
 </div></body></html>
 
-<script>
-    // ===== TIMEZONE WIDGET =====
-const tzOffsets = {
-  "new york": -4, "chicago": -5, "los angeles": -7, "london": 1, "paris": 2,
-  "berlin": 2, "madrid": 2, "tokyo": 9, "sydney": 10, "moscow": 3,
-  "cape town": 2, "toronto": -4, "vancouver": -7, "mexico city": -6,
-  "brazil": -3, "uae": 4, "dubai": 4, "india": 5.5, "japan": 9,
-  "south korea": 9, "china": 8, "australia": 10
+
+<script>// homepage.js
+
+// ===== WELCOME BANNER + AUDIO =====
+window.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("welcomeBanner");
+  const audio = document.getElementById("welcomeAudio");
+
+  const triggerBanner = () => {
+    banner.classList.add("active");
+
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch((err) => console.warn("Autoplay blocked:", err));
+    }
+
+    setTimeout(() => {
+      banner.classList.remove("active");
+    }, 5000);
+
+    document.removeEventListener("click", triggerBanner);
+    document.removeEventListener("keydown", triggerBanner);
+    document.removeEventListener("scroll", triggerBanner);
+  };
+
+  document.addEventListener("click", triggerBanner);
+  document.addEventListener("keydown", triggerBanner);
+  document.addEventListener("scroll", triggerBanner);
+});
+
+// ===== WEEKLY SCHEDULE =====
+const trainingContainer = document.getElementById('training-week');
+const rangeTitle = document.getElementById('week-range-title');
+const prevBtn = document.getElementById('prevWeek');
+const nextBtn = document.getElementById('nextWeek');
+let currentWeekIndex = 0;
+const maxWeeks = 10;
+
+const getStartOfWeek = (offset) => {
+  const now = new Date();
+  const day = now.getDay();
+  const monday = new Date(now);
+  monday.setDate(now.getDate() - ((day + 6) % 7) + (offset * 7));
+  return monday;
 };
 
-const opTimes = {"Friday": 20, "Saturday": 17, "Sunday": 13};
+const renderWeek = () => {
+  trainingContainer.innerHTML = '';
+  const weekStart = getStartOfWeek(currentWeekIndex);
+  const days = ['Friday', 'Saturday', 'Sunday'];
+  const weekDates = days.map((_, i) => {
+    const date = new Date(weekStart);
+    date.setDate(date.getDate() + 4 + i);
+    return date;
+  });
+
+  const format = new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  });
+
+  const displayRange = new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
+    month: 'short'
+  });
+
+  rangeTitle.textContent = `WEEK ${String(currentWeekIndex + 1).padStart(2, '0')} — ${displayRange.format(weekDates[0])} to ${displayRange.format(weekDates[2])}`;
+
+  const row = document.createElement('div');
+  row.className = 'training-row';
+
+  days.forEach((day, i) => {
+    const mission = day === 'Friday' ? 'Briefing & Training' : (day === 'Saturday' ? 'Training' : 'Training & Debrief');
+    const block = document.createElement('div');
+    block.className = 'training-day';
+    block.innerHTML = `
+      <h6>${day}</h6>
+      <strong>${format.format(weekDates[i])}</strong>
+      <hr class="my-2">
+      <div>${mission}</div>
+    `;
+    row.appendChild(block);
+  });
+
+  trainingContainer.appendChild(row);
+  prevBtn.disabled = currentWeekIndex === 0;
+  nextBtn.disabled = currentWeekIndex === maxWeeks - 1;
+};
+
+const changeWeek = (dir) => {
+  const newIndex = currentWeekIndex + dir;
+  if (newIndex >= 0 && newIndex < maxWeeks) {
+    currentWeekIndex = newIndex;
+    renderWeek();
+  }
+};
+renderWeek();
+
+// ===== PORTAL MODALS =====
+document.getElementById('triggerPortalModal').addEventListener('click', function (e) {
+  e.preventDefault();
+  const securityModal = new bootstrap.Modal(document.getElementById('securityModal'));
+  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+  securityModal.show();
+  setTimeout(() => {
+    securityModal.hide();
+    setTimeout(() => loginModal.show(), 500);
+  }, 5000);
+});
+
+
+
+</script>
+
+<script>
+const tzOffsets = {
+  "new york": -4,
+  "chicago": -5,
+  "los angeles": -7,
+  "london": 1,
+  "paris": 2,
+  "berlin": 2,
+  "madrid": 2,
+  "tokyo": 9,
+  "sydney": 10,
+  "moscow": 3,
+  "cape town": 2,
+  "toronto": -4,
+  "vancouver": -7,
+  "mexico city": -6,
+  "brazil": -3,
+  "uae": 4,
+  "dubai": 4,
+  "india": 5.5,
+  "japan": 9,
+  "south korea": 9,
+  "china": 8,
+  "australia": 10
+};
+
+const opTimes = {
+  "Friday": 20,     // 10PM Netherlands = 20:00 UTC
+  "Saturday": 17,   // 7PM Netherlands = 17:00 UTC
+  "Sunday": 13      // 3PM Netherlands = 13:00 UTC
+};
 
 function showTimes() {
   const input = document.getElementById("tzInput").value.toLowerCase().trim();
@@ -1261,7 +1339,7 @@ function showTimes() {
   let result = `
     <p class="mb-2"><strong>NSWDG-5 Operation Schedule (Converted)</strong></p>
     <p class="small text-muted mb-2">
-      The following times reflect when our official operations begin, adjusted to your local timezone.
+      The following times reflect when our official operations begin, adjusted to your local timezone. 
       All times are based on our standard schedule in Central European Summer Time (CEST).
     </p>
   `;
@@ -1279,18 +1357,6 @@ function showTimes() {
 
 const tzInput = document.getElementById("tzInput");
 const tzSuggestions = document.getElementById("tzSuggestions");
-
-tzInput.addEventListener('input', filterSuggestions);
-
-document.addEventListener('click', function (e) {
-  if (!tzInput.contains(e.target) && !tzSuggestions.contains(e.target)) {
-    tzSuggestions.style.display = 'none';
-  }
-});
-
-document.getElementById('timezone-toggle').addEventListener('click', function () {
-  document.getElementById('timezone-widget').classList.toggle('collapsed');
-});
 
 function filterSuggestions() {
   const val = tzInput.value.toLowerCase();
@@ -1315,4 +1381,111 @@ function filterSuggestions() {
 
   tzSuggestions.style.display = 'block';
 }
+
+document.addEventListener('click', function (e) {
+  if (!tzInput.contains(e.target) && !tzSuggestions.contains(e.target)) {
+    tzSuggestions.style.display = 'none';
+  }
+});
+
+document.getElementById('timezone-toggle').addEventListener('click', function () {
+  document.getElementById('timezone-widget').classList.toggle('collapsed');
+});
 </script>
+
+<style>
+    #timezone-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: white;
+  color: #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  z-index: 9999;
+  width: 280px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#timezone-widget.collapsed .timezone-content {
+  display: none;
+}
+
+#timezone-toggle {
+  background-color: #212529;
+  color: white;
+  padding: 10px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.pulse-badge::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  animation: pulse 1.8s infinite ease-out;
+  transform: translate(-50%, -50%);
+  opacity: 0.75;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+.timezone-content {
+  padding: 15px;
+  position: relative;
+}
+
+/* Suggestions */
+.tz-suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 0 0 6px 6px;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tz-suggestion-box li {
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.tz-suggestion-box li:hover {
+  background-color: #f8f9fa;
+}
+
+#confirmButton {
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 128, 0, 0.2);
+}
+</style>
