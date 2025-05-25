@@ -855,6 +855,170 @@
   </div>
 </div>
 
+
+<div id="timezone-widget" class="collapsed">
+  <div id="timezone-toggle" class="pulse-badge">🕒</div>
+  <div class="timezone-content">
+    <h6 class="mb-2 fw-bold text-uppercase">Operation Time in Your Area</h6>
+    <div style="position: relative;">
+      <label class="form-label small">Closest City or Country</label>
+      <input type="text" id="tzInput" class="form-control mb-2" placeholder="e.g. Toronto, Japan" oninput="filterSuggestions()" autocomplete="off">
+      <ul id="tzSuggestions" class="list-group small tz-suggestion-box"></ul>
+    </div>
+    <button class="btn btn-dark btn-sm w-100 mt-2" onclick="showTimes()">Convert</button>
+<div id="tzResults" class="mt-3 small text-muted"></div>
+<a href="/apply/" id="confirmButton" class="btn btn-success btn-sm w-100 mt-3 text-uppercase fw-bold">
+  ✅ This works for me!
+</a>
+
+  </div>
+</div>
+
+
+
+<script>
+const tzOffsets = {
+  "new york": -4,
+  "chicago": -5,
+  "los angeles": -7,
+  "london": 1,
+  "paris": 2,
+  "berlin": 2,
+  "madrid": 2,
+  "tokyo": 9,
+  "sydney": 10,
+  "moscow": 3,
+  "cape town": 2,
+  "toronto": -4,
+  "vancouver": -7,
+  "mexico city": -6,
+  "brazil": -3,
+  "uae": 4,
+  "dubai": 4,
+  "india": 5.5,
+  "japan": 9,
+  "south korea": 9,
+  "china": 8,
+  "australia": 10
+};
+
+const opTimes = {
+  "Friday": 20,     // 10PM Netherlands = 20:00 UTC
+  "Saturday": 17,   // 7PM Netherlands = 17:00 UTC
+  "Sunday": 13      // 3PM Netherlands = 13:00 UTC
+};
+
+function showTimes() {
+  const input = document.getElementById("tzInput").value.toLowerCase().trim();
+  const offset = tzOffsets[input];
+  const output = document.getElementById("tzResults");
+
+  if (offset === undefined) {
+    output.innerHTML = `<span class="text-danger">City or country not recognized. Try "London", "Tokyo", or "Los Angeles".</span>`;
+    return;
+  }
+
+  let result = `
+    <p class="mb-2"><strong>NSWDG-5 Operation Schedule (Converted)</strong></p>
+    <p class="small text-muted mb-2">
+      The following times reflect when our official operations begin, adjusted to your local timezone. 
+      All times are based on our standard schedule in Central European Summer Time (CEST).
+    </p>
+  `;
+
+  for (const [day, utcHour] of Object.entries(opTimes)) {
+    let localHour = utcHour + offset;
+    if (localHour >= 24) localHour -= 24;
+    if (localHour < 0) localHour += 24;
+    const display = `${localHour.toString().padStart(2, '0')}:00`;
+    result += `<strong>${day}:</strong> ${display}<br>`;
+  }
+
+  output.innerHTML = result;
+}
+
+const tzInput = document.getElementById("tzInput");
+const tzSuggestions = document.getElementById("tzSuggestions");
+
+function filterSuggestions() {
+  const val = tzInput.value.toLowerCase();
+  const matches = Object.keys(tzOffsets).filter(key => key.includes(val));
+  tzSuggestions.innerHTML = '';
+
+  if (!val || matches.length === 0) {
+    tzSuggestions.style.display = 'none';
+    return;
+  }
+
+  matches.slice(0, 6).forEach(match => {
+    const li = document.createElement("li");
+    li.textContent = match.charAt(0).toUpperCase() + match.slice(1);
+    li.onclick = () => {
+      tzInput.value = li.textContent;
+      tzSuggestions.style.display = 'none';
+      showTimes();
+    };
+    tzSuggestions.appendChild(li);
+  });
+
+  tzSuggestions.style.display = 'block';
+}
+
+document.addEventListener('click', function (e) {
+  if (!tzInput.contains(e.target) && !tzSuggestions.contains(e.target)) {
+    tzSuggestions.style.display = 'none';
+  }
+});
+
+document.getElementById('timezone-toggle').addEventListener('click', function () {
+  document.getElementById('timezone-widget').classList.toggle('collapsed');
+});
+</script>
+
+
+<!-- Idle Activity Modal -->
+<div class="modal fade" id="idleModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-dark border-0 shadow">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title text-uppercase" style="letter-spacing: 1px;">Activity Timeout</h5>
+      </div>
+      <div class="modal-body">
+        <p class="mb-2">No input detected for 60 seconds.</p>
+        <p class="small text-muted">Operators are expected to act with intent. If you're reviewing this site for assignment purposes, continue below.</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <a href="/apply/" class="btn btn-outline-dark btn-sm text-uppercase fw-bold">Proceed to Candidate Portal</a>
+        <button type="button" class="btn btn-secondary btn-sm text-uppercase" data-bs-dismiss="modal">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </body>
+<script>
+let idleTimer;
+let isModalShown = false;
+
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+  if (!isModalShown) {
+    idleTimer = setTimeout(() => {
+      const modal = new bootstrap.Modal(document.getElementById('idleModal'));
+      modal.show();
+      isModalShown = true;
+    }, 60000); // 1 minute
+  }
+}
+
+['mousemove', 'keydown', 'touchstart', 'scroll'].forEach(evt =>
+  document.addEventListener(evt, resetIdleTimer)
+);
+
+resetIdleTimer();
+</script>
+
 
 </html>
