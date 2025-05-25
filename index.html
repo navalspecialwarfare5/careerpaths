@@ -1235,3 +1235,84 @@
 
 
 </div></body></html>
+
+<script>
+    // ===== TIMEZONE WIDGET =====
+const tzOffsets = {
+  "new york": -4, "chicago": -5, "los angeles": -7, "london": 1, "paris": 2,
+  "berlin": 2, "madrid": 2, "tokyo": 9, "sydney": 10, "moscow": 3,
+  "cape town": 2, "toronto": -4, "vancouver": -7, "mexico city": -6,
+  "brazil": -3, "uae": 4, "dubai": 4, "india": 5.5, "japan": 9,
+  "south korea": 9, "china": 8, "australia": 10
+};
+
+const opTimes = {"Friday": 20, "Saturday": 17, "Sunday": 13};
+
+function showTimes() {
+  const input = document.getElementById("tzInput").value.toLowerCase().trim();
+  const offset = tzOffsets[input];
+  const output = document.getElementById("tzResults");
+
+  if (offset === undefined) {
+    output.innerHTML = `<span class="text-danger">City or country not recognized. Try "London", "Tokyo", or "Los Angeles".</span>`;
+    return;
+  }
+
+  let result = `
+    <p class="mb-2"><strong>NSWDG-5 Operation Schedule (Converted)</strong></p>
+    <p class="small text-muted mb-2">
+      The following times reflect when our official operations begin, adjusted to your local timezone.
+      All times are based on our standard schedule in Central European Summer Time (CEST).
+    </p>
+  `;
+
+  for (const [day, utcHour] of Object.entries(opTimes)) {
+    let localHour = utcHour + offset;
+    if (localHour >= 24) localHour -= 24;
+    if (localHour < 0) localHour += 24;
+    const display = `${localHour.toString().padStart(2, '0')}:00`;
+    result += `<strong>${day}:</strong> ${display}<br>`;
+  }
+
+  output.innerHTML = result;
+}
+
+const tzInput = document.getElementById("tzInput");
+const tzSuggestions = document.getElementById("tzSuggestions");
+
+tzInput.addEventListener('input', filterSuggestions);
+
+document.addEventListener('click', function (e) {
+  if (!tzInput.contains(e.target) && !tzSuggestions.contains(e.target)) {
+    tzSuggestions.style.display = 'none';
+  }
+});
+
+document.getElementById('timezone-toggle').addEventListener('click', function () {
+  document.getElementById('timezone-widget').classList.toggle('collapsed');
+});
+
+function filterSuggestions() {
+  const val = tzInput.value.toLowerCase();
+  const matches = Object.keys(tzOffsets).filter(key => key.includes(val));
+  tzSuggestions.innerHTML = '';
+
+  if (!val || matches.length === 0) {
+    tzSuggestions.style.display = 'none';
+    return;
+  }
+
+  matches.slice(0, 6).forEach(match => {
+    const li = document.createElement("li");
+    li.textContent = match.charAt(0).toUpperCase() + match.slice(1);
+    li.onclick = () => {
+      tzInput.value = li.textContent;
+      tzSuggestions.style.display = 'none';
+      showTimes();
+    };
+    tzSuggestions.appendChild(li);
+  });
+
+  tzSuggestions.style.display = 'block';
+}
+</script>
