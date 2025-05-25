@@ -1259,118 +1259,67 @@ document.getElementById('triggerPortalModal').addEventListener('click', function
 
 <script>
 const tzOffsets = {
-  "new york": -6,      // New York is UTC -4 in CEST
-  "chicago": -7,       // Chicago is UTC -5 in CEST
-  "los angeles": -9,   // Los Angeles is UTC -7 in CEST
-  "orlando": -6,       // Orlando is UTC -4 in CEST
-  "san diego": -9,     // San Diego is UTC -7 in CEST
-  "london": -1,        // London is UTC +1 in CEST
-  "paris": 0,          // Paris is UTC +2 in CEST
-  "berlin": 0,         // Berlin is UTC +2 in CEST
-  "madrid": 0,         // Madrid is UTC +2 in CEST
-  "tokyo": 7,          // Tokyo is UTC +9
-  "sydney": 8,         // Sydney is UTC +10
-  "moscow": 1,         // Moscow is UTC +3
-  "cape town": 0,      // Cape Town is UTC +2 in CEST
-  "toronto": -6,       // Toronto is UTC -4 in CEST
-  "vancouver": -9,     // Vancouver is UTC -7 in CEST
-  "mexico city": -8,   // Mexico City is UTC -6 in CEST
-  "brazil": -5,        // Brazil is UTC -3 in CEST
-  "uae": 2,            // UAE is UTC +4
-  "dubai": 2,          // Dubai is UTC +4
-  "india": 3.5,        // India is UTC +5.5
-  "japan": 7,          // Japan is UTC +9
-  "south korea": 7,    // South Korea is UTC +9
-  "china": 6,          // China is UTC +8
-  "australia": 8,      // Australia is UTC +10
-  "amsterdam": 2,      // Amsterdam is UTC +2 in CEST
-  "rio de janeiro": -5,// Rio de Janeiro is UTC -3 in CEST
-  "bogotá": -7,        // Bogotá is UTC -5 in CEST
-  "quito": -7,         // Quito is UTC -5 in CEST
-  "lima": -7,          // Lima is UTC -5 in CEST
-  "caracas": -6.5,     // Caracas is UTC -4.5 in CEST
-  "chennai": 3.5,      // Chennai is UTC +5.5
-  "seoul": 7,          // Seoul is UTC +9
-  "hong kong": 6,      // Hong Kong is UTC +8
-  "manila": 6,         // Manila is UTC +8
-  "kuala lumpur": 6,   // Kuala Lumpur is UTC +8
-  "singapore": 6,      // Singapore is UTC +8
-  "jakarta": 5,        // Jakarta is UTC +7
-  "bangkok": 5,        // Bangkok is UTC +7
-  "hanoi": 5,          // Hanoi is UTC +7
-  "bali": 6,           // Bali is UTC +8
-  "bandung": 5,        // Bandung is UTC +7
-  "beijing": 6,        // Beijing is UTC +8
-  "shanghai": 6,       // Shanghai is UTC +8
-  "guangzhou": 6,      // Guangzhou is UTC +8
-  "shenzhen": 6,       // Shenzhen is UTC +8
-  "taipei": 6,         // Taipei is UTC +8
-  "dallas": -7,        // Dallas is UTC -5 in CEST
-  "atlanta": -6,       // Atlanta is UTC -4 in CEST
-  "miami": -6,         // Miami is UTC -4 in CEST
-  "washington dc": -6, // Washington DC is UTC -4 in CEST
-  "calgary": -9,       // Calgary is UTC -7 in CEST
-  "ottawa": -6,        // Ottawa is UTC -4 in CEST
-  "hamilton": -6,      // Hamilton is UTC -4 in CEST
-  "montreal": -6,      // Montreal is UTC -4 in CEST
-  "perth": 6,          // Perth is UTC +8
-  "adelaide": 7.5,     // Adelaide is UTC +9.5
-  "darwin": 7.5,       // Darwin is UTC +9.5
-  "melbourne": 8,      // Melbourne is UTC +10
-  "brisbane": 8,       // Brisbane is UTC +10
-  "cairns": 8,         // Cairns is UTC +10
-  "hobart": 8,         // Hobart is UTC +10
-  "tashkent": 3,       // Tashkent is UTC +5
-  "almaty": 4,         // Almaty is UTC +6
-  "baku": 2,           // Baku is UTC +4
-  "doha": 1,           // Doha is UTC +3
-  "amman": 1,          // Amman is UTC +3
-  "kigali": 0,         // Kigali is UTC +2
-  "abidjan": -2,       // Abidjan is UTC -0 in CEST
-  "accra": -2,         // Accra is UTC -0 in CEST
-  "marrakech": -1,     // Marrakech is UTC +1 in CEST
-  "algiers": -1,       // Algiers is UTC +1 in CEST
-  "casablanca": -1,    // Casablanca is UTC +1 in CEST
-  "port louis": 2,     // Port Louis is UTC +4
-  "mauritius": 2,      // Mauritius is UTC +4
-  "nairobi": 1,        // Nairobi is UTC +3
-  "lusaka": 0,         // Lusaka is UTC +2
-  "zanzibar": 1,       // Zanzibar is UTC +3
-  "harare": 0,         // Harare is UTC +2
-  "blantyre": 0,       // Blantyre is UTC +2
-  "dar es salaam": 1,  // Dar Es Salaam is UTC +3
-  "dhaka": 4,          // Dhaka is UTC +6
-  "colombo": 3.5,      // Colombo is UTC +5.5
-  "tehran": 2.5,       // Tehran is UTC +4.5
-  "baghdad": 1,        // Baghdad is UTC +3
-  "riyadh": 1,         // Riyadh is UTC +3
-  "dammam": 1,         // Dammam is UTC +3
-  "ashgabat": 3,       // Ashgabat is UTC +5
-  "luanda": -1,        // Luanda is UTC +1
-  "sao paulo": -5,     // Sao Paulo is UTC -3
-  "brussels": 0,       // Brussels is UTC +2
-  "stockholm": 0,      // Stockholm is UTC +2
-  "vienna": 0,         // Vienna is UTC +2
-  "zurich": 0,         // Zurich is UTC +2
-  "prague": 0,         // Prague is UTC +2
-  "budapest": 0,       // Budapest is UTC +2
-  "warsaw": 0,         // Warsaw is UTC +2
-  "belgrade": 0,       // Belgrade is UTC +2
-  "zagreb": 0,         // Zagreb is UTC +2
-  "reykjavik": -2,     // Reykjavik is UTC -0
-  "cape town": 0,      // Cape Town is UTC +2
-  "dakar": -2,         // Dakar is UTC -0
-  "beirut": 1,         // Beirut is UTC +3
-  "kabul": 3.5,        // Kabul is UTC +4.5
-  "batumi": 2,         // Batumi is UTC +4
-  "santiago": -5,      // Santiago is UTC -3
-  "asuncion": -5,      // Asuncion is UTC -3
-  "montevideo": -4,    // Montevideo is UTC -2
-  "guatemala city": -8,// Guatemala City is UTC -6
-  "san salvador": -8,  // San Salvador is UTC -6
-  "panama city": -7,   // Panama City is UTC -5
-  "cancun": -7,        // Cancun is UTC -5
-  "merida": -7,        // Merida is UTC -5
+  "new york": 6,      // New York is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "chicago": 7,       // Chicago is UTC -5 -> offset from Amsterdam (UTC +2) = +7
+  "los angeles": 9,   // Los Angeles is UTC -7 -> offset from Amsterdam (UTC +2) = +9
+  "orlando": 6,       // Orlando is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "san diego": 9,     // San Diego is UTC -7 -> offset from Amsterdam (UTC +2) = +9
+  "london": 1,        // London is UTC +0 -> offset from Amsterdam (UTC +2) = +1
+  "paris": 0,          // Paris is UTC +2 -> same as Amsterdam, so 0
+  "berlin": 0,         // Berlin is UTC +2 -> same as Amsterdam, so 0
+  "madrid": 0,         // Madrid is UTC +2 -> same as Amsterdam, so 0
+  "tokyo": -7,          // Tokyo is UTC +9 -> offset from Amsterdam (UTC +2) = -7
+  "sydney": -8,         // Sydney is UTC +10 -> offset from Amsterdam (UTC +2) = -8
+  "moscow": 1,         // Moscow is UTC +3 -> offset from Amsterdam (UTC +2) = +1
+  "cape town": 0,      // Cape Town is UTC +2 -> same as Amsterdam, so 0
+  "toronto": 6,       // Toronto is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "vancouver": 9,     // Vancouver is UTC -7 -> offset from Amsterdam (UTC +2) = +9
+  "mexico city": 8,   // Mexico City is UTC -6 -> offset from Amsterdam (UTC +2) = +8
+  "brazil": 7,        // Brazil is UTC -3 -> offset from Amsterdam (UTC +2) = +7
+  "uae": -2,            // UAE is UTC +4 -> offset from Amsterdam (UTC +2) = -2
+  "dubai": -2,          // Dubai is UTC +4 -> offset from Amsterdam (UTC +2) = -2
+  "india": -1.5,        // India is UTC +5.5 -> offset from Amsterdam (UTC +2) = -1.5
+  "japan": -7,          // Japan is UTC +9 -> offset from Amsterdam (UTC +2) = -7
+  "south korea": -7,    // South Korea is UTC +9 -> offset from Amsterdam (UTC +2) = -7
+  "china": -6,          // China is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "australia": -6,      // Australia is UTC +10 -> offset from Amsterdam (UTC +2) = -6
+  "amsterdam": 0,      // Amsterdam is UTC +2 -> same as itself, so 0
+  "rio de janeiro": 7,// Rio de Janeiro is UTC -3 -> offset from Amsterdam (UTC +2) = +7
+  "bogotá": 7,        // Bogotá is UTC -5 -> offset from Amsterdam (UTC +2) = +7
+  "quito": 7,         // Quito is UTC -5 -> offset from Amsterdam (UTC +2) = +7
+  "lima": 7,          // Lima is UTC -5 -> offset from Amsterdam (UTC +2) = +7
+  "caracas": 8.5,     // Caracas is UTC -4.5 -> offset from Amsterdam (UTC +2) = +8.5
+  "chennai": -1.5,      // Chennai is UTC +5.5 -> offset from Amsterdam (UTC +2) = -1.5
+  "seoul": -7,          // Seoul is UTC +9 -> offset from Amsterdam (UTC +2) = -7
+  "hong kong": -6,      // Hong Kong is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "manila": -6,         // Manila is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "kuala lumpur": -6,   // Kuala Lumpur is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "singapore": -6,      // Singapore is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "jakarta": -3,        // Jakarta is UTC +7 -> offset from Amsterdam (UTC +2) = -3
+  "bangkok": -3,        // Bangkok is UTC +7 -> offset from Amsterdam (UTC +2) = -3
+  "hanoi": -3,          // Hanoi is UTC +7 -> offset from Amsterdam (UTC +2) = -3
+  "bali": -6,           // Bali is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "bandung": -3,        // Bandung is UTC +7 -> offset from Amsterdam (UTC +2) = -3
+  "beijing": -6,        // Beijing is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "shanghai": -6,       // Shanghai is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "guangzhou": -6,      // Guangzhou is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "shenzhen": -6,       // Shenzhen is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "taipei": -6,         // Taipei is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "dallas": 7,        // Dallas is UTC -5 -> offset from Amsterdam (UTC +2) = +7
+  "atlanta": 6,       // Atlanta is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "miami": 6,         // Miami is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "washington dc": 6, // Washington DC is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "calgary": 9,       // Calgary is UTC -7 -> offset from Amsterdam (UTC +2) = +9
+  "ottawa": 6,        // Ottawa is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "hamilton": 6,      // Hamilton is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "montreal": 6,      // Montreal is UTC -4 -> offset from Amsterdam (UTC +2) = +6
+  "perth": -6,          // Perth is UTC +8 -> offset from Amsterdam (UTC +2) = -6
+  "adelaide": -5.5,     // Adelaide is UTC +9.5 -> offset from Amsterdam (UTC +2) = -5.5
+  "darwin": -5.5,       // Darwin is UTC +9.5 -> offset from Amsterdam (UTC +2) = -5.5
+  "melbourne": -6,      // Melbourne is UTC +10 -> offset from Amsterdam (UTC +2) = -6
+  "brisbane": -6,       // Brisbane is UTC +10 -> offset from Amsterdam (UTC +2) = -6
+  "cairns": -6,         // Cairns is UTC +10 -> offset from Amsterdam (UTC +2) = -6
+  "hobart": -6,         // Hobart is UTC +10 -> offset from Amsterdam (UTC +2) = -6
 };
 
 const opTimes = {
