@@ -996,6 +996,11 @@ document.getElementById('timezone-toggle').addEventListener('click', function ()
 </div>
 
 
+<div id="welcomeBanner" class="slide-in-banner shadow-sm">
+  <strong>[ WELCOME TO NSWDG-5 ]</strong>
+  <p class="mb-1">This portal is intended for candidates and assigned personnel.</p>
+  <a href="https://discord.gg/navalspecialwarfaregroup5" class="btn btn-sm btn-dark text-uppercase fw-bold px-3">Join our discord</a>
+</div>
 
 </body>
 <script>
@@ -1019,6 +1024,20 @@ function resetIdleTimer() {
 
 resetIdleTimer();
 </script>
+
+<script>
+window.addEventListener('load', () => {
+  const banner = document.getElementById('welcomeBanner');
+  setTimeout(() => {
+    banner.classList.add('active');
+  }, 1000); // 1 sec delay after page load
+
+  setTimeout(() => {
+    banner.classList.remove('active');
+  }, 8000); // stays for 7 seconds, then hides
+});
+</script>
+
 
 
 </html>

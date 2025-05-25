@@ -486,3 +486,24 @@ details[open] {
   letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(0, 128, 0, 0.2);
 }
+/* Slide-in Welcome Banner */
+#welcomeBanner {
+  position: fixed;
+  top: -200px;
+  left: 25px;
+  width: 300px;
+  background: #ffffff;
+  border-left: 4px solid #212529;
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 0.85rem;
+  z-index: 9999;
+  transition: top 0.6s ease-in-out;
+  opacity: 0;
+}
+
+#welcomeBanner.active {
+  top: 25px;
+  opacity: 1;
+}
