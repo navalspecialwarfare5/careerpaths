@@ -131,18 +131,22 @@
 
 </div>
 
+<div class="alert alert-dark border shadow-sm my-5">
+  <h5 class="text-uppercase mb-3 fw-bold">Is This Unit Right for You?</h5>
+  <ul class="mb-2">
+    <li>I want high-standard, realism-based gameplay — not casual fun.</li>
+    <li>I can attend at least one training or op per week.</li>
+    <li>I understand rank and role discipline — I follow orders and SOPs.</li>
+    <li>I have a mic and communicate clearly on comms without a static sound, background noise e.g.</li>
+    <li>I’m 18+ and can behave maturely in a team environment and take constructive feedback well.</li>
+  </ul>
+  <p class="text-muted small mb-3">
+    If you said “yes” to all, fill the form below out and a recruiter will reach out to you in 1–3 days at most.
+  </p>
 
-    <div class="alert alert-dark border shadow-sm my-5">
-      <h5 class="text-uppercase mb-3 fw-bold">Is This Unit Right for You?</h5>
-      <ul class="mb-2">
-        <li>I want high-standard, realism-based   gameplay — not casual fun.</li>
-        <li>I can attend at least one training or op per week.</li>
-        <li>I understand rank and role discipline — I follow orders and SOPs.</li>
-        <li>I have a mic and communicate clearly on comms without a static sound, background noise e.g.</li>
-        <li>I’m 18+ and can behave maturely in a team environment and take constructive feedback well.</li>
-      </ul>
-      <p class="text-muted small mb-0">If you said “yes” to all, fill the form below out and a recruiter will reach out to you in 1-3 days at most.</p>
-    </div>
+
+</div>
+
 
     <div class="form-section">
       <form id="applicationForm">
@@ -255,10 +259,8 @@
     </div>
   </div>
 
-  
 
-  
-  
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -358,6 +360,8 @@
   </div>
 </div>
 
+
+
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     const modal = new bootstrap.Modal(document.getElementById('entryModal'));
@@ -384,3 +388,23 @@
 </body>
 
 </html>
+<script>
+function submitReadiness() {
+  const correct = [0, 0, 0, 1]; // correct answer indices
+  let score = 0;
+
+  for (let i = 1; i <= 4; i++) {
+    const selected = document.querySelector(`input[name="q" + i]:checked`);
+    if (selected && parseInt(selected.value) === correct[i - 1]) {
+      score++;
+    }
+  }
+
+  const message = score >= 3
+    ? "✅ You're showing strong mindset indicators. You might be a great fit for NSWDG-5 — a recruiter will reach out."
+    : "⚠️ Great effort. Your mindset shows potential — review our SOPs and CQB basics, and we’d still love to hear from you.";
+
+  alert(`You scored ${score}/4.\n\n${message}`);
+}
+
+</script>
