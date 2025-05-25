@@ -1283,7 +1283,7 @@ const tzOffsets = {
   "south korea": 7,
   "china": 6,
   "australia": 8,
-  "amsterdam": 0,
+  "amsterdam": 2,  // Corrected for daylight saving time (CEST, UTC+2)
   "rio de janeiro": -5,
   "bogotá": -7,
   "quito": -7,
@@ -1488,11 +1488,10 @@ const tzOffsets = {
 };
 
 
-
 const opTimes = {
-  "Friday": 20,     // 10PM Netherlands = 20:00 UTC
-  "Saturday": 17,   // 7PM Netherlands = 17:00 UTC
-  "Sunday": 13      // 3PM Netherlands = 13:00 UTC
+  "Friday": 22,     // 10PM Netherlands = 22:00 CEST (UTC+2)
+  "Saturday": 19,   // 7PM Netherlands = 19:00 CEST (UTC+2)
+  "Sunday": 15      // 3PM Netherlands = 15:00 CEST (UTC+2)
 };
 
 function showTimes() {
