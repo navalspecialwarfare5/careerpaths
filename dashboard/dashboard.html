@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="icon" type="image/png" href="../trident.png">
-    <title>Naval Special Warfare Development Group 5</title>
-    <meta property="og:title" content="Naval Special Warfare Development Group 5 - Milsim">
-    <meta property="og:description" content="Naval Special Warfare Development Group 5 is a hardcore milsim unit simulating DEVGRU SEAL operations with realistic tactics, direct action, maritime operations and recon missions.">
-    <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png">
-    <meta property="og:url" content="http://navalspecialwarfaregroup5.com/">
+  <link rel="icon" type="image/png" href="DoD.svg">
+  <title>Joint Operations Dashboard</title>
+  <meta property="og:title" content="Department of Defense Joint Operations Portal">
+  <meta property="og:description" content="A cross-branch command interface for document control, logistics, and inter-unit coordination.">
+  <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png">
+  <meta property="og:url" content="http://navalspecialwarfaregroup5.com/">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Source Sans Pro', sans-serif;
-      background-color: #f1f1f1;
+      background-color: #f5f5f5;
     }
     .classification {
-      background-color: #dee2e6;
+      background-color: #e4e4e4;
       text-align: center;
       padding: 0.5rem;
       font-weight: bold;
@@ -26,52 +26,52 @@
       border-bottom: 1px solid #bbb;
     }
     .header {
-      background-color: #003366;
+      background-color: #1a1a1a;
       color: white;
       padding: 2rem 1rem;
       text-align: center;
       border-bottom: 4px solid #adb5bd;
     }
-    .navy-logo {
-      height: 64px;
-      margin-bottom: 0.75rem;
-    }
     .header h1 {
-      font-size: 1.4rem;
-      letter-spacing: 2px;
+      font-size: 1.5rem;
       text-transform: uppercase;
-      margin: 0;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.25rem;
     }
-    .subheader {
+    .header .subheader {
       font-size: 0.85rem;
-      color: #ced4da;
+      color: #d4d4d4;
+    }
+    .user-bar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1rem;
+      background-color: #1a1a1a;
+      color: white;
+      font-size: 0.85rem;
+      z-index: 1000;
+      border-bottom-left-radius: 8px;
     }
     .main-container {
-      max-width: 1440px;
-      margin: 3rem auto;
+      max-width: 1600px;
+      margin: 5rem auto 4rem auto;
       background-color: #ffffff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
-    
+      padding: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
     }
-
-        .doc-card p {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-    
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      color: #003366;
+      color: #1a1a1a;
       border-bottom: 2px solid #ccc;
       padding-bottom: 0.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .filters {
+      margin-bottom: 2rem;
     }
     .doc-card {
       border: 1px solid #ced4da;
@@ -80,22 +80,11 @@
       background-color: #ffffff;
       transition: box-shadow 0.2s;
     }
-
-    .doc-card p, h1, h2, h3, h4, h5 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines before cutting */
-  -webkit-box-orient: vertical;
-  max-height: 4.5em; /* controls height before ellipsis shows */
-}
-
-
     .doc-card:hover {
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     .doc-card h5 {
-      color: #003366;
+      color: #1a1a1a;
     }
     .badge {
       margin-right: 0.25rem;
@@ -103,138 +92,191 @@
     }
     .footer {
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: #666;
       margin-top: 4rem;
       padding: 1rem;
     }
-    .user-bar {
-      position: fixed;
-      top: 0;
-      right: 0;
-      padding: 0.75rem 1rem;
-      background-color: #003366;
-      color: white;
-      font-size: 0.85rem;
-      z-index: 1000;
-      border-bottom-left-radius: 8px;
-    }
+      .badge.bg-dark, .badge.bg-secondary, .badge.bg-info, .badge.bg-success, .badge.bg-primary, .badge.bg-danger {
+    background-color: #3a3a3a !important;
+    color: #f0f0f0;
+    font-weight: 600;
+    border-radius: 2px;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
   </style>
 </head>
 <body>
-  <div class="classification">UNCLASSIFIED // FOR OFFICIAL USE ONLY</div>
+  <div class="classification">SECRET // JOINT INTER-AGENCY OPS // COMPARTMENTALIZED</div>
   <div class="user-bar">
-    Signed in as: <strong>evans@nswdg</strong> · <a href="#" class="text-white text-decoration-underline" onclick="triggerLogout()">Logout</a>
+    Signed in as: <strong id="userEmail">[user]</strong> · <a href="#" class="text-white text-decoration-underline" onclick="triggerLogout()">Logout</a>
   </div>
-
   <div class="header">
-    <img src="navy.png" alt="U.S. Navy Emblem" class="navy-logo">
-    <h1>NSWDG MISSION & PERSONNEL DASHBOARD</h1>
-    <div class="subheader">JSOC Secured Node · Last Access Logged</div>
+    <h1>DEPARTMENT OF DEFENSE // JOINT OPERATIONS DASHBOARD</h1>
+    <div class="subheader">Multi-Domain Command Environment · Real-Time Cross-Unit Access</div>
   </div>
-
   <div class="container main-container">
-    <div class="section-title">Document Management</div>
-    <div class="row mb-4">
-      <div class="col-md-6">
-        <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Search documents...">
-      </div>
+    <div class="section-title">Mission Center: Document & Logistics Overview</div>
+    <div class="row filters align-items-end mb-4">
       <div class="col-md-3">
+        <label class="form-label">Search</label>
+        <input type="text" id="searchInput" class="form-control" placeholder="Search title, content, author...">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Type</label>
         <select id="typeFilter" class="form-select">
-          <option value="">All Types</option>
-          <option value="WARNO">WARNO</option>
+          <option value="">All</option>
           <option value="OPORD">OPORD</option>
+          <option value="WARNO">WARNO</option>
+          <option value="FRAGO">FRAGO</option>
           <option value="AAR">AAR</option>
-          <option value="Service Record">Service Record</option>
-          <option value="Discharge">Discharge</option>
-          <option value="SIGINT">SIGINT</option>
-          <option value="HUMINT">HUMINT</option>
+          <option value="INTSUM">INTSUM</option>
+          <option value="LOGREP">LOGREP</option>
         </select>
       </div>
-      <div class="col-md-3 text-end">
-        <a href="create.html" class="btn btn-success">Create New</a>
+      <div class="col-md-2">
+        <label class="form-label">Unit</label>
+        <select id="unitFilter" class="form-select">
+          <option value="">All</option>
+          <option value="NSWDG">NSWDG</option>
+          <option value="CAG">CAG</option>
+          <option value="24 STS">24 STS</option>
+          <option value="160 SOAR">160 SOAR</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">AO</label>
+        <select id="aoFilter" class="form-select">
+          <option value="">All</option>
+          <option value="Mandol Province">Mandol Province</option>
+          <option value="Raqqa Corridor">Raqqa Corridor</option>
+          <option value="Al-Kafr Delta">Al-Kafr Delta</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Status</label>
+        <select id="statusFilter" class="form-select">
+          <option value="">All</option>
+          <option value="ACTIVE">ACTIVE</option>
+          <option value="COMPLETED">COMPLETED</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+      </div>
+      <div class="col-md-1 text-end">
+        <a href="#" class="btn btn-success w-100">+ New</a>
       </div>
     </div>
 
     <div class="row g-4" id="docList">
-      <!-- Dynamic content -->
+      <!-- PLACEHOLDER DOCUMENTS -->
     </div>
   </div>
-
   <div class="footer">
-    United States Navy · Naval Special Warfare Command<br>
-    <code>NSWDG-FILESYS · INTERNAL ACCESS NODE · LOGGED · DO NOT DISTRIBUTE</code>
+    Department of Defense · Joint Special Operations Portal<br>
+    <code>DOD-CROSSNODE v4.9 · ENCRYPTED ACCESS · LOGGED</code>
   </div>
-
-<!-- Logout Modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-center">
-      <div class="modal-body py-5">
-        <div class="spinner-border text-primary mb-3" role="status"></div>
-        <h5 class="mb-0 text-uppercase text-muted">Signing Out</h5>
-        <p class="small text-muted">Secure session terminating... Standby.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 
   <script>
+    const placeholderDocs = [
+      {
+        title: "OPORD: Operation Shadow Dagger",
+        type: "OPORD",
+        unit: "NSWDG",
+        date: "2025-05-20",
+        author: "Cmdr. R. Evans",
+        summary: "Direct action mission targeting HVT in Mandol Province. Air and ground infiltration with ISR and QRF support.",
+        ao: "Mandol Province",
+        status: "ACTIVE"
+      },
+      {
+        title: "AAR: VBSS Raid – Gulf of Oman",
+        type: "AAR",
+        unit: "24 STS",
+        date: "2025-05-18",
+        author: "Maj. T. Roach",
+        summary: "Debrief of maritime boarding and hostage recovery on oil vessel seized by hostile forces.",
+        ao: "Gulf of Oman",
+        status: "COMPLETED"
+      },
+      {
+        title: "INTSUM 042: Raqqa Supply Routes",
+        type: "INTSUM",
+        unit: "CAG",
+        date: "2025-05-15",
+        author: "Capt. L. Jagielo",
+        summary: "Analysis of arms smuggling via agricultural convoys into southern Raqqa Corridor.",
+        ao: "Raqqa Corridor",
+        status: "ACTIVE"
+      },
+      {
+        title: "LOGREP: Al-Kafr Delta Staging",
+        type: "LOGREP",
+        unit: "160 SOAR",
+        date: "2025-05-10",
+        author: "CW4 D. Curtis",
+        summary: "Transported 4 MRZR, 2 CASEVAC birds, and refueling drums to AO staging zone for upcoming infil.",
+        ao: "Al-Kafr Delta",
+        status: "ACTIVE"
+      }
+    ];
+
     function renderDocuments() {
       const list = document.getElementById('docList');
-      const filter = document.getElementById('typeFilter').value;
+      const filterType = document.getElementById('typeFilter').value;
+      const filterUnit = document.getElementById('unitFilter').value;
+      const filterAO = document.getElementById('aoFilter').value;
+      const filterStatus = document.getElementById('statusFilter').value;
       const search = document.getElementById('searchInput').value.toLowerCase();
-      const stored = JSON.parse(localStorage.getItem('nswdg_docs') || '[]');
 
       list.innerHTML = '';
 
-      stored.filter(doc => {
-        return (!filter || doc.type === filter) &&
-               (doc.title.toLowerCase().includes(search) || doc.author.toLowerCase().includes(search));
+      placeholderDocs.filter(doc => {
+        return (!filterType || doc.type === filterType)
+          && (!filterUnit || doc.unit === filterUnit)
+          && (!filterAO || doc.ao === filterAO)
+          && (!filterStatus || doc.status === filterStatus)
+          && (doc.title.toLowerCase().includes(search) || doc.author.toLowerCase().includes(search) || doc.summary.toLowerCase().includes(search));
       }).forEach((doc, index) => {
         const card = document.createElement('div');
-        card.className = 'col-md-4';
-        card.innerHTML = `
-          <div class="doc-card">
-            <h5>${doc.title}</h5>
-            <span class="badge bg-secondary">${doc.type}</span>
-            <p><strong>Date:</strong> ${doc.date}</p>
-            <p><strong>Author:</strong> ${doc.author}</p>
-            <p>${doc.summary}</p>
-            <div class="d-flex justify-content-between">
-             <a href="view.html?id=${index}" class="btn btn-sm btn-outline-primary">View</a>
-              <button class="btn btn-sm btn-outline-danger" onclick="confirmDelete(${index})">Delete</button>
-            </div>
-          </div>
-        `;
+        card.className = 'col-md-6 col-xl-4';
+         card.innerHTML = `
+    <div class="doc-card">
+      <h5>${doc.title}</h5>
+      <span class="badge bg-dark">${doc.type}</span>
+      <span class="badge bg-secondary">${doc.unit}</span>
+      <span class="badge bg-info">${doc.ao}</span>
+      <span class="badge bg-outline">${doc.status}</span>
+      <p class="mt-2 mb-1"><strong>Date:</strong> ${doc.date}</p>
+      <p class="mb-2"><strong>Author:</strong> ${doc.author}</p>
+      <p>${doc.summary}</p>
+      <a href="view.html?id=${index}" class="btn btn-sm btn-outline-secondary w-100 mt-2">View Document</a>
+    </div>
+  `;
         list.appendChild(card);
       });
     }
 
-    function confirmDelete(index) {
-      if (confirm('Are you sure you want to delete this document?')) {
-        const stored = JSON.parse(localStorage.getItem('nswdg_docs') || '[]');
-        stored.splice(index, 1);
-        localStorage.setItem('nswdg_docs', JSON.stringify(stored));
-        renderDocuments();
-      }
+    document.querySelectorAll('select, input').forEach(el => {
+      el.addEventListener('input', renderDocuments);
+    });
+
+    window.onload = function() {
+      const email = localStorage.getItem('dod_user') || 'unknown';
+      document.getElementById('userEmail').innerText = email;
+      renderDocuments();
+    };
+
+    function triggerLogout() {
+      const modal = new bootstrap.Modal(document.getElementById('logoutModal'));
+      modal.show();
+      setTimeout(() => {
+        localStorage.removeItem('dod_user');
+        localStorage.removeItem('dod_docs');
+        window.location.href = 'index.html';
+      }, 3000);
     }
-
-    document.getElementById('searchInput').addEventListener('input', renderDocuments);
-    document.getElementById('typeFilter').addEventListener('change', renderDocuments);
-    window.onload = renderDocuments;
-
-      function triggerLogout() {
-    const modal = new bootstrap.Modal(document.getElementById('logoutModal'));
-    modal.show();
-
-    setTimeout(() => {
-      localStorage.removeItem('nswdg_user');
-      localStorage.removeItem('nswdg_docs');
-      window.location.href = 'index.html';
-    }, 3000); // 3 seconds delay
-  }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

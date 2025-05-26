@@ -2,26 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NSWDG Document Access Portal</title>
- <link rel="icon" type="image/png" href="../trident.png">
-    <title>Naval Special Warfare Development Group 5</title>
-    <meta property="og:title" content="Naval Special Warfare Development Group 5 - Milsim">
-    <meta property="og:description" content="Naval Special Warfare Development Group 5 is a hardcore milsim unit simulating DEVGRU SEAL operations with realistic tactics, direct action, maritime operations and recon missions.">
-    <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png">
-    <meta property="og:url" content="http://navalspecialwarfaregroup5.com/">
+  <title>DoD Joint Operations Portal</title>
+  <link rel="icon" type="image/png" href="DoD.svg">
+  <meta property="og:title" content="Department of Defense Joint Operations Portal">
+  <meta property="og:description" content="A cross-unit secure infrastructure for mission planning, document management, and joint logistics coordination.">
+  <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png">
+  <meta property="og:url" content="http://navalspecialwarfaregroup5.com/">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Source Sans Pro', sans-serif;
       background-color: #f1f1f1;
       margin: 0;
       padding: 0;
     }
-
     .classification {
       background-color: #e1e1e1;
       color: #333;
@@ -33,20 +30,17 @@
       letter-spacing: 1px;
       border-bottom: 1px solid #bbb;
     }
-
     .header {
-      background-color: #003366;
+      background-color: #1a1a1a;
       color: white;
       padding: 1.5rem 2rem 1rem 2rem;
       border-bottom: 4px solid #c0c0c0;
       text-align: center;
     }
-
     .navy-logo {
       height: 64px;
       margin-bottom: 0.75rem;
     }
-
     .header h1 {
       font-size: 1.4rem;
       margin: 0;
@@ -54,13 +48,11 @@
       letter-spacing: 1.8px;
       font-weight: 600;
     }
-
     .subheader {
       font-size: 0.85rem;
       color: #dcdcdc;
       margin-top: 0.25rem;
     }
-
     @keyframes fadeInSecure {
       0% {
         opacity: 0;
@@ -71,7 +63,6 @@
         transform: translateY(0);
       }
     }
-
     .login-container {
       max-width: 500px;
       margin: 4rem auto;
@@ -82,17 +73,15 @@
       animation: fadeInSecure 1.4s ease-out both;
       opacity: 0;
     }
-
     .login-container h2 {
       font-size: 1rem;
-      color: #003366;
+      color: #1a1a1a;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 1.5rem;
       border-bottom: 1px solid #ccc;
       padding-bottom: 0.5rem;
     }
-
     label {
       display: block;
       font-weight: 600;
@@ -100,7 +89,6 @@
       font-size: 0.9rem;
       color: #222;
     }
-
     input[type="text"],
     input[type="password"] {
       width: 100%;
@@ -110,11 +98,10 @@
       margin-bottom: 1.25rem;
       font-size: 0.9rem;
     }
-
     button {
       width: 100%;
       padding: 0.75rem;
-      background-color: #003366;
+      background-color: #1a1a1a;
       color: white;
       font-weight: 600;
       border: none;
@@ -124,18 +111,15 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
     button:hover {
-      background-color: #00284d;
+      background-color: #000;
     }
-
     .error-msg {
       margin-top: 1rem;
       font-size: 0.85rem;
       color: #a52828;
       text-align: center;
     }
-
     .footer {
       text-align: center;
       font-size: 0.75rem;
@@ -143,7 +127,6 @@
       margin-top: 4rem;
       padding: 1rem;
     }
-
     .footer code {
       font-family: 'Courier New', monospace;
       font-size: 0.75rem;
@@ -152,42 +135,32 @@
   </style>
 </head>
 <body>
-
   <div class="classification">UNCLASSIFIED // FOR OFFICIAL USE ONLY</div>
-
   <div class="header">
-    <img src="navy.png" alt="U.S. Navy Emblem" class="navy-logo">
-    <h1>NAVAL SPECIAL WARFARE DOCUMENT ACCESS PORTAL</h1>
-    <div class="subheader">Command-Sensitive · Controlled Access Terminal</div>
+    <img src="DoD.svg" alt="DoD Emblem" class="navy-logo">
+    <h1>JOINT OPERATIONS ACCESS PORTAL</h1>
+    <div class="subheader">Department of Defense · Secure Terminal Access</div>
   </div>
-
   <div class="login-container">
-    <h2>Authorized User Login</h2>
-
-    <label for="email">Email / NMCI Username</label>
-    <input type="text" id="email" placeholder="e.g. first.last@navy.mil" autocomplete="off"/>
-
+    <h2>Authorized Access Only</h2>
+    <label for="email">Email / Unit Credential</label>
+    <input type="text" id="email" placeholder="e.g. first.last@unit.mil" autocomplete="off"/>
     <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter secure credentials" autocomplete="off"/>
-
+    <input type="password" id="password" placeholder="Enter credentials" autocomplete="off"/>
     <button onclick="login()">Access Portal</button>
     <div id="error-msg" class="error-msg"></div>
   </div>
-
   <div class="footer">
-    United States Navy · Naval Special Warfare Command<br>
-    <code>NSWDG-FILESYS · SECURE DOCUMENT TERMINAL v3.2 · USG PROPERTY</code>
+    Department of Defense · Joint Special Operations Infrastructure<br>
+    <code>DOD-JSOG-P3.2 · CLASSIFIED NETWORK TOOLS</code>
   </div>
-
   <script>
     const users = [
       {
         email: "evans@nswdg",
-        hash: "e604f8c97caaadb4c15db94f28d54802722aeba64e375071e4d1eeb1a3cc68fa"
+        hash: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
       },
     ];
-
-
     async function sha256(text) {
       const encoder = new TextEncoder();
       const data = encoder.encode(text);
@@ -196,18 +169,16 @@
         .map(b => b.toString(16).padStart(2, '0'))
         .join('');
     }
-
     async function login() {
       const email = document.getElementById("email").value.trim().toLowerCase();
       const password = document.getElementById("password").value;
       const hash = await sha256(password);
       const match = users.find(u => u.email === email && u.hash === hash);
-
       if (match) {
-        localStorage.setItem("nswdg_user", email);
+        localStorage.setItem("dod_user", email);
         window.location.href = "dashboard.html";
       } else {
-        document.getElementById("error-msg").innerText = "Access Denied — Credentials invalid or insufficient clearance.";
+        document.getElementById("error-msg").innerText = "Access Denied — Invalid credentials or insufficient clearance.";
       }
     }
   </script>
