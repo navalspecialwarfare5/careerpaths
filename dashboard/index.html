@@ -135,6 +135,72 @@
   </style>
 </head>
 <body>
+
+  <div id="fictionalOverlay" style="
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  color: black;
+  z-index: 99999;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  border: 10px solid transparent;
+  border-image: repeating-linear-gradient(45deg, red, red 10px, black 10px, black 20px) 10 stretch;
+">
+  <div style="max-width: 620px;">
+    <p style="margin:0 0 0.5rem; font-size:1rem; line-height:1.4;">
+       IMPORTANT LEGAL NOTICE: THIS ENTIRE PLATFORM, ALL CONTENT, AND ALL DATA ARE <strong>COMPLETELY FICTIONAL</strong>. THIS SITE EXISTS SOLELY FOR ENTERTAINMENT, SIMULATION, AND ROLEPLAY PURPOSES.
+    </p>
+
+    <p style="
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+    ">NO CONNECTION TO ANY GOVERNMENT ENTITY OR MILITARY ORGANIZATION</p>
+
+    <p style="
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+    "><strong>NOFORN</strong> - Not Releasable to Foreign Nationals</p>
+
+    <p style="font-size: 0.9rem;">
+      This document and its contents are entirely fictional and<br>
+      created solely for immersive, entertainment, and educational purposes.<br>
+      Any references to U.S. laws, programs, or classification levels are<br>
+      simulated for realism and have no legal or operational significance.
+    </p>
+
+    <div style="font-size: 1.1rem; font-weight: bold; margin-top: 2rem;">
+      🔺 NATIONAL SECURITY INFORMATION 🔺<br>
+      <span style="font-weight: normal;">Unauthorized Disclosure Subject to Criminal Sanctions</span>
+    </div>
+
+    <button onclick="dismissOverlay()" style="
+      margin-top: 2rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    ">Acknowledge</button>
+  </div>
+</div>
+
+
+
   <div class="classification">UNCLASSIFIED // FOR OFFICIAL USE ONLY</div>
   <div class="header">
     <img src="DoD.svg" alt="DoD Emblem" class="navy-logo">
@@ -181,6 +247,21 @@
         document.getElementById("error-msg").innerText = "Access Denied — Invalid credentials or insufficient clearance.";
       }
     }
+
+    window.onload = () => {
+  if (!localStorage.getItem("fictionalAcknowledged")) {
+    document.getElementById("fictionalOverlay").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+};
+
+function dismissOverlay() {
+  localStorage.setItem("fictionalAcknowledged", "true");
+  document.getElementById("fictionalOverlay").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
   </script>
 </body>
 </html>
+
