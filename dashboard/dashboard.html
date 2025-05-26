@@ -179,48 +179,38 @@
   </div>
 
   <script>
-    const placeholderDocs = [
-      {
-        title: "OPORD: Operation Shadow Dagger",
-        type: "OPORD",
-        unit: "NSWDG",
-        date: "2025-05-20",
-        author: "Cmdr. R. Evans",
-        summary: "Direct action mission targeting HVT in Mandol Province. Air and ground infiltration with ISR and QRF support.",
-        ao: "Mandol Province",
-        status: "ACTIVE"
-      },
-      {
-        title: "AAR: VBSS Raid – Gulf of Oman",
-        type: "AAR",
-        unit: "24 STS",
-        date: "2025-05-18",
-        author: "Maj. T. Roach",
-        summary: "Debrief of maritime boarding and hostage recovery on oil vessel seized by hostile forces.",
-        ao: "Gulf of Oman",
-        status: "COMPLETED"
-      },
-      {
-        title: "INTSUM 042: Raqqa Supply Routes",
-        type: "INTSUM",
-        unit: "CAG",
-        date: "2025-05-15",
-        author: "Capt. L. Jagielo",
-        summary: "Analysis of arms smuggling via agricultural convoys into southern Raqqa Corridor.",
-        ao: "Raqqa Corridor",
-        status: "ACTIVE"
-      },
-      {
-        title: "LOGREP: Al-Kafr Delta Staging",
-        type: "LOGREP",
-        unit: "160 SOAR",
-        date: "2025-05-10",
-        author: "CW4 D. Curtis",
-        summary: "Transported 4 MRZR, 2 CASEVAC birds, and refueling drums to AO staging zone for upcoming infil.",
-        ao: "Al-Kafr Delta",
-        status: "ACTIVE"
-      }
-    ];
+   const placeholderDocs = [
+  { title: "OPORD: Operation Shadow Dagger", type: "OPORD", unit: "NSWDG", date: "2025-05-20", author: "Cmdr. R. Evans", summary: "Direct action mission targeting HVT in Mandol Province. Air and ground infiltration with ISR and QRF support.", ao: "Mandol Province", status: "ACTIVE" },
+  { title: "AAR: VBSS Raid – Gulf of Oman", type: "AAR", unit: "24 STS", date: "2025-05-18", author: "Maj. T. Roach", summary: "Debrief of maritime boarding and hostage recovery on oil vessel seized by hostile forces.", ao: "Gulf of Oman", status: "COMPLETED" },
+  { title: "INTSUM 042: Raqqa Supply Routes", type: "INTSUM", unit: "CAG", date: "2025-05-15", author: "Capt. L. Jagielo", summary: "Analysis of arms smuggling via agricultural convoys into southern Raqqa Corridor.", ao: "Raqqa Corridor", status: "ACTIVE" },
+  { title: "LOGREP: Al-Kafr Delta Staging", type: "LOGREP", unit: "160 SOAR", date: "2025-05-10", author: "CW4 D. Curtis", summary: "Transported 4 MRZR, 2 CASEVAC birds, and refueling drums to AO staging zone for upcoming infil.", ao: "Al-Kafr Delta", status: "ACTIVE" },
+  { title: "SITREP 079: Objective RAVEN Nest", type: "SITREP", unit: "NSWDG", date: "2025-05-09", author: "Lt. J. Stone", summary: "Patrol complete, no contact, SIGINT confirms presence of foreign advisory element near AO.", ao: "Idlib Highlands", status: "ACTIVE" },
+  { title: "OPORD: Operation Crimson Spear", type: "OPORD", unit: "CAG", date: "2025-05-07", author: "Maj. B. Rodgers", summary: "Joint raid with 24 STS on weapons lab north of Raqqa. Nighttime HALO insertion.", ao: "Northern Raqqa", status: "ACTIVE" },
+  { title: "AAR: Operation Final Harbor", type: "AAR", unit: "NSWDG", date: "2025-05-05", author: "Cmdr. R. Evans", summary: "Hostage rescue aboard seized freighter. All hostages recovered, 2 enemy KIA.", ao: "Strait of Hormuz", status: "COMPLETED" },
+  { title: "INTSUM 040: Smuggler Crossings – Iraq Border", type: "INTSUM", unit: "24 STS", date: "2025-05-02", author: "Capt. S. Papo", summary: "Visual confirmation of HVT-associated vehicles transiting unguarded oil routes into Syria.", ao: "Iraq-Syria Border", status: "ACTIVE" },
+  { title: "LOGREP: FOB Sa’hatra Replenishment", type: "LOGREP", unit: "160 SOAR", date: "2025-04-30", author: "CW4 D. Curtis", summary: "Resupply run completed for western FOB; 3 pallets of munitions and 2 CASEVAC rotations.", ao: "Sa’hatra", status: "COMPLETED" },
+  { title: "SITREP 074: Civilian Interference Incident", type: "SITREP", unit: "CAG", date: "2025-04-28", author: "Maj. B. Rodgers", summary: "Operational disruption due to civilian motor convoy in kill zone. Adjusted ROE to avoid escalation.", ao: "Raqqa Corridor", status: "ACTIVE" },
+  { title: "OPORD: Operation Night Raptor", type: "OPORD", unit: "24 STS", date: "2025-04-26", author: "Lt. K. Slade", summary: "Covert exfil of US national from HVT compound in eastern Aleppo. UAV coverage prioritized.", ao: "Eastern Aleppo", status: "ACTIVE" },
+  { title: "AAR: ISR Denial Mission", type: "AAR", unit: "CAG", date: "2025-04-24", author: "Capt. L. Jagielo", summary: "Destroyed enemy drone relay node. No casualties. Positive BDA confirmed via thermal.", ao: "Hasakah Outskirts", status: "COMPLETED" },
+  { title: "INTSUM 038: Local Militia Funding Routes", type: "INTSUM", unit: "NSWDG", date: "2025-04-22", author: "Lt. J. Stone", summary: "Capture of financial records from bombmaker safehouse reveals Turkish NGO laundering loop.", ao: "Kobane", status: "ACTIVE" },
+  { title: "LOGREP: UAV Launch Platform Transport", type: "LOGREP", unit: "160 SOAR", date: "2025-04-20", author: "CW2 M. Brody", summary: "Forward-deployed mobile UAV platform near border ridge. 1x battery swap and uplink antenna established.", ao: "Southern Border Ridge", status: "ACTIVE" },
+  { title: "SITREP 068: Vehicle Breakdown During Exfil", type: "SITREP", unit: "24 STS", date: "2025-04-18", author: "Capt. S. Papo", summary: "MRZR lost power en route to pickup point. Extracted via secondary QRF.", ao: "Desert Route Vulture", status: "COMPLETED" },
+  { title: "OPORD: Operation Iron Torch", type: "OPORD", unit: "CAG", date: "2025-04-16", author: "Maj. B. Rodgers", summary: "Urban capture/kill op. Suspected Iranian liaison in al-Hamidiyah apartments.", ao: "Deir ez-Zor", status: "ACTIVE" },
+  { title: "AAR: Operation Deep Specter", type: "AAR", unit: "NSWDG", date: "2025-04-14", author: "Cmdr. R. Evans", summary: "Snatch team inserted via submersible. Objective secured. 0 friendly casualties.", ao: "Latakia Port", status: "COMPLETED" },
+  { title: "INTSUM 035: IED Technician Movement", type: "INTSUM", unit: "CAG", date: "2025-04-12", author: "Capt. L. Jagielo", summary: "HVT shifted south under false documentation. HUMINT confirms recent training cell formation.", ao: "Homs Region", status: "ACTIVE" },
+  { title: "LOGREP: Hangar 4 Explosive Ordinance Transfer", type: "LOGREP", unit: "160 SOAR", date: "2025-04-10", author: "CW4 D. Curtis", summary: "155mm shells and detonation kits transferred under armed escort. Storage code verified.", ao: "Al Udeid Air Base", status: "COMPLETED" },
+  { title: "SITREP 063: Enemy Movement Through Orchard Valley", type: "SITREP", unit: "24 STS", date: "2025-04-08", author: "Lt. K. Slade", summary: "Thermals confirm 4-vehicle convoy using defunct irrigation paths. Drone tasking adjusted.", ao: "Orchard Valley", status: "ACTIVE" },
+  { title: "OPORD: Operation Shattered Veil", type: "OPORD", unit: "NSWDG", date: "2025-04-06", author: "Cmdr. R. Evans", summary: "SEAD followed by fast-rope entry into compound. Hostile drone uplink targeted first.", ao: "Sahl al-Ghab", status: "ACTIVE" },
+  { title: "AAR: Recon Drone Interference", type: "AAR", unit: "160 SOAR", date: "2025-04-04", author: "CW2 M. Brody", summary: "Malfunction due to GPS spoofing suspected. Post-flight analysis ongoing.", ao: "Eastern Ridge", status: "COMPLETED" },
+  { title: "INTSUM 032: Safehouse Activity Surge", type: "INTSUM", unit: "24 STS", date: "2025-04-02", author: "Capt. S. Papo", summary: "Thermal scans show increased heat signatures after recent airstrike. Target likely displaced.", ao: "Jarabulus Sector", status: "ACTIVE" },
+  { title: "LOGREP: Night Fuel Drop Confirmed", type: "LOGREP", unit: "160 SOAR", date: "2025-03-31", author: "CW4 D. Curtis", summary: "2x CH-47s conducted low-profile fuel drop. No visual contact with hostiles.", ao: "Zone NOVEMBER", status: "COMPLETED" },
+  { title: "SITREP 059: Unknown Heat Sig Detected", type: "SITREP", unit: "CAG", date: "2025-03-29", author: "Maj. B. Rodgers", summary: "Unexplained thermal source at old schoolhouse. Air recon scheduled.", ao: "Tadmur Valley", status: "ACTIVE" },
+  { title: "OPORD: Operation Frost Echo", type: "OPORD", unit: "24 STS", date: "2025-03-27", author: "Lt. K. Slade", summary: "Winter recon with mountaineering team. Objective: scout escape tunnels.", ao: "Latakia Highlands", status: "ACTIVE" },
+  { title: "AAR: CQC Facility Training – Week 14", type: "AAR", unit: "NSWDG", date: "2025-03-25", author: "Cmdr. R. Evans", summary: "Indoor sim raid with red team. 2 simulated KIA, training success overall.", ao: "Dam Neck Annex", status: "COMPLETED" },
+  { title: "INTSUM 030: New Radio Traffic Analysis", type: "INTSUM", unit: "CAG", date: "2025-03-22", author: "Capt. L. Jagielo", summary: "Decoded chatter links HVT to new courier team operating inside rebel zones.", ao: "Eastern Syria", status: "ACTIVE" },
+  { title: "LOGREP: Route Clearance Ops Prep", type: "LOGREP", unit: "160 SOAR", date: "2025-03-20", author: "CW4 D. Curtis", summary: "Deployed route clearance drones with demo charges to soften path for friendly columns.", ao: "Route SPECTRE", status: "ACTIVE" }
+];
+
 
     function renderDocuments() {
       const list = document.getElementById('docList');
