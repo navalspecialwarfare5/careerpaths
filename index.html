@@ -1539,73 +1539,24 @@ document.getElementById('triggerPortalModal').addEventListener('click', function
 
 <script>
 const tzOffsets = {
-  "new york": 6,      // New York is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "chicago": 7,       // Chicago is UTC -5 -> offset from Amsterdam (UTC +2) = +7
-  "los angeles": 9,   // Los Angeles is UTC -7 -> offset from Amsterdam (UTC +2) = +9
-  "orlando": 6,       // Orlando is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "san diego": 9,     // San Diego is UTC -7 -> offset from Amsterdam (UTC +2) = +9
-  "london": 1,        // London is UTC +0 -> offset from Amsterdam (UTC +2) = +1
-  "paris": 0,          // Paris is UTC +2 -> same as Amsterdam, so 0
-  "berlin": 0,         // Berlin is UTC +2 -> same as Amsterdam, so 0
-  "madrid": 0,         // Madrid is UTC +2 -> same as Amsterdam, so 0
-  "tokyo": -7,          // Tokyo is UTC +9 -> offset from Amsterdam (UTC +2) = -7
-  "sydney": -8,         // Sydney is UTC +10 -> offset from Amsterdam (UTC +2) = -8
-  "moscow": 1,         // Moscow is UTC +3 -> offset from Amsterdam (UTC +2) = +1
-  "cape town": 0,      // Cape Town is UTC +2 -> same as Amsterdam, so 0
-  "toronto": 6,       // Toronto is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "vancouver": 9,     // Vancouver is UTC -7 -> offset from Amsterdam (UTC +2) = +9
-  "mexico city": 8,   // Mexico City is UTC -6 -> offset from Amsterdam (UTC +2) = +8
-  "brazil": 7,        // Brazil is UTC -3 -> offset from Amsterdam (UTC +2) = +7
-  "uae": -2,            // UAE is UTC +4 -> offset from Amsterdam (UTC +2) = -2
-  "dubai": -2,          // Dubai is UTC +4 -> offset from Amsterdam (UTC +2) = -2
-  "india": -1.5,        // India is UTC +5.5 -> offset from Amsterdam (UTC +2) = -1.5
-  "japan": -7,          // Japan is UTC +9 -> offset from Amsterdam (UTC +2) = -7
-  "south korea": -7,    // South Korea is UTC +9 -> offset from Amsterdam (UTC +2) = -7
-  "china": -6,          // China is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "australia": -6,      // Australia is UTC +10 -> offset from Amsterdam (UTC +2) = -6
-  "amsterdam": 0,      // Amsterdam is UTC +2 -> same as itself, so 0
-  "rio de janeiro": 7,// Rio de Janeiro is UTC -3 -> offset from Amsterdam (UTC +2) = +7
-  "bogotá": 7,        // Bogotá is UTC -5 -> offset from Amsterdam (UTC +2) = +7
-  "quito": 7,         // Quito is UTC -5 -> offset from Amsterdam (UTC +2) = +7
-  "lima": 7,          // Lima is UTC -5 -> offset from Amsterdam (UTC +2) = +7
-  "caracas": 8.5,     // Caracas is UTC -4.5 -> offset from Amsterdam (UTC +2) = +8.5
-  "chennai": -1.5,      // Chennai is UTC +5.5 -> offset from Amsterdam (UTC +2) = -1.5
-  "seoul": -7,          // Seoul is UTC +9 -> offset from Amsterdam (UTC +2) = -7
-  "hong kong": -6,      // Hong Kong is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "manila": -6,         // Manila is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "kuala lumpur": -6,   // Kuala Lumpur is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "singapore": -6,      // Singapore is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "jakarta": -3,        // Jakarta is UTC +7 -> offset from Amsterdam (UTC +2) = -3
-  "bangkok": -3,        // Bangkok is UTC +7 -> offset from Amsterdam (UTC +2) = -3
-  "hanoi": -3,          // Hanoi is UTC +7 -> offset from Amsterdam (UTC +2) = -3
-  "bali": -6,           // Bali is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "bandung": -3,        // Bandung is UTC +7 -> offset from Amsterdam (UTC +2) = -3
-  "beijing": -6,        // Beijing is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "shanghai": -6,       // Shanghai is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "guangzhou": -6,      // Guangzhou is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "shenzhen": -6,       // Shenzhen is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "taipei": -6,         // Taipei is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "dallas": 7,        // Dallas is UTC -5 -> offset from Amsterdam (UTC +2) = +7
-  "atlanta": 6,       // Atlanta is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "miami": 6,         // Miami is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "washington dc": 6, // Washington DC is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "calgary": 9,       // Calgary is UTC -7 -> offset from Amsterdam (UTC +2) = +9
-  "ottawa": 6,        // Ottawa is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "hamilton": 6,      // Hamilton is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "montreal": 6,      // Montreal is UTC -4 -> offset from Amsterdam (UTC +2) = +6
-  "perth": -6,          // Perth is UTC +8 -> offset from Amsterdam (UTC +2) = -6
-  "adelaide": -5.5,     // Adelaide is UTC +9.5 -> offset from Amsterdam (UTC +2) = -5.5
-  "darwin": -5.5,       // Darwin is UTC +9.5 -> offset from Amsterdam (UTC +2) = -5.5
-  "melbourne": -6,      // Melbourne is UTC +10 -> offset from Amsterdam (UTC +2) = -6
-  "brisbane": -6,       // Brisbane is UTC +10 -> offset from Amsterdam (UTC +2) = -6
-  "cairns": -6,         // Cairns is UTC +10 -> offset from Amsterdam (UTC +2) = -6
-  "hobart": -6,         // Hobart is UTC +10 -> offset from Amsterdam (UTC +2) = -6
+  "new york": -6, "chicago": -7, "los angeles": -9, "orlando": -6, "san diego": -9,
+  "london": -1, "paris": 0, "berlin": 0, "madrid": 0, "tokyo": 7, "sydney": 8,
+  "moscow": 1, "cape town": 0, "toronto": -6, "vancouver": -9, "mexico city": -8,
+  "brazil": -5, "uae": 2, "dubai": 2, "india": 3.5, "japan": 7, "south korea": 7,
+  "china": 6, "australia": 8, "amsterdam": 0, "rio de janeiro": -5, "bogotá": -7,
+  "quito": -7, "lima": -7, "caracas": -6.5, "chennai": 3.5, "seoul": 7, "hong kong": 6,
+  "manila": 6, "kuala lumpur": 6, "singapore": 6, "jakarta": 5, "bangkok": 5,
+  "hanoi": 5, "bali": 6, "bandung": 5, "beijing": 6, "shanghai": 6, "guangzhou": 6,
+  "shenzhen": 6, "taipei": 6, "dallas": -7, "atlanta": -6, "miami": -6,
+  "washington dc": -6, "calgary": -9, "ottawa": -6, "hamilton": -6, "montreal": -6,
+  "perth": 6, "adelaide": 7.5, "darwin": 7.5, "melbourne": 8, "brisbane": 8,
+  "cairns": 8, "hobart": 8
 };
 
 const opTimes = {
-  "Friday": 22,    // 10PM Netherlands (UTC+2) is 22:00 CEST
-  "Saturday": 19,  // 7PM Netherlands (UTC+2) is 19:00 CEST
-  "Sunday": 15     // 3PM Netherlands (UTC+2) is 15:00 CEST
+  "Friday": 22,
+  "Saturday": 19,
+  "Sunday": 15
 };
 
 function showTimes() {
@@ -1653,6 +1604,7 @@ function filterSuggestions() {
   matches.slice(0, 6).forEach(match => {
     const li = document.createElement("li");
     li.textContent = match.charAt(0).toUpperCase() + match.slice(1);
+    li.style.cursor = "pointer";
     li.onclick = () => {
       tzInput.value = li.textContent;
       tzSuggestions.style.display = 'none';
