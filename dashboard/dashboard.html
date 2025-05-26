@@ -9,6 +9,7 @@
   <meta property="og:description" content="A cross-branch command interface for document control, logistics, and inter-unit coordination.">
   <meta property="og:image" content="http://navalspecialwarfaregroup5.com/trident.png">
   <meta property="og:url" content="http://navalspecialwarfaregroup5.com/">
+  <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -109,14 +110,175 @@
   </style>
 </head>
 <body>
+    <!-- Overlay (initially hidden, JS will show it if first visit after login) -->
+  <div id="dodOverlay" role="dialog" aria-modal="true" aria-labelledby="overlayTitle" aria-describedby="overlayDesc"
+    style="
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 3rem;
+      box-sizing: border-box;
+      z-index: 999999;
+      user-select: none;
+      border: 12px solid transparent;
+      border-image: repeating-linear-gradient(
+        45deg,
+        red 0,
+        red 10px,
+        black 10px,
+        black 20px
+      ) 12;
+      text-align: center;
+      color: black;
+      max-width: 100vw;
+      max-height: 100vh;
+      overflow: hidden;
+    "
+  >
+    <div style="
+      width: 100%;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: red;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      user-select: text;
+      margin-bottom: 2rem;
+    ">TOP SECRET//SI//TK//NOFORN</div>
+
+   <div style="max-width: 620px;">
+  <p id="overlayDesc" style="margin:0 0 0.5rem; font-size:1rem; line-height:1.4; font-weight: 700; color: #b22222;">
+    WARNING: THIS PLATFORM AND ALL CONTENT HEREIN ARE <strong>ENTIRELY FICTIONAL</strong> AND CREATED SOLELY FOR <em>ENTERTAINMENT, SIMULATION, AND ROLEPLAY PURPOSES.</em>
+  </p>
+
+  <p style="
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+  ">THIS IS NOT A REAL GOVERNMENT OR MILITARY SYSTEM</p>
+
+  <p style="
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #444;
+  ">
+    This website is <strong>NOT affiliated with, endorsed by, or sponsored by</strong> the U.S. Department of Defense or any government agency.<br>
+    Any resemblance to real persons, organizations, or operations is purely coincidental and for roleplay purposes only.
+  </p>
+
+  <p style="
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #333;
+  ">
+    By continuing, you acknowledge that you understand this is a fictional simulation environment<br>
+    designed strictly for entertainment and training scenarios, and you accept all terms accordingly.
+  </p>
+
+  <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="display:block; margin:0 auto 1rem auto;">
+    <path d="M30 0 L40 20 L20 20 Z" fill="red"/>
+    <path d="M30 40 L40 20 L20 20 Z" fill="red"/>
+  </svg>
+
+  <p id="overlayTitle" style="
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.06em;
+    color: #b22222;
+  ">FICTIONAL SIMULATION WARNING</p>
+
+  <p style="
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin: 0;
+    color: #555;
+  ">UNAUTHORIZED CLAIMS OF AFFILIATION ARE STRICTLY PROHIBITED</p>
+
+  <button id="dismissOverlayBtn" type="button" aria-label="Dismiss legal notice and continue to site"
+    style="
+      margin-top: 2rem;
+      background-color: #adb5bd;
+      color: #121212;
+      border: none;
+      padding: 0.9rem 3rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: text;
+      transition: background-color 0.2s ease;
+    "
+    onmouseover="this.style.backgroundColor='#868e96'"
+    onmouseout="this.style.backgroundColor='#adb5bd'"
+  >I Understand and Wish to Continue</button>
+</div>
+
+
+    <div style="
+      width: 100%;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: red;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      user-select: text;
+      margin-top: 3rem;
+    ">TOP SECRET//SI//TK//NOFORN</div>
+  </div>
+
+  
   <div class="classification">SECRET // JOINT INTER-AGENCY OPS // COMPARTMENTALIZED</div>
+  
   <div class="user-bar">
+    
+    
     Signed in as: <strong id="userEmail">[user]</strong> · <a href="#" class="text-white text-decoration-underline" onclick="triggerLogout()">Logout</a>
   </div>
-  <div class="header">
-    <h1>DEPARTMENT OF DEFENSE // JOINT OPERATIONS DASHBOARD</h1>
-    <div class="subheader">Multi-Domain Command Environment · Real-Time Cross-Unit Access</div>
+
+
+
+  <div class="footer mt-1 text-center text-muted small">
+  <p>
+    <strong>Disclaimer:</strong> This is a fictional simulation platform intended for entertainment and roleplay purposes only. It is not affiliated with, endorsed by, or representative of the U.S. Department of Defense or any government entity.
+  </p>
+</div>
+
+<div class="header position-relative">
+  <h1>DEPARTMENT OF DEFENSE // JOINT OPERATIONS DASHBOARD</h1>
+  <div class="subheader">Multi-Domain Command Environment · Real-Time Cross-Unit Access</div>
+
+  <!-- Navigation Toggle Button -->
+  <div class="text-center mt-3">
+    <button id="navToggleBtn" class="nav-expand-toggle" aria-expanded="false" aria-controls="inlineNavPanel" onclick="toggleInlineNav()">Navigation</button>
   </div>
+
+  <!-- Navigation Panel -->
+  <div id="inlineNavPanel" class="collapse-container" aria-hidden="true">
+    <div class="inner-nav">
+      <a href="#">Dashboard Overview</a>
+      <a href="#">All Documents</a>
+      <a href="#">Operational AOs</a>
+      <a href="#">Intel Feed</a>
+      <a href="#">Logistics</a>
+    </div>
+  </div>
+</div>
+
+
+
   <div class="container main-container">
     <div class="section-title">Mission Center: Document & Logistics Overview</div>
     <div class="row filters align-items-end mb-4">
@@ -177,6 +339,7 @@
     Department of Defense · Joint Special Operations Portal<br>
     <code>DOD-CROSSNODE v4.9 · ENCRYPTED ACCESS · LOGGED</code>
   </div>
+  
 
   <script>
    const placeholderDocs = [
@@ -269,5 +432,56 @@
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  function toggleInlineNav() {
+    const panel = document.getElementById('inlineNavPanel');
+    const btn = document.getElementById('navToggleBtn');
+
+    panel.classList.toggle('open');
+
+    // Accessibility attributes
+    const isOpen = panel.classList.contains('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    panel.setAttribute('aria-hidden', !isOpen);
+  }
+</script>
+
+
+
+  <script>
+    // Function to show overlay only once per session after login
+    function checkAndShowOverlay() {
+      // Check sessionStorage for flag
+      const hasSeen = sessionStorage.getItem('dodOverlaySeen');
+
+      // If not seen yet, show overlay and disable scroll
+      if (!hasSeen) {
+        const overlay = document.getElementById('dodOverlay');
+        overlay.style.display = 'flex';
+
+        // Disable body scroll
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
+        document.body.style.touchAction = 'none';
+
+        // When user clicks dismiss, hide overlay and set flag
+        document.getElementById('dismissOverlayBtn').addEventListener('click', () => {
+          overlay.style.display = 'none';
+
+          // Restore scroll
+          document.body.style.overflow = '';
+          document.body.style.height = '';
+          document.body.style.touchAction = '';
+
+          // Mark as seen for this session
+          sessionStorage.setItem('dodOverlaySeen', 'true');
+        });
+      }
+    }
+
+    // Run on page load
+    window.onload = checkAndShowOverlay;
+  </script>
 </body>
 </html>
