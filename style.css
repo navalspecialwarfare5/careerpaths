@@ -175,24 +175,31 @@ details {
 }
 
 summary {
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    list-style: none;
-    position: relative;
+  position: relative;
+  padding-right: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  list-style: none;
 }
 
 summary::after {
-    content: "▼";
-    position: absolute;
-    right: 0;
-    transition: transform 0.3s ease;
+  content: "▼";
+  font-size: 0.85rem;
+  position: absolute;
+  right: 0;
+  top: 2px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+  pointer-events: none;
 }
 
-details[open] summary::after {
-    transform: rotate(-180deg);
+/* Correctly rotate ONLY the icon of the toggled summary, even if nested */
+details[open] > summary::after {
+  transform: rotate(-180deg);
 }
+
 
 summary::-webkit-details-marker {
     display: none;
@@ -394,3 +401,13 @@ details[open] {
 
 }
 
+
+.role-image {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  animation: fadeIn 0.6s ease forwards;
+}

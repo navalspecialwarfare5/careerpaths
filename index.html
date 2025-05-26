@@ -192,7 +192,11 @@
                             including counterterrorism, hostage rescue, clandestine reconnaissance, covert direct
                             action, and sensitive activities across the globe.
 
+
+
                         </p>
+
+                        
                         <details>
                             <summary>Roles</summary>
                             <p>
@@ -201,6 +205,31 @@
                                 technologies under realistic conditions; they simulate real-world missions to assess
                                 operational viability, provide feedback to R&amp;D and command staff, and often act as
                                 aggressors, instructors, or evaluators to shape future NSW capabilities.
+                                  <details>
+                            <summary>NBRC — NSW Breacher <span class="badge bg-warning ms-2">Very Limited</span></summary>
+                            <p>
+                                <p><strong>Function:</strong> Experts in explosive, mechanical, and ballistic breaching techniques used in hostage rescue, room entries, and shipboarding operations.</p>
+                                 <p>Operators are trained to use advanced charges, thermal tools, and precise timing techniques under combat conditions, often leading the stack during dynamic entries.</p>
+                                  <img src="breacher.png" alt="Breacher role photo" class="role-image">
+                            </p>
+                        </details>
+                        <details>
+                            <summary>O92A — NSW Medic (SOCM) <span class="badge bg-success ms-2">High Demand</span></summary>
+                            <p><strong>Function:</strong> Special Operations Combat Medics (SOCM) trained in advanced trauma care, prolonged field care, and complex CASEVAC under fire.</p>
+                            <p>Graduates of the SOCM pipeline are capable of providing lifesaving interventions in austere environments with minimal support, often stabilizing teammates until surgical care is available.</p>
+                            </details>
+
+                            <details>
+                            <summary>O91A — Tactical Medic <span class="badge bg-success ms-2">High Demand</span></summary>
+                            <p><strong>Function:</strong> Trained to deliver front-line trauma response during direct action operations.</p>
+                            <p>These medics operate under fire, equipped to stabilize critical injuries during gunfights, with specialization in TCCC, airway management, and bleeding control.</p>
+                            </details>
+
+                            <details>
+                            <summary>O19A — NSW Sniper <span class="badge bg-danger ms-2">Closed</span></summary>
+                            <p><strong>Function:</strong> Long-range precision shooter and reconnaissance asset capable of operating independently or in pairs behind enemy lines.</p>
+                            <p>NSW Snipers are highly trained in target interdiction, camouflage, stalking, and intelligence collection — providing critical overwatch during sensitive missions.</p>
+                            </details>
                             </p>
                         </details>
                         <details>
@@ -1018,8 +1047,29 @@
         </div>
 
 
-                        <img src="Silver_MFF2.png" alt="Operational Overview" class="img-fluid w-100 rounded shadow-sm mb-4"
-     style="max-height: 300px; object-fit: cover;">
+                        <div id="slideshow" class="w-100 rounded shadow-sm mb-4" style="max-height: 300px; overflow: hidden;">
+  <img src="team.png" class="img-fluid w-100" style="object-fit: cover; margin-top: -60px;">
+  <img src="breacher.png" class="img-fluid w-100" style="object-fit: cover; margin-top: -60px;">
+  <img src="avi.png" class="img-fluid w-100" style="object-fit: cover; ">
+</div>
+<script>
+  const slideshow = document.getElementById("slideshow");
+  const images = slideshow.getElementsByTagName("img");
+  let index = 0;
+
+  // Hide all images except the first
+  for (let i = 1; i < images.length; i++) {
+    images[i].style.display = "none";
+  }
+
+  setInterval(() => {
+    images[index].style.display = "none";
+    index = (index + 1) % images.length;
+    images[index].style.display = "block";
+  }, 5000); // Change every 1000ms (1 second)
+</script>
+
+
 
         <section class="container py-5">
             <h2 class="text-center text-uppercase fw-bold mb-4" style="letter-spacing: 2px;">NSWDG-5 Operational
