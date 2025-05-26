@@ -698,21 +698,95 @@
                     </div>
 
                     <div class="career-block">
-                        <h4>Mission Types &amp; Profiles</h4>
-                        <ul>
-                            <li>✪ <strong>HVT Grab/Kill:</strong> Short-notice direct action targeting confirmed
-                                terrorist cell leadership or financiers</li>
-                            <li>✪ <strong>Maritime VBSS:</strong> Boarding operations on hostile vessels in coastal
-                                waters or open sea</li>
-                            <li>✪ <strong>CBRN Interdiction:</strong> Capture or destruction of chemical/biological
-                                weapons</li>
-                            <li>✪ <strong>Black Site Recovery:</strong> Rescuing detained U.S. or allied personnel from
-                                high-risk environments</li>
-                            <li>✪ <strong>ISR-Based Recon:</strong> Long-range dismounted surveillance and overwatch
-                            </li>
-                            <li>✪ <strong>Technical Exploitation:</strong> Capturing hard drives, phones, and intel
-                                caches during or post-assault</li>
-                        </ul>
+                        <style>
+.mission-types details {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.mission-types details[open] {
+  background-color: #c6c7c90c;
+}
+
+.mission-types summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.mission-types summary::-webkit-details-marker {
+  display: none;
+}
+
+.mission-types p {
+  margin: 1rem 0 0.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mission-types details[open] p {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<section class="mission-types">
+  <h4 class="section-title">Mission Types & Profiles</h4>
+
+<details>
+  <summary>⚔️ <strong>HVT Grab/Kill</strong></summary>
+  <p><strong>Profile:</strong> Direct action missions targeting High-Value Targets (HVTs) — such as terrorist cell leaders, foreign fighter facilitators, bomb makers, or financiers — often under time-sensitive conditions. Objectives vary from capture to kill, depending on real-time intelligence and Rules of Engagement (ROE).</p>
+  <p><strong>Execution:</strong> Typically conducted at night using stealthy infil methods including MH-47G or MH-60M insertion, followed by fast rope or rooftop breach. Overwatch and support provided by MQ-9 Reapers, U-28A ISR platforms, and EC-130H Compass Call. Assault elements are usually DEVGRU, Delta, or foreign Tier 1 partners. Targets are often located in compounds within dense urban terrain, cave networks like Tora Bora, or rural villages in areas such as Kunar, Ghazni, Idlib, or the Sahel corridor.</p>
+  <p><strong>Historical Example:</strong> Operation Neptune Spear (2011) to kill Osama Bin Laden in Abbottabad; Task Force Black operations (2006–2009) in Baghdad targeting AQI bombmakers; Delta Force raids in al-Jafr and Deir ez-Zor against ISIS senior leadership.</p>
+</details>
+
+<details>
+  <summary>🚤 <strong>Maritime VBSS</strong></summary>
+  <p><strong>Profile:</strong> Visit, Board, Search, and Seizure operations conducted in littoral or blue water environments targeting vessels suspected of smuggling weapons, narcotics, humans, or WMD components. These missions also intercept vessels violating sanctions or under piracy threat.</p>
+  <p><strong>Execution:</strong> Carried out by SEALs, Marine Force Recon, or MARSOC teams. Boarding is typically launched from RHIBs or MH-60S helicopters using caving ladders or fast-rope techniques. Vessels are secured deck-by-deck, with engine rooms and bridge control taken early. VBSS kits include ballistic helmets, communications headsets, hook-and-climb gear, and fragmentation grenades adapted for confined shipboard use. These operations often occur in the Gulf of Aden, Strait of Hormuz, and South China Sea.</p>
+  <p><strong>Historical Example:</strong> U.S. Navy interdiction of Iranian arms shipments to Houthi rebels (2016–2023); Somali piracy interventions by Combined Task Force 151; MIO (Maritime Interdiction Ops) under Operation Sentinel in the Arabian Gulf.</p>
+</details>
+
+<details>
+  <summary>☣️ <strong>CBRN Interdiction</strong></summary>
+  <p><strong>Profile:</strong> Special operations to locate, secure, or destroy chemical, biological, radiological, or nuclear weapons and materials. Missions may involve static sites (e.g., underground bunkers, mobile labs) or mobile transfers using civilian vehicles or disguised convoys.</p>
+  <p><strong>Execution:</strong> Conducted with support from JSOC’s Technical Support Detachment, USMC CBRNE units, or specialized contractors. Targets are often located in facilities like the Al Muthanna chemical weapons complex (Iraq), suspected nuclear tunnels in Yongbyon (North Korea), or hidden labs in rural Syria. Operations require full MOPP gear, sensor drones, decontamination tents, and coordination with EOD for safe containment or demolition of weaponized agents.</p>
+  <p><strong>Historical Example:</strong> UNSCOM and Task Force Dagger operations during and after OIF targeting VX nerve agent storage; Israeli ops against Hezbollah chemical transports; destruction of Syrian chemical stockpiles post-2013 Ghouta attack.</p>
+</details>
+
+<details>
+  <summary>🕶️ <strong>Black Site Recovery</strong></summary>
+  <p><strong>Profile:</strong> High-risk rescue of U.S. or allied personnel held in unofficial detention sites, including CIA black sites, terrorist safehouses, or rogue state prisons. These operations often require complete deniability and may involve rescue of JSOC, CIA SAD/SOG, or allied SOF operatives captured in denied environments.</p>
+  <p><strong>Execution:</strong> Typically requires layered HUMINT/SIGINT to locate the detainee. Entry teams deploy via rotary-wing or HALO to avoid radar detection, breach with surgical precision, and extract via secured HLZ or clandestine convoy. Exfil zones are often contested, requiring overwatch from AC-130 gunships or standby ISR. AO examples include North Kivu (DRC), al-Hasakah (Syria), or remote compounds in Helmand.</p>
+  <p><strong>Historical Example:</strong> Operation Red Dawn (capture of Saddam Hussein); Operation Kayla Mueller (raid on ISIS compound in Idlib, 2019); aborted Operation Eagle Claw (Iran, 1980).</p>
+</details>
+
+<details>
+  <summary>📡 <strong>ISR-Based Recon</strong></summary>
+  <p><strong>Profile:</strong> Intelligence, Surveillance, and Reconnaissance missions conducted by dismounted SOF teams or embedded JTACs. Missions focus on establishing pattern-of-life, confirming enemy presence, or locating high-value materiel such as MANPADS or mobile HQs. Often used as preparatory recon prior to DA raids or drone strikes.</p>
+  <p><strong>Execution:</strong> Conducted by SEALs, Rangers, or Special Forces ODAs using Ghillie-suited sniper pairs, handheld ISR drones (e.g. PD-100 Black Hornet), and SIGINT gear. Teams insert via foot, ATV, or static line drop. Observation posts are built into ridge lines or cave mouths in terrain such as the Hindu Kush, Mount Zawiya (Syria), or northern Burkina Faso. Data uplinks transmit to JSOC operations cells for real-time target prosecution.</p>
+  <p><strong>Historical Example:</strong> SOT-A teams tracking Haqqani network movement near Khost; MACV-SOG cross-border recon into Laos and Cambodia; French COS ops in the Sahel conducting overwatch on smuggler convoys.</p>
+</details>
+
+<details>
+  <summary>💾 <strong>Technical Exploitation</strong></summary>
+  <p><strong>Profile:</strong> Tactical Site Exploitation (TSE) and Sensitive Site Exploitation (SSE) involving the retrieval and triage of digital electronics, biometric data, hard drives, radios, and documents. Often the most intelligence-yielding part of a raid.</p>
+  <p><strong>Execution:</strong> Devices are triaged on-site by exploitation team members with deployable kits: Cellebrite tools, field laptops, signal blockers, fingerprint scanners, and translation devices. Personnel often photograph room layouts, tag IED components, and isolate metadata or contact networks. Sites may be in bombed-out schools, villas, or even tunnel systems like those found in Nineveh and Idlib. Data is relayed to units like the DIA’s Defense Counterintelligence and HUMINT Center or NSA TAO for immediate exploitation.</p>
+  <p><strong>Historical Example:</strong> Capture of Abu Zubaydah’s laptop (2002), which identified key AQ sleeper agents; exploitation of ISIS drone factory components in Raqqa (2017); SSE from Al Shabaab compounds in Puntland yielding ransom logs and hostage locations.</p>
+</details>
+
+</section>
+
                     </div>
 
                     <p class="mt-4">
@@ -782,11 +856,12 @@
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
                                 What are the requirements to join the unit?
                             </button>
                         </h2>
-                        <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div id="faq1" class="accordion-collapse collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            
                             <div class="accordion-body">
                                 Applicants must be 18+, fluent in English, have a working microphone, and own Arma 3.
                                 Prior tactical or milsim experience is preferred but not required. Professionalism,
