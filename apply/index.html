@@ -235,11 +235,11 @@ const subRoleContainer = document.getElementById('subRoleRadioContainer');
 
 // Define role-specific sub-options
 const subRolesMap = {
-  "24th STS": [
+  "role24th": [
     { id: "24th_cct", label: "Combat Controller (1C2X1)" },
     { id: "24th_pj", label: "Pararescueman (1T2X1)" }
   ],
-  "160th SOAR": [
+  "role160th": [
     { id: "160th_mh60", label: "Pilot – MH-60 DAP (153A)" },
     { id: "160th_mh6", label: "Pilot – MH-6M Little Bird (153A)" },
     { id: "160th_15a", label: "Flight Officer / Planner (15A)" }
@@ -248,8 +248,8 @@ const subRolesMap = {
 
 roleRadios.forEach(radio => {
   radio.addEventListener('change', () => {
-    const selected = radio.value;
-    const subRoles = subRolesMap[selected];
+    const selectedId = radio.id;
+    const subRoles = subRolesMap[selectedId];
     subRoleContainer.innerHTML = '';
 
     if (subRoles) {
@@ -369,7 +369,7 @@ roleRadios.forEach(radio => {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const cooldownKey = 'sqdn5_application_cooldown';
-    const cooldownTime = 0;
+    const cooldownTime = 15 * 60 * 1000;
 
     function showNotification(message, success = true) {
       const notification = document.getElementById('notification');
@@ -439,6 +439,8 @@ roleRadios.forEach(radio => {
           showNotification('Application submitted successfully. A recruiter will reach out to you soon.');
           localStorage.setItem(cooldownKey, Date.now());
           document.getElementById('applicationForm').reset();
+          subRoleWrapper.classList.add('d-none'); // <-- add this
+          subRoleContainer.innerHTML = ''; // optional, clear leftover sub-role radios
         } else {
           showNotification('Failed to submit application.', false);
         }
