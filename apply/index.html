@@ -157,26 +157,130 @@
         <input type="text" id="discord" class="form-control" placeholder="e.g., Evans#0001" required>
 
         <label class="form-label d-block mb-2">Which unit are you applying to?</label>
-<div class="row g-3 mb-4" id="unitSelection">
+<div class="row g-3 mb-5" id="unitSelection">
+
+  <!-- DEVGRU -->
   <div class="col-md-4">
-    <input type="radio" class="btn-check" name="role" id="roleDEVGRU" value="DEVGRU" required>
-    <label class="btn btn-outline-dark w-100 p-3" for="roleDEVGRU">
-      <strong>DEVGRU</strong><br><small>SEAL / D&E</small>
+    <input type="radio" class="btn-check" name="role" id="roleDEVGRU" value="DEVGRU - NSW Operator (O26A)">
+    <label class="btn btn-outline-dark w-100 p-3 text-start" for="roleDEVGRU">
+      <strong>DEVGRU</strong><br>
+      <span class="small d-block">NSW Operator (O26A)</span>
+      <span class="text-muted small">SEAL assaulter conducting direct action, reconnaissance, and maritime operations.</span>
     </label>
   </div>
+
+    <!-- 160th SOAR -->
+    <div class="col-md-4">
+      <input type="radio" class="btn-check" name="role" id="role160th" value="160th SOAR">
+      <label class="btn btn-outline-dark w-100 p-3 text-start" for="role160th">
+        <strong>160th SOAR</strong><br>
+        <span class="small d-block">Special Operations Aviator (153E)</span>
+        <span class="text-muted small">Rotary-wing pilot flying MH-60 DAP, MH-6M, and other SOF aircraft.</span>
+      </label>
+    </div>
+  
+    <!-- 24th STS -->
+    <div class="col-md-4">
+      <input type="radio" class="btn-check" name="role" id="role24th" value="24th STS">
+      <label class="btn btn-outline-dark w-100 p-3 text-start" for="role24th">
+        <strong>24th STS</strong><br>
+        <span class="small d-block">Combat Controller (1C2X1) / Pararescueman (1T2X1)</span>
+        <span class="text-muted small">CCT and PJ roles for terminal attack control and casualty evacuation under fire.</span>
+      </label>
+    </div>
+
+
+
+  <!-- PMOO -->
   <div class="col-md-4">
-    <input type="radio" class="btn-check" name="role" id="role160th" value="160th">
-    <label class="btn btn-outline-dark w-100 p-3" for="role160th">
-      <strong>160th SOAR</strong><br><small>Aviator / Officer</small>
+    <input type="radio" class="btn-check" name="role" id="rolePMOO" value="PMOO - Paramilitary Operations Officer">
+    <label class="btn btn-outline-dark w-100 p-3 text-start" for="rolePMOO">
+      <strong>PMOO</strong><br>
+      <span class="small d-block">Paramilitary Operations Officer</span>
+      <span class="text-muted small">Leads target development, HUMINT liaison, and cross-agency planning.</span>
     </label>
   </div>
+
+  <!-- Mission Planner / J3 -->
   <div class="col-md-4">
-    <input type="radio" class="btn-check" name="role" id="role24th" value="24th">
-    <label class="btn btn-outline-dark w-100 p-3" for="role24th">
-      <strong>24th STS</strong><br><small>CCT / PJ</small>
+    <input type="radio" class="btn-check" name="role" id="roleJ3" value="J3 - Mission Planner / Ops Integrator">
+    <label class="btn btn-outline-dark w-100 p-3 text-start" for="roleJ3">
+      <strong>J3 Cell</strong><br>
+      <span class="small d-block">Mission Planner / Operations Integrator</span>
+      <span class="text-muted small">Crafts CONOPs, assigns squads, manages rehearsals and task organization.</span>
     </label>
   </div>
+
+  <!-- SIGINT / ISR -->
+  <div class="col-md-4">
+    <input type="radio" class="btn-check" name="role" id="roleSIGINT" value="SIGINT / ISR Coordinator (35N)">
+    <label class="btn btn-outline-dark w-100 p-3 text-start" for="roleSIGINT">
+      <strong>SIGINT / ISR</strong><br>
+      <span class="small d-block">Coordinator (35N)</span>
+      <span class="text-muted small">Handles drone feeds, sensor networks, electronic warfare and signal intercepts.</span>
+    </label>
+  </div>
+
 </div>
+<div id="subRoleRadioWrapper" class="d-none mt-4">
+  <label class="form-label mb-2">Select Specific Role</label>
+  <div class="row g-2" id="subRoleRadioContainer"></div>
+</div>
+
+
+<script>
+const roleRadios = document.querySelectorAll('input[name="role"]');
+const subRoleWrapper = document.getElementById('subRoleRadioWrapper');
+const subRoleContainer = document.getElementById('subRoleRadioContainer');
+
+// Define role-specific sub-options
+const subRolesMap = {
+  "24th STS": [
+    { id: "24th_cct", label: "Combat Controller (1C2X1)" },
+    { id: "24th_pj", label: "Pararescueman (1T2X1)" }
+  ],
+  "160th SOAR": [
+    { id: "160th_mh60", label: "Pilot – MH-60 DAP (153A)" },
+    { id: "160th_mh6", label: "Pilot – MH-6M Little Bird (153A)" },
+    { id: "160th_15a", label: "Flight Officer / Planner (15A)" }
+  ]
+};
+
+roleRadios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    const selected = radio.value;
+    const subRoles = subRolesMap[selected];
+    subRoleContainer.innerHTML = '';
+
+    if (subRoles) {
+      subRoleWrapper.classList.remove('d-none');
+      subRoles.forEach(({ id, label }, i) => {
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.className = 'btn-check';
+        input.name = 'subRole';
+        input.id = id;
+        input.value = label;
+        if (i === 0) input.required = true;
+
+        const labelEl = document.createElement('label');
+        labelEl.className = 'btn btn-outline-dark col';
+        labelEl.setAttribute('for', id);
+        labelEl.textContent = label;
+
+        subRoleContainer.appendChild(input);
+        subRoleContainer.appendChild(labelEl);
+      });
+    } else {
+      subRoleWrapper.classList.add('d-none');
+    }
+  });
+});
+</script>
+
+
+
+
 
 
         <label for="motivation">Statement of Motivation</label>
@@ -265,7 +369,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const cooldownKey = 'sqdn5_application_cooldown';
-    const cooldownTime = 15 * 60 * 1000;
+    const cooldownTime = 0;
 
     function showNotification(message, success = true) {
       const notification = document.getElementById('notification');
@@ -296,7 +400,9 @@
 
       const fullName = document.getElementById('fullName').value.trim();
       const discord = document.getElementById('discord').value.trim();
-      const role = document.querySelector('input[name="role"]:checked')?.value || '';
+      const baseRole = document.querySelector('input[name="role"]:checked')?.value || '';
+      const subRole = document.querySelector('input[name="subRole"]:checked')?.value || '';
+      const role = subRole ? `${baseRole} – ${subRole}` : baseRole;
       const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
       const experience = document.getElementById('experience').value.trim().slice(0, 1024);
       const commitment = document.getElementById('commitment').value.trim().slice(0, 1024);
