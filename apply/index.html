@@ -240,8 +240,7 @@ const subRolesMap = {
     { id: "24th_pj", label: "Pararescueman (1T2X1)" }
   ],
   "role160th": [
-    { id: "160th_mh60", label: "Pilot – MH-60 DAP (153A)" },
-    { id: "160th_mh6", label: "Pilot – MH-6M Little Bird (153A)" },
+    { id: "160th_mh60", label: "Pilot – Rotary Wing Aviator (153A)" },
     { id: "160th_15a", label: "Flight Officer / Planner (15A)" }
   ]
 };
@@ -450,14 +449,14 @@ roleRadios.forEach(radio => {
     });
   </script>
 
-  <div class="modal fade" id="entryModal" tabindex="-1" style="z-index: 99999;">
+<div class="modal fade" id="entryModal" tabindex="-1" style="z-index: 99999;">
   <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content text-white" style="background: url(../dev2.png) center/cover no-repeat;">
+    <div id="slideshowContainer" class="modal-content text-white" style="background: center/cover no-repeat;">
       <div class="modal-body d-flex flex-column justify-content-center align-items-center text-center p-5" style="background-color: rgba(0,0,0,0.7);">
-<h1 class="display-4 fw-bold text-uppercase">Serious Play Only</h1>
-<p class="lead">
-  We simulate what matters: team discipline, mission planning, and execution under pressure. If that’s not your pace, you’re in the wrong place.
-</p>
+        <h1 class="display-4 fw-bold text-uppercase">Serious Play Only</h1>
+        <p class="lead">
+          We simulate what matters: team discipline, mission planning, and execution under pressure. If that’s not your pace, you’re in the wrong place.
+        </p>
 
         <audio id="entryAudio" preload="auto">
           <source src="mission_start.mp3" type="audio/mp3">
@@ -467,6 +466,29 @@ roleRadios.forEach(radio => {
     </div>
   </div>
 </div>
+
+<script>
+  const slideshowImages = [
+    '../Silver_Dive.png',
+    '../dev3.png',
+    '../briefing.png',
+    '../Silver_Chinook.png',
+    '../Silver_MFF2.png'
+  ];
+
+  let slideIndex = 0;
+  const slideshowElement = document.getElementById('slideshowContainer');
+
+  function changeSlide() {
+    slideshowElement.style.backgroundImage = `url(${slideshowImages[slideIndex]})`;
+    slideshowElement.style.transition = 'background-image 0.5s ease-in-out';
+    slideIndex = (slideIndex + 1) % slideshowImages.length;
+  }
+
+  setInterval(changeSlide, 3000); // Change every second
+  window.addEventListener('load', changeSlide); // Initialize immediately on load
+</script>
+
 
 
 
