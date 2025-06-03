@@ -164,7 +164,7 @@
     <input type="radio" class="btn-check" name="role" id="roleDEVGRU" value="DEVGRU - NSW Operator (O26A)">
     <label class="btn btn-outline-dark w-100 p-3 text-start" for="roleDEVGRU">
       <strong>DEVGRU</strong><br>
-      <span class="small d-block">NSW Operator (O26A)</span>
+      <span class="small d-block">NSW Operator (O26A/O29A)</span>
       <span class="text-muted small">SEAL assaulter conducting direct action, reconnaissance, and maritime operations.</span>
     </label>
   </div>
@@ -224,8 +224,14 @@
 </div>
 <div id="subRoleRadioWrapper" class="d-none mt-4">
   <label class="form-label mb-2">Select Specific Role</label>
-  <div class="row g-2" id="subRoleRadioContainer"></div>
+  <div class="row g-3" id="subRoleRadioContainer"></div>
 </div>
+
+<style>
+  #subRoleRadioContainer > * {
+    margin-bottom: 0.75rem;
+  }
+</style>
 
 
 <script>
