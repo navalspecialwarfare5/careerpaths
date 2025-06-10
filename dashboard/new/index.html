@@ -215,7 +215,7 @@
   </div>
 
   <script>
-    const aircraftList = [
+const aircraftList = [
   // Rotary Wing
   { type: 'rotary', name: 'MH-60 Black Hawk', callsign: 'SUPER-61', tags: ['SOF INFIL', 'CAS'], desc: 'Multi-role rotary wing aircraft used for infiltration, support, and exfiltration of special operations forces.' },
   { type: 'rotary', name: 'CH-47 Chinook', callsign: 'HOOK-12', tags: ['LIFT', 'HEAVY'], desc: 'Heavy-lift helicopter used for transport of troops, artillery, and supplies.' },
@@ -223,25 +223,64 @@
   { type: 'rotary', name: 'MH-6 Little Bird', callsign: 'NIGHT-1', tags: ['SOF INFIL', 'LIGHT'], desc: 'Light helicopter used for SOF insertions in urban or confined environments.' },
   { type: 'rotary', name: 'UH-1Y Venom', callsign: 'VENOM-4', tags: ['UTILITY', 'SUPPORT'], desc: 'Twin-engine utility helicopter for transport and MEDEVAC roles.' },
   { type: 'rotary', name: 'SH-60 Seahawk', callsign: 'SEA-22', tags: ['ASW', 'RESCUE'], desc: 'Naval helicopter used for anti-submarine warfare and SAR.' },
-  
+  { type: 'rotary', name: 'AW101 Merlin', callsign: 'MERLIN-6', tags: ['ASW', 'TRANSPORT'], desc: 'Medium-lift helicopter used by NATO for transport and naval operations.' },
+  { type: 'rotary', name: 'EC665 Tiger', callsign: 'TIGER-2', tags: ['ATTACK', 'RECON'], desc: 'Eurocopter attack helicopter used for close air support and armed reconnaissance.' },
+  { type: 'rotary', name: 'Ka-52 Alligator', callsign: 'ALLIGATOR-3', tags: ['ATTACK', 'ESCORT'], desc: 'Russian attack helicopter with advanced targeting and defense systems.' },
+  { type: 'rotary', name: 'Mi-17 Hip', callsign: 'HIP-14', tags: ['TRANSPORT', 'UTILITY'], desc: 'Russian multi-role helicopter used for transport and support roles.' },
+  { type: 'rotary', name: 'Mi-24 Hind', callsign: 'HIND-9', tags: ['CAS', 'TRANSPORT'], desc: 'Russian attack helicopter with troop-carrying capability.' },
+  { type: 'rotary', name: 'Bell 412', callsign: 'RAVEN-10', tags: ['UTILITY', 'MEDEVAC'], desc: 'Utility helicopter used in military and civilian operations.' },
+  { type: 'rotary', name: 'HH-60 Pave Hawk', callsign: 'JOLLY-8', tags: ['CSAR', 'SOF INFIL'], desc: 'Combat search and rescue helicopter variant of the Black Hawk.' },
+  { type: 'rotary', name: 'Z-10', callsign: 'VIPER-88', tags: ['ATTACK'], desc: 'Chinese attack helicopter designed for direct fire support.' },
+  { type: 'rotary', name: 'NH90', callsign: 'BISON-7', tags: ['UTILITY', 'NAVAL'], desc: 'European medium-lift helicopter for tactical transport and naval missions.' },
+  { type: 'rotary', name: 'UH-72 Lakota', callsign: 'LAKOTA-2', tags: ['RECON', 'TRAINING'], desc: 'Light utility helicopter used for homeland and training missions.' },
+  { type: 'rotary', name: 'AW109', callsign: 'VIP-6', tags: ['VIP', 'LIGHT'], desc: 'Light twin-engine helicopter used for liaison and VIP transport.' },
+  { type: 'rotary', name: 'S-70i Black Hawk', callsign: 'IRON-3', tags: ['INFIL', 'LIFT'], desc: 'Export variant of the Black Hawk produced by PZL Mielec.' },
+  { type: 'rotary', name: 'Kaman K-MAX', callsign: 'MULE-1', tags: ['CARGO', 'UNMANNED'], desc: 'Unmanned cargo helicopter for resupply operations.' },
+  { type: 'rotary', name: 'Mi-26 Halo', callsign: 'GIANT-4', tags: ['ULTRA HEAVY'], desc: 'World’s largest helicopter, used for heavy lift transport.' },
+
   // Fixed Wing
-  { type: 'fixed', name: 'F/A-18 Hornet', callsign: 'HORNET-01', tags: ['STRIKE', 'ESCORT'], desc: 'Carrier-capable multirole fighter designed for both air-to-air and air-to-ground missions.' },
-  { type: 'fixed', name: 'F-16 Fighting Falcon', callsign: 'VIPER-22', tags: ['STRIKE', 'CAS'], desc: 'Single-engine supersonic multirole fighter aircraft.' },
-  { type: 'fixed', name: 'AC-130U Spooky', callsign: 'SPECTRE-05', tags: ['CAS', 'OVRWATCH'], desc: 'Gunship variant for close air support and air interdiction.' },
-  { type: 'fixed', name: 'C-130 Hercules', callsign: 'HAVOC-41', tags: ['TRANSPORT', 'SUPPORT'], desc: 'Tactical airlifter used for troop transport and logistics.' },
-  { type: 'fixed', name: 'B-2 Spirit', callsign: 'GHOST-6', tags: ['STEALTH', 'STRATEGIC'], desc: 'Stealth bomber for penetrating dense anti-aircraft defenses.' },
-  { type: 'fixed', name: 'F-22 Raptor', callsign: 'RAPTOR-11', tags: ['AIR DOMINANCE', 'STEALTH'], desc: 'Fifth-generation stealth air superiority fighter.' },
-  { type: 'fixed', name: 'F-35B Lightning II', callsign: 'LIGHTNING-21', tags: ['STRIKE', 'STEALTH'], desc: 'STOVL stealth multirole fighter with advanced sensor fusion.' },
-  { type: 'fixed', name: 'E-2D Hawkeye', callsign: 'HAWKEYE-2', tags: ['AWACS', 'COMMAND'], desc: 'Carrier-capable airborne early warning aircraft.' },
+  { type: 'fixed', name: 'F/A-18 Hornet', callsign: 'HORNET-01', tags: ['STRIKE', 'ESCORT'], desc: 'Carrier-capable multirole fighter.' },
+  { type: 'fixed', name: 'F-16 Fighting Falcon', callsign: 'VIPER-22', tags: ['STRIKE', 'CAS'], desc: 'Single-engine multirole fighter.' },
+  { type: 'fixed', name: 'AC-130U Spooky', callsign: 'SPECTRE-05', tags: ['CAS', 'OVRWATCH'], desc: 'Gunship for close air support.' },
+  { type: 'fixed', name: 'C-130 Hercules', callsign: 'HAVOC-41', tags: ['TRANSPORT', 'SUPPORT'], desc: 'Tactical transport aircraft.' },
+  { type: 'fixed', name: 'B-2 Spirit', callsign: 'GHOST-6', tags: ['STEALTH', 'STRATEGIC'], desc: 'Stealth bomber for nuclear and conventional missions.' },
+  { type: 'fixed', name: 'F-22 Raptor', callsign: 'RAPTOR-11', tags: ['AIR DOMINANCE', 'STEALTH'], desc: 'Fifth-gen air superiority fighter.' },
+  { type: 'fixed', name: 'F-35B Lightning II', callsign: 'LIGHTNING-21', tags: ['STRIKE', 'STEALTH'], desc: 'STOVL stealth fighter.' },
+  { type: 'fixed', name: 'E-2D Hawkeye', callsign: 'HAWKEYE-2', tags: ['AWACS', 'COMMAND'], desc: 'Carrier-based AEW&C.' },
+  { type: 'fixed', name: 'A-10 Thunderbolt II', callsign: 'WARTHOG-17', tags: ['CAS'], desc: 'Close air support jet with heavy armor.' },
+  { type: 'fixed', name: 'KC-135 Stratotanker', callsign: 'TEXACO-3', tags: ['REFUEL', 'SUPPORT'], desc: 'Aerial refueling platform.' },
+  { type: 'fixed', name: 'C-17 Globemaster III', callsign: 'MOOSE-12', tags: ['TRANSPORT', 'HEAVY'], desc: 'Strategic airlifter for cargo and personnel.' },
+  { type: 'fixed', name: 'B-1B Lancer', callsign: 'BONES-5', tags: ['STRIKE', 'LONG RANGE'], desc: 'Supersonic bomber with variable sweep wings.' },
+  { type: 'fixed', name: 'F-15E Strike Eagle', callsign: 'EAGLE-21', tags: ['STRIKE', 'MULTIROLE'], desc: 'Dual-role fighter with deep strike capability.' },
+  { type: 'fixed', name: 'P-8 Poseidon', callsign: 'TRIDENT-7', tags: ['MARITIME', 'ASW'], desc: 'Maritime patrol aircraft for anti-sub operations.' },
+  { type: 'fixed', name: 'E-3 Sentry', callsign: 'SENTRY-8', tags: ['AWACS', 'COMMAND'], desc: 'Airborne warning and control system aircraft.' },
+  { type: 'fixed', name: 'C-5 Galaxy', callsign: 'TITAN-4', tags: ['ULTRA HEAVY'], desc: 'Largest U.S. military transport aircraft.' },
+  { type: 'fixed', name: 'F-5 Tiger II', callsign: 'TIGER-14', tags: ['TRAINING', 'ESCORT'], desc: 'Light fighter and aggressor trainer.' },
+  { type: 'fixed', name: 'MC-130J Commando II', callsign: 'DRACO-3', tags: ['SOF SUPPORT'], desc: 'Special operations variant of the C-130.' },
+  { type: 'fixed', name: 'RQ-4 Global Hawk', callsign: 'SENTINEL-10', tags: ['ISR', 'HIGH ALT'], desc: 'Unmanned surveillance aircraft for broad coverage.' },
+  { type: 'fixed', name: 'B-52 Stratofortress', callsign: 'BUFF-15', tags: ['STRATEGIC', 'BOMBER'], desc: 'Long-range strategic bomber.' },
 
   // UAS
-  { type: 'uas', name: 'MQ-9 Reaper', callsign: 'REAPER-21', tags: ['ISR', 'PRECISION STRIKE'], desc: 'Remotely piloted UAV used for long-endurance, high-altitude surveillance and precision targeting.' },
-  { type: 'uas', name: 'RQ-7 Shadow', callsign: 'GHOST-9', tags: ['ISR'], desc: 'Tactical UAV used for real-time surveillance and reconnaissance missions.' },
-  { type: 'uas', name: 'ScanEagle', callsign: 'EYE-3', tags: ['ISR', 'MARITIME'], desc: 'Long-endurance UAV for intelligence gathering, especially in maritime environments.' },
-  { type: 'uas', name: 'MQ-1 Predator', callsign: 'PREDATOR-6', tags: ['ISR', 'STRIKE'], desc: 'Medium-altitude UAV equipped for reconnaissance and strike missions.' },
-  { type: 'uas', name: 'XQ-58 Valkyrie', callsign: 'VALKYRIE-9', tags: ['ISR', 'SUPPORT'], desc: 'Experimental stealthy unmanned combat aerial vehicle.' },
-  { type: 'uas', name: 'RQ-4 Global Hawk', callsign: 'SENTINEL-10', tags: ['ISR', 'LONG RANGE'], desc: 'High-altitude long-endurance UAV for wide-area surveillance.' },
-  { type: 'uas', name: 'Wasp III', callsign: 'WASP-1', tags: ['ISR', 'TIER I'], desc: 'Micro-UAV used for low altitude tactical surveillance.' }
+  { type: 'uas', name: 'MQ-9 Reaper', callsign: 'REAPER-21', tags: ['ISR', 'PRECISION STRIKE'], desc: 'Long-endurance armed UAV.' },
+  { type: 'uas', name: 'MQ-1 Predator', callsign: 'PREDATOR-6', tags: ['ISR', 'STRIKE'], desc: 'Surveillance and light strike UAV.' },
+  { type: 'uas', name: 'RQ-7 Shadow', callsign: 'GHOST-9', tags: ['ISR'], desc: 'Tactical UAV for ground units.' },
+  { type: 'uas', name: 'ScanEagle', callsign: 'EYE-3', tags: ['ISR', 'MARITIME'], desc: 'Long endurance ISR drone.' },
+  { type: 'uas', name: 'Wasp III', callsign: 'WASP-1', tags: ['ISR', 'TIER I'], desc: 'Small tactical UAV.' },
+  { type: 'uas', name: 'Puma 3 AE', callsign: 'PUMA-7', tags: ['ISR', 'TACTICAL'], desc: 'Hand-launched recon drone.' },
+  { type: 'uas', name: 'RQ-170 Sentinel', callsign: 'BAT-8', tags: ['STEALTH', 'ISR'], desc: 'Stealth UAV for high-value missions.' },
+  { type: 'uas', name: 'MQ-8 Fire Scout', callsign: 'SCOUT-4', tags: ['RECON', 'MARITIME'], desc: 'Naval rotary UAV.' },
+  { type: 'uas', name: 'RQ-11 Raven', callsign: 'RAVEN-15', tags: ['ISR', 'TIER I'], desc: 'Man-portable recon UAV.' },
+  { type: 'uas', name: 'RQ-21 Blackjack', callsign: 'BLACKJACK-5', tags: ['ISR', 'MARITIME'], desc: 'Small tactical ISR UAV.' },
+  { type: 'uas', name: 'Bayraktar TB2', callsign: 'TURK-3', tags: ['STRIKE', 'SURVEILLANCE'], desc: 'Turkish medium-altitude drone.' },
+  { type: 'uas', name: 'Heron TP', callsign: 'EAGLE-12', tags: ['ISR', 'LONG RANGE'], desc: 'Israeli high-endurance ISR UAV.' },
+  { type: 'uas', name: 'Elbit Hermes 900', callsign: 'HERMES-9', tags: ['ISR'], desc: 'Long-endurance ISR platform.' },
+  { type: 'uas', name: 'Zala 421-16E', callsign: 'ZALA-2', tags: ['ISR', 'TACTICAL'], desc: 'Russian mini UAV.' },
+  { type: 'uas', name: 'Taranis', callsign: 'SPECTER-9', tags: ['STEALTH', 'DEMO'], desc: 'British demonstrator UAV.' },
+  { type: 'uas', name: 'Altius-U', callsign: 'ALTIUS-7', tags: ['ISR', 'STRATEGIC'], desc: 'Russian long-endurance recon UAV.' },
+  { type: 'uas', name: 'CH-4', callsign: 'CHINA-4', tags: ['STRIKE', 'ISR'], desc: 'Chinese medium-altitude UAV.' },
+  { type: 'uas', name: 'Anka-S', callsign: 'ANKA-1', tags: ['ISR', 'STRIKE'], desc: 'Turkish MALE drone for combat ISR.' },
+  { type: 'uas', name: 'Orlan-10', callsign: 'ORLAN-10', tags: ['RECON', 'TACTICAL'], desc: 'Russian ISR drone used in battlefield support.' },
+  { type: 'uas', name: 'MQ-25 Stingray', callsign: 'STINGER-25', tags: ['TANKER', 'STEALTH'], desc: 'Carrier-based aerial refueling drone.' }
 ];
 
     function renderAircraft() {
