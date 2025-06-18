@@ -22,10 +22,6 @@
 </head>
 
 <body>
-  <div id="applicationsClosedOverlay" class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center text-white" style="background-color: rgba(0, 0, 0, 0.95); z-index: 999999;">
-  <h1 class="display-1 fw-bold text-uppercase">Applications Closed</h1>
-  <p class="lead">Thank you for your interest in NSWDG-5. Our recruitment cycle is currently inactive.</p>
-</div>
 <script>
   document.getElementById('applicationForm').querySelectorAll('input, textarea, button').forEach(el => {
   el.disabled = true;
@@ -175,7 +171,7 @@
     <label class="btn btn-outline-dark w-100 p-3 text-start" for="roleDEVGRU">
       <strong>DEVGRU</strong><br>
       <span class="small d-block">NSW Operator (O26A/O29A)</span>
-      <span class="text-muted small">SEAL assaulter conducting direct action, reconnaissance, and maritime operations.</span>
+      <span class="text-muted small">SEAL assaulter/containment conducting direct action, reconnaissance, and maritime operations.</span>
     </label>
   </div>
 
@@ -411,7 +407,7 @@ roleRadios.forEach(radio => {
         return;
       }
 
-      const webhookURL = "";
+      const webhookURL = "https://discord.com/api/webhooks/1384944270296744087/2vIogEEwF58iaNI030NQx_Vq0900O0AP2Kl9aMqcpf8XMoH4T2GtpzPsZ7h3oyhgonj8";
 
       const fullName = document.getElementById('fullName').value.trim();
       const discord = document.getElementById('discord').value.trim();
@@ -465,64 +461,8 @@ roleRadios.forEach(radio => {
     });
   </script>
 
-<div class="modal fade" id="entryModal" tabindex="-1" style="z-index: 99999;">
-  <div class="modal-dialog modal-fullscreen">
-    <div id="slideshowContainer" class="modal-content text-white" style="background: center/cover no-repeat;">
-      <div class="modal-body d-flex flex-column justify-content-center align-items-center text-center p-5" style="background-color: rgba(0,0,0,0.7);">
-        <h1 class="display-4 fw-bold text-uppercase">Serious Play Only</h1>
-        <p class="lead">
-          We simulate what matters: team discipline, mission planning, and execution under pressure. If that’s not your pace, you’re in the wrong place.
-        </p>
-
-        <audio id="entryAudio" preload="auto">
-          <source src="mission_start.mp3" type="audio/mp3">
-        </audio>
-        <button class="btn btn-success px-5 py-2 mt-4 fw-bold text-uppercase" onclick="enterSite()">Proceed</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  const slideshowImages = [
-    '../Silver_Dive.png',
-    '../dev3.png',
-    '../briefing.png',
-    '../Silver_Chinook.png',
-    '../Silver_MFF2.png'
-  ];
-
-  let slideIndex = 0;
-  const slideshowElement = document.getElementById('slideshowContainer');
-
-  function changeSlide() {
-    slideshowElement.style.backgroundImage = `url(${slideshowImages[slideIndex]})`;
-    slideshowElement.style.transition = 'background-image 0.5s ease-in-out';
-    slideIndex = (slideIndex + 1) % slideshowImages.length;
-  }
-
-  setInterval(changeSlide, 3000); // Change every second
-  window.addEventListener('load', changeSlide); // Initialize immediately on load
-</script>
-
-
-
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const modal = new bootstrap.Modal(document.getElementById('entryModal'));
-    modal.show();
-  });
-
-  function enterSite() {
-    document.getElementById("entryAudio").play().catch(() => {});
-    const modal = bootstrap.Modal.getInstance(document.getElementById('entryModal'));
-    modal.hide();
-  }
-</script>
-
 <div id="helpPopup" class="position-fixed bottom-0 end-0 m-4 d-none" style="z-index:1060;">
-  <a href="https://discord.gg/navalspecialwarfaregroup5" class="btn btn-primary shadow-lg">💬 Need Help? Ask on Discord</a>
+  <a href="https://discord.gg/tacdev5" class="btn btn-primary shadow-lg">💬 Need Help? Ask on Discord</a>
 </div>
 
 <script>
