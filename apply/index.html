@@ -293,7 +293,7 @@ roleRadios.forEach(radio => {
 
 
 
-
+<input type="text" id="honeypot" name="honeypot" style="display:none">
         <label for="motivation">Statement of Motivation</label>
         <textarea id="motivation" class="form-control" rows="5" placeholder="Explain in detail your motivation to join, including what draws you to this unit and how it aligns with your goals." required></textarea>
 
@@ -379,6 +379,11 @@ roleRadios.forEach(radio => {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    if (document.getElementById('honeypot').value) {
+  showNotification("Bot detection triggered. Submission blocked.", false);
+  return;
+}
+
     const cooldownKey = 'sqdn5_application_cooldown';
     const cooldownTime = 15 * 60 * 1000;
 
@@ -407,18 +412,28 @@ roleRadios.forEach(radio => {
         return;
       }
 
-      const webhookURL = "https://discord.com/api/webhooks/1385018423318155345/T-OB21b512U3E3Blz8r5P4Q_E04qjeVOdn6xGO0T0BOyUp_dsiHw64AbxycADWzpwS-Z";
+      const webhookURL = "https://discord.com/api/webhooks/1391487659100078130/CmGeilvBgOVOUkTCoHYhYjbMUULpinifkkMV17DUP1YwVPzgHjzanAe2cGFRX4srRNkw";
 
-      const fullName = document.getElementById('fullName').value.trim();
-      const discord = document.getElementById('discord').value.trim();
-      const baseRole = document.querySelector('input[name="role"]:checked')?.value || '';
-      const subRole = document.querySelector('input[name="subRole"]:checked')?.value || '';
+      function sanitize(text) {
+        return text
+          .replace(/@everyone/gi, '[removed]')
+          .replace(/@here/gi, '[removed]')
+          .replace(/<@!?[0-9]+>/g, '[removed]') // Discord user mention
+          .replace(/discord\.gg\/\S+/gi, '[link removed]') // Discord links
+          .replace(/\b(nigger|faggot|retard|kike|tranny|coon|chink|spic)\b/gi, '[slur removed]'); // Common slurs — expand as needed
+      }
+
+      const fullName = sanitize(document.getElementById('fullName').value.trim());
+      const discord = sanitize(document.getElementById('discord').value.trim());
+      const baseRole = sanitize(document.querySelector('input[name="role"]:checked')?.value || '');
+      const subRole = sanitize(document.querySelector('input[name="subRole"]:checked')?.value || '');
       const role = subRole ? `${baseRole} – ${subRole}` : baseRole;
-      const motivation = document.getElementById('motivation').value.trim().slice(0, 1024);
-      const experience = document.getElementById('experience').value.trim().slice(0, 1024);
-      const commitment = document.getElementById('commitment').value.trim().slice(0, 1024);
-      const background = document.getElementById('background').value.trim().slice(0, 1024);
-      const comments = document.getElementById('comments').value.trim().slice(0, 1024);
+      const motivation = sanitize(document.getElementById('motivation').value.trim().slice(0, 1024));
+      const experience = sanitize(document.getElementById('experience').value.trim().slice(0, 1024));
+      const commitment = sanitize(document.getElementById('commitment').value.trim().slice(0, 1024));
+      const background = sanitize(document.getElementById('background').value.trim().slice(0, 1024));
+      const comments = sanitize(document.getElementById('comments').value.trim().slice(0, 1024));
+
 
       const payload = {
         embeds: [
